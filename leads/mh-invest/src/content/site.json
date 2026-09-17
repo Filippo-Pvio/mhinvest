@@ -2,11 +2,11 @@
   "company": "MH-Invest GmbH",
   "brand": "MH INVEST",
   "claim": "Innovative Finanzdiagnostik",
-  "eyebrow": "Persönlich beraten in Hagen",
-  "headline": "Versicherungen und Finanzen. Klar auf Ihr Leben abgestimmt.",
-  "intro": "MH-Invest begleitet Sie persönlich bei Absicherung, Vorsorge, Finanzierung und Investment – mit direktem Ansprechpartner und digitalen Vergleichsmöglichkeiten.",
-  "primaryCta": "Beratung anfragen",
-  "secondaryCta": "Leistungen ansehen",
+  "eyebrow": "Persönliche Beratung in Hagen",
+  "headline": "Versicherungen und Finanzen. Klar auf Sie abgestimmt.",
+  "intro": "Ein direkter Ansprechpartner für Absicherung, Vorsorge, Finanzierung und Investment – persönlich in Hagen und digital erreichbar.",
+  "primaryCta": "Persönliches Gespräch anfragen",
+  "secondaryCta": "Leistungen entdecken",
   "phone": "02331 367 96 68",
   "phoneHref": "tel:+4923313679668",
   "email": "m.hryn@mhinvest.de",
@@ -19,8 +19,8 @@
     { "label": "Investment", "href": "#leistungen" }
   ],
   "trust": [
-    "Versicherungsmakler nach § 34d GewO",
-    "Direkter Ansprechpartner in Hagen",
-    "Digitale Vergleichsmöglichkeiten"
+    { "label": "Ihr Ansprechpartner", "value": "Marius Hryn" },
+    { "label": "Persönlich & digital", "value": "Standort Hagen" },
+    { "label": "Regulierter Status", "value": "Makler nach § 34d GewO" }
   ]
 }

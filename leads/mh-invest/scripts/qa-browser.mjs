@@ -33,7 +33,15 @@ for (const viewport of viewports) {
     h1Lines: Math.round((document.querySelector('h1')?.getBoundingClientRect().height || 0) / parseFloat(getComputedStyle(document.querySelector('h1')).lineHeight)),
     imageLoaded: document.querySelector('.hero-media')?.complete && document.querySelector('.hero-media')?.naturalWidth > 0,
     primaryCtaVisible: Boolean(document.querySelector('.button-primary')?.getBoundingClientRect().width),
-    h1Text: document.querySelector('h1')?.textContent?.trim()
+    primaryCtaAboveFold: (document.querySelector('.button-primary')?.getBoundingClientRect().bottom || Infinity) <= window.innerHeight,
+    h1Text: document.querySelector('h1')?.textContent?.trim(),
+    textOverflowOffenders: [...document.querySelectorAll('h1, h2, h3, p, a, button, li, strong, small')]
+      .filter((element) => {
+        const rect = element.getBoundingClientRect();
+        const style = getComputedStyle(element);
+        return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && (rect.left < -0.5 || rect.right > window.innerWidth + 0.5);
+      })
+      .map((element) => `${element.tagName.toLowerCase()}.${element.className || 'no-class'}: ${element.textContent?.trim().slice(0, 70)}`)
   }));
 
   let menuWorks = null;
@@ -44,7 +52,7 @@ for (const viewport of viewports) {
     await page.locator('.menu-toggle').click();
   }
 
-  await page.screenshot({ path: `screenshots/${viewport.name}.png`, fullPage: true });
+  await page.screenshot({ path: `screenshots/browser-${viewport.name}-v2.png`, fullPage: true });
   results.push({ viewport, httpStatus: response?.status(), ...metrics, horizontalOverflow: metrics.pageWidth > metrics.viewportWidth, menuWorks, consoleErrors, requestFailures });
   await page.close();
 }
@@ -52,3 +60,6 @@ for (const viewport of viewports) {
 await browser.close();
 await writeFile('screenshots/qa-results.json', `${JSON.stringify(results, null, 2)}\n`);
 console.log(JSON.stringify(results, null, 2));
+
+const failures = results.filter((result) => result.httpStatus !== 200 || result.horizontalOverflow || !result.imageLoaded || !result.primaryCtaVisible || !result.primaryCtaAboveFold || result.textOverflowOffenders.length || result.consoleErrors.length || result.requestFailures.length || result.menuWorks === false);
+if (failures.length) process.exitCode = 1;

@@ -37,7 +37,7 @@ npm run qa:browser
 - `src/styles/global.css`: responsive Gestaltung und Zustände.
 - `research/research.md`: belegte Fakten, Quellen und Unsicherheiten.
 - `notes/strategy.md`: Kommunikations- und Designstrategie.
-- `screenshots/`: geprüfte Desktop- und Mobile-Ansichten.
+- `screenshots/`: Präsentationsansichten und transparente QA-Dokumentation; Browser-QA ist als eigener Prüfpunkt ausgewiesen.
 
 ## Produktionsgrenze
 

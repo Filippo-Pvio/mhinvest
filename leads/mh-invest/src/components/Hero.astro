@@ -29,10 +29,10 @@ import site from '../content/site.json';
 
   <img
     class="hero-media"
-    src="/assets/finanzdiagnostik-konzept.webp"
-    alt="Abstrakte Konzeptdarstellung aus geordneten Linien, Glasflächen und Licht"
-    width="1961"
-    height="802"
+    src="/assets/finanzplanung-konzept-v2.webp"
+    alt="Konzeptmotiv eines persönlichen Finanzplans mit Diagnosegrafik und einem klar markierten Weg"
+    width="1672"
+    height="941"
     fetchpriority="high"
   />
   <div class="hero-shade" aria-hidden="true"></div>
@@ -50,9 +50,8 @@ import site from '../content/site.json';
 
   <div class="hero-footer">
     <ul class="trust-list" aria-label="Nachgewiesene Merkmale">
-      {site.trust.map((item) => <li>{item}</li>)}
+      {site.trust.map((item) => <li><span>{item.label}</span><strong>{item.value}</strong></li>)}
     </ul>
-    <p class="asset-note">KI-Konzeptvisual · keine reale Aufnahme</p>
   </div>
 </section>
 
