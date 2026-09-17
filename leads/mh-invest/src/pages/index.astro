@@ -1,0 +1,58 @@
+---
+import Hero from '../components/Hero.astro';
+import site from '../content/site.json';
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#151715" />
+    <meta name="description" content="Akquise-Konzept für MH-Invest GmbH: persönliche Beratung zu Versicherungen, Finanzen und Investment in Hagen." />
+    <title>MH-Invest | Akquise-Hero Konzept</title>
+  </head>
+  <body id="top">
+    <Hero />
+
+    <main>
+      <section class="intro-section" id="profil" aria-labelledby="profil-title">
+        <p class="section-kicker">Finanzdiagnostik</p>
+        <h2 id="profil-title">Erst verstehen. Dann entscheiden.</h2>
+        <p class="section-lead">Versicherungen, Vorsorge und Geldanlage greifen ineinander. MH-Invest verbindet persönliche Beratung mit digitalen Vergleichsmöglichkeiten und einem klaren Blick auf Ihre Situation.</p>
+      </section>
+
+      <section class="services" id="leistungen" aria-labelledby="services-title">
+        <div class="section-heading">
+          <p class="section-kicker">Leistungsfelder</p>
+          <h2 id="services-title">Ein Ansprechpartner.<br />Vier Perspektiven.</h2>
+        </div>
+        <div class="service-list">
+          <article><span>01</span><h3>Versicherungen</h3><p>Absicherung für Alltag, Eigentum und Mobilität.</p></article>
+          <article><span>02</span><h3>Vorsorge</h3><p>Finanzielle Planung für verschiedene Lebensphasen.</p></article>
+          <article><span>03</span><h3>Finanzierung</h3><p>Vergleichsmöglichkeiten für Kredite und Bankprodukte.</p></article>
+          <article><span>04</span><h3>Investment</h3><p>Orientierung bei Anlageklassen und Vermögensaufbau.</p></article>
+        </div>
+      </section>
+
+      <section class="contact-section" id="kontakt" aria-labelledby="contact-title">
+        <div>
+          <p class="section-kicker">Direkter Kontakt</p>
+          <h2 id="contact-title">Ihre Lösung beginnt mit einem klaren Gespräch.</h2>
+        </div>
+        <div class="contact-links">
+          <a href={site.phoneHref}>{site.phone}<span>Telefon</span></a>
+          <a href={site.emailHref}>{site.email}<span>E-Mail</span></a>
+          <p>{site.address}<span>Standort</span></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>MH-Invest GmbH · Akquise-Konzept · Nicht zur Veröffentlichung</p>
+      <a href="#top">Nach oben ↑</a>
+    </footer>
+  </body>
+</html>

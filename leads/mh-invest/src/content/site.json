@@ -1,0 +1,26 @@
+{
+  "company": "MH-Invest GmbH",
+  "brand": "MH INVEST",
+  "claim": "Innovative Finanzdiagnostik",
+  "eyebrow": "Persönlich beraten in Hagen",
+  "headline": "Versicherungen und Finanzen. Klar auf Ihr Leben abgestimmt.",
+  "intro": "MH-Invest begleitet Sie persönlich bei Absicherung, Vorsorge, Finanzierung und Investment – mit direktem Ansprechpartner und digitalen Vergleichsmöglichkeiten.",
+  "primaryCta": "Beratung anfragen",
+  "secondaryCta": "Leistungen ansehen",
+  "phone": "02331 367 96 68",
+  "phoneHref": "tel:+4923313679668",
+  "email": "m.hryn@mhinvest.de",
+  "emailHref": "mailto:m.hryn@mhinvest.de",
+  "address": "Frommannweg 2, 58099 Hagen",
+  "navigation": [
+    { "label": "Über uns", "href": "#profil" },
+    { "label": "Versicherungen", "href": "#leistungen" },
+    { "label": "Finanzen", "href": "#leistungen" },
+    { "label": "Investment", "href": "#leistungen" }
+  ],
+  "trust": [
+    "Versicherungsmakler nach § 34d GewO",
+    "Direkter Ansprechpartner in Hagen",
+    "Digitale Vergleichsmöglichkeiten"
+  ]
+}

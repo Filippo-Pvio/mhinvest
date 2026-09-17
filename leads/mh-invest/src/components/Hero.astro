@@ -1,0 +1,79 @@
+---
+import site from '../content/site.json';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label={`${site.company} – Startseite`}>
+      <span class="brand-mark" aria-hidden="true">MH</span>
+      <span class="brand-copy">
+        <strong>{site.brand}</strong>
+        <small>{site.claim}</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
+      {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <a class="header-contact" href="#kontakt">Kontakt <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Navigation öffnen">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation" hidden>
+    {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+  <img
+    class="hero-media"
+    src="/assets/finanzdiagnostik-konzept.webp"
+    alt="Abstrakte Konzeptdarstellung aus geordneten Linien, Glasflächen und Licht"
+    width="1961"
+    height="802"
+    fetchpriority="high"
+  />
+  <div class="hero-shade" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="eyebrow">{site.eyebrow}</p>
+    <p class="hero-brand">{site.brand}</p>
+    <h1 id="hero-title">{site.headline}</h1>
+    <p class="hero-intro">{site.intro}</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#kontakt">{site.primaryCta} <span aria-hidden="true">↗</span></a>
+      <a class="button button-secondary" href="#leistungen">{site.secondaryCta}</a>
+    </div>
+  </div>
+
+  <div class="hero-footer">
+    <ul class="trust-list" aria-label="Nachgewiesene Merkmale">
+      {site.trust.map((item) => <li>{item}</li>)}
+    </ul>
+    <p class="asset-note">KI-Konzeptvisual · keine reale Aufnahme</p>
+  </div>
+</section>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const navigation = document.querySelector<HTMLElement>('.mobile-nav');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Navigation öffnen' : 'Navigation schließen');
+    if (navigation) navigation.hidden = isOpen;
+    document.body.classList.toggle('menu-open', !isOpen);
+  });
+
+  navigation?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.setAttribute('aria-label', 'Navigation öffnen');
+      navigation.hidden = true;
+      document.body.classList.remove('menu-open');
+    });
+  });
+</script>
