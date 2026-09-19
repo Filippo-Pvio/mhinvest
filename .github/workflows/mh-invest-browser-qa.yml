@@ -41,7 +41,7 @@ jobs:
         run: |
           npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/mh-invest-preview.log 2>&1 &
           for attempt in {1..30}; do
-            if curl --fail --silent http://127.0.0.1:4321 > /dev/null; then
+            if curl --fail --silent http://127.0.0.1:4321/mhinvest/ > /dev/null; then
               exit 0
             fi
             sleep 1
@@ -54,9 +54,11 @@ jobs:
 
       - name: Start standalone production build
         run: |
-          python3 -m http.server 8765 --bind 127.0.0.1 --directory dist > /tmp/mh-invest-standalone.log 2>&1 &
+          mkdir -p /tmp/mh-invest-site/mhinvest
+          cp -R dist/. /tmp/mh-invest-site/mhinvest/
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory /tmp/mh-invest-site > /tmp/mh-invest-standalone.log 2>&1 &
           for attempt in {1..20}; do
-            if curl --fail --silent http://127.0.0.1:8765 > /dev/null; then
+            if curl --fail --silent http://127.0.0.1:8765/mhinvest/ > /dev/null; then
               exit 0
             fi
             sleep 1

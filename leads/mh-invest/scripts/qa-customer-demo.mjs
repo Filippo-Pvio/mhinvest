@@ -2,7 +2,7 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
-const baseUrl = 'http://127.0.0.1:8765';
+const baseUrl = 'http://127.0.0.1:8765/mhinvest/';
 const viewports = [
   { name: 'desktop-1440x900', width: 1440, height: 900 },
   { name: 'laptop-1280x800', width: 1280, height: 800 },
