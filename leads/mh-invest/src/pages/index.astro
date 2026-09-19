@@ -62,16 +62,35 @@ import '../styles/global.css';
       </section>
 
       <section class="contact-section reveal-block" id="kontakt" aria-labelledby="contact-title">
-        <div class="contact-target" aria-hidden="true"><span></span></div>
-        <div>
-          <p class="section-kicker">Direkter Kontakt</p>
-          <h2 id="contact-title">Ihre Lösung beginnt mit einem klaren Gespräch.</h2>
+        <div class="contact-copy">
+          <p class="section-kicker">Persönliches Gespräch</p>
+          <h2 id="contact-title">Worum geht es bei Ihnen?</h2>
+          <p>Schreiben Sie Marius Hryn kurz, was Sie beschäftigt. MH-Invest kann sich anschließend persönlich bei Ihnen melden.</p>
+          <div class="contact-meta" aria-label="Direkte Kontaktmöglichkeiten">
+            <a href={site.phoneHref}>{site.phone}<span>Telefon</span></a>
+            <a href={site.emailHref}>{site.email}<span>E-Mail</span></a>
+            <p>{site.address}<span>Standort</span></p>
+          </div>
         </div>
-        <div class="contact-links">
-          <a href={site.phoneHref}>{site.phone}<span>Telefon</span></a>
-          <a href={site.emailHref}>{site.email}<span>E-Mail</span></a>
-          <p>{site.address}<span>Standort</span></p>
-        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <label>Vorname<input name="vorname" autocomplete="given-name" required /></label>
+            <label>Nachname<input name="nachname" autocomplete="family-name" required /></label>
+          </div>
+          <label>E-Mail<input name="email" type="email" autocomplete="email" required /></label>
+          <label>Telefon <span class="optional">optional</span><input name="telefon" type="tel" autocomplete="tel" /></label>
+          <label>Worum geht es?
+            <select name="thema" required>
+              <option value="">Bitte auswählen</option>
+              <option>Versicherungen</option><option>Vorsorge</option><option>Finanzierung</option><option>Investment</option><option>Allgemeine Beratung</option>
+            </select>
+          </label>
+          <label>Ihre Nachricht<textarea name="nachricht" rows="4" required></textarea></label>
+          <label class="consent"><input type="checkbox" required /><span>Ich stimme zu, dass meine Angaben zur Kontaktaufnahme verwendet werden. Für eine reale Website wäre die finale Datenschutzerklärung verbindlich zu verknüpfen.</span></label>
+          <button class="form-submit" type="submit">Gespräch anfragen <span aria-hidden="true">↗</span></button>
+          <p class="form-note">Konzeptdemo: Das Formular versendet keine Daten.</p>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
       </section>
     </main>
 
@@ -89,8 +108,7 @@ import '../styles/global.css';
       const processSection = document.querySelector<HTMLElement>('.process-section');
       const processList = document.querySelector<HTMLElement>('.process-list');
       const processSteps = [...document.querySelectorAll<HTMLElement>('.process-step')];
-      const contactSection = document.querySelector<HTMLElement>('.contact-section');
-      const contactTarget = document.querySelector<HTMLElement>('.contact-target');
+
       let motionFrame = 0;
 
       const clamp = (value: number) => Math.min(1, Math.max(0, value));
@@ -121,9 +139,6 @@ import '../styles/global.css';
           });
         }
 
-        if (contactSection && contactTarget) {
-          contactTarget.classList.toggle('is-visible', contactSection.getBoundingClientRect().top < innerHeight * .78);
-        }
       };
 
       const requestMotionUpdate = () => {
@@ -136,6 +151,12 @@ import '../styles/global.css';
         addEventListener('resize', requestMotionUpdate);
         updateMotion();
       }
+      const contactForm = document.querySelector<HTMLFormElement>('#contact-form');
+      contactForm?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const status = contactForm.querySelector<HTMLElement>('.form-status');
+        if (status) status.textContent = 'Danke. In der Konzeptdemo werden keine Daten versendet.';
+      });
     </script>
   </body>
 </html>
