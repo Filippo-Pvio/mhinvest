@@ -96,12 +96,14 @@ for (const viewport of viewports) {
     const toggle = page.locator('.menu-toggle');
     await toggle.focus();
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(50);
     menuWorks = await page.locator('.mobile-menu').evaluate((element) => element.open) && await page.locator('.mobile-nav').isVisible();
     navigationOverflowOffenders = await page.locator('.mobile-nav').evaluate((navigation) => [...navigation.querySelectorAll('a, summary')]
       .filter((element) => element.scrollWidth > element.clientWidth + 1 || element.getBoundingClientRect().right > window.innerWidth + .5)
       .map((element) => element.textContent?.trim()));
-    keyboardNavigationWorks = await page.locator('.mobile-nav :focus').count() === 1;
+    keyboardNavigationWorks = await page.evaluate(() => Boolean(document.activeElement?.matches('.mobile-nav summary, .mobile-nav a')));
     await page.keyboard.press('Escape');
+    await page.waitForTimeout(50);
     keyboardNavigationWorks = keyboardNavigationWorks
       && !await page.locator('.mobile-menu').evaluate((element) => element.open)
       && await toggle.evaluate((element) => element === document.activeElement);

@@ -21,7 +21,7 @@ body.menu-open { overflow: hidden; }
 a { color: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid var(--lime); outline-offset: 4px; }
-.skip-link { position: fixed; z-index: 100; top: .5rem; left: .5rem; padding: .75rem 1rem; color: var(--ink); background: var(--lime); transform: translateY(-150%); text-decoration: none; }
+.skip-link { position: fixed; z-index: 100; top: .5rem; left: .5rem; min-height: 2.75rem; padding: .75rem 1rem; color: var(--ink); background: var(--lime); transform: translateY(-150%); text-decoration: none; }
 .skip-link:focus { transform: translateY(0); }
 
 .demo-notice {
