@@ -2,42 +2,44 @@
 import site from '../content/site.json';
 ---
 
-<section class="hero" aria-labelledby="hero-title">
-  <header class="site-header">
-    <a class="brand wordmark" href="#top" aria-label={site.company + ' – Startseite'}>
-      <span class="wordmark-line" aria-hidden="true"><strong>MH</strong><span>INVEST</span></span>
-      <small>{site.claim}</small>
-    </a>
+<header class="site-header">
+  <a class="brand wordmark" href="#top" aria-label={site.company + ' – Startseite'}>
+    <span class="wordmark-line" aria-hidden="true"><strong>MH</strong><span>INVEST</span></span>
+    <small>{site.claim}</small>
+  </a>
 
-    <nav class="desktop-nav" aria-label="Hauptnavigation">
+  <nav class="desktop-nav" aria-label="Hauptnavigation">
+    {site.navigation.map((item) => 'children' in item ? (
+      <details class="nav-group">
+        <summary>{item.label}<span aria-hidden="true">⌄</span></summary>
+        <div class="nav-panel">
+          {item.children?.map((child) => (
+            <a href={child.href}><strong>{child.label}</strong><small>{child.meta}</small></a>
+          ))}
+        </div>
+      </details>
+    ) : <a href={item.href}>{item.label}</a>)}
+  </nav>
+
+  <a class="header-contact" href="#kontakt">Kontakt <span aria-hidden="true">↗</span></a>
+  <details class="mobile-menu">
+    <summary class="menu-toggle" aria-label="Navigation öffnen"><span></span><span></span></summary>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
       {site.navigation.map((item) => 'children' in item ? (
-        <details class="nav-group">
-          <summary>{item.label}<span aria-hidden="true">⌄</span></summary>
-          <div class="nav-panel">
-            {item.children?.map((child) => (
-              <a href={child.href}><strong>{child.label}</strong><small>{child.meta}</small></a>
-            ))}
+        <details class="mobile-nav-group">
+          <summary>{item.label}<span aria-hidden="true">+</span></summary>
+          <div>
+            {item.children?.map((child) => <a href={child.href}>{child.label}</a>)}
           </div>
         </details>
       ) : <a href={item.href}>{item.label}</a>)}
+      <a href="#kontakt">Kontakt</a>
     </nav>
+  </details>
+</header>
 
-    <a class="header-contact" href="#kontakt">Kontakt <span aria-hidden="true">↗</span></a>
-    <details class="mobile-menu">
-      <summary class="menu-toggle" aria-label="Navigation öffnen"><span></span><span></span></summary>
-      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
-        {site.navigation.map((item) => 'children' in item ? (
-          <details class="mobile-nav-group">
-            <summary>{item.label}<span aria-hidden="true">+</span></summary>
-            <div>
-              {item.children?.map((child) => <a href={child.href}>{child.label}</a>)}
-            </div>
-          </details>
-        ) : <a href={item.href}>{item.label}</a>)}
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-    </details>
-  </header>
+
+<section class="hero" aria-labelledby="hero-title">
 
   <img
     class="hero-media"
