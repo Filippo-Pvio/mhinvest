@@ -4,12 +4,9 @@ import site from '../content/site.json';
 
 <section class="hero" aria-labelledby="hero-title">
   <header class="site-header">
-    <a class="brand" href="#top" aria-label={site.company + ' – Startseite'}>
-      <span class="brand-mark" aria-hidden="true">MH</span>
-      <span class="brand-copy">
-        <strong>{site.brand}</strong>
-        <small>{site.claim}</small>
-      </span>
+    <a class="brand wordmark" href="#top" aria-label={site.company + ' – Startseite'}>
+      <span class="wordmark-line" aria-hidden="true"><strong>MH</strong><span>INVEST</span></span>
+      <small>{site.claim}</small>
     </a>
 
     <nav class="desktop-nav" aria-label="Hauptnavigation">
@@ -111,5 +108,11 @@ import site from '../content/site.json';
 
   const desktopQuery = matchMedia('(min-width: 64.01rem)');
   desktopQuery.addEventListener('change', (event) => { if (event.matches) setMenuState(false); });
+
+  const updateHeaderState = () => {
+    document.body.classList.toggle('header-scrolled', window.scrollY > 12);
+  };
+  addEventListener('scroll', updateHeaderState, { passive: true });
+  updateHeaderState();
 </script>
 
