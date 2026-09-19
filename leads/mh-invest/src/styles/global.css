@@ -68,7 +68,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .brand-copy strong { font-size: .94rem; letter-spacing: 0; }
 .brand-copy small { font-size: .58rem; text-transform: uppercase; letter-spacing: .13em; color: rgba(255,255,255,.62); }
 .desktop-nav { display: flex; align-items: center; gap: clamp(1.2rem, 2.4vw, 2.8rem); }
-.desktop-nav > a, .desktop-nav summary, .header-contact { font-size: .76rem; font-weight: 650; text-decoration: none; }
+.desktop-nav > a, .desktop-nav summary, .header-contact { min-height: 2.75rem; align-items: center; font-size: .76rem; font-weight: 650; text-decoration: none; }
+.desktop-nav > a { display: inline-flex; }
 .desktop-nav a { color: rgba(255,255,255,.72); transition: color .2s ease; }
 .desktop-nav a:hover { color: var(--lime); }
 .nav-group { position: relative; }

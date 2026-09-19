@@ -38,6 +38,7 @@ const inspectPage = async (page) => page.evaluate(() => {
     heroHeight: Math.round(hero?.getBoundingClientRect().height || 0),
     h1Lines: h1 ? Math.round(h1.getBoundingClientRect().height / parseFloat(getComputedStyle(h1).lineHeight)) : 0,
     h1Animation: h1 ? getComputedStyle(h1).animationName : 'missing',
+    animatedContentVisible: Boolean(h1 && primary && Number(getComputedStyle(h1).opacity) > .99 && Number(getComputedStyle(primary).opacity) > .99),
     allImagesLoaded: [...document.images].every((image) => image.complete && image.naturalWidth > 0),
     primaryCtaVisible: Boolean(primary && visible(primary)),
     primaryCtaAboveFold: (primary?.getBoundingClientRect().bottom || Infinity) <= window.innerHeight,
@@ -88,6 +89,11 @@ for (const viewport of viewports) {
   await page.waitForTimeout(1200);
   const metrics = await inspectPage(page);
   const focusState = await checkFocus(page.locator('.button-primary'));
+  const motionState = await page.evaluate(() => ({
+    heroAnimation: getComputedStyle(document.querySelector('.hero-media')).animationName,
+    heroAnimationState: document.querySelector('.hero-media').getAnimations().map((animation) => animation.playState),
+    processMotionSupported: CSS.supports('animation-timeline', 'view()')
+  }));
 
   let menuWorks = true;
   let keyboardNavigationWorks = true;
@@ -123,7 +129,15 @@ for (const viewport of viewports) {
       && await summary.evaluate((element) => element === document.activeElement);
   }
 
-  await page.screenshot({ path: `screenshots/browser-${viewport.name}-v3.png`, fullPage: true });
+  await page.locator('.process-step').nth(1).scrollIntoViewIfNeeded();
+  await page.waitForTimeout(150);
+  const processMotion = await page.locator('.process-step').nth(1).evaluate((element) => ({
+    animationName: getComputedStyle(element).animationName,
+    opacity: Number(getComputedStyle(element).opacity)
+  }));
+  await page.evaluate(() => scrollTo(0, 0));
+  await page.waitForTimeout(100);
+  await page.screenshot({ path: `screenshots/browser-${viewport.name}-v3.png`, fullPage: true, animations: 'disabled' });
 
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.reload({ waitUntil: 'networkidle' });
@@ -146,6 +160,8 @@ for (const viewport of viewports) {
     keyboardNavigationWorks,
     navigationOverflowOffenders,
     focusState,
+    motionState,
+    processMotion,
     reducedMotion,
     consoleErrors,
     requestFailures,
@@ -185,6 +201,7 @@ const failures = results.filter((result) => {
     || result.horizontalOverflow
     || !result.allImagesLoaded
     || !result.primaryCtaVisible
+    || !result.animatedContentVisible
     || !result.primaryCtaAboveFold
     || result.primaryCtaHref !== '#kontakt'
     || !result.secondaryCtaVisible
@@ -202,6 +219,9 @@ const failures = results.filter((result) => {
     || !result.reducedMotion.matches
     || reducedDurationSeconds > .001
     || !result.reducedMotion.visible
+    || result.motionState.heroAnimation === 'none'
+    || !result.motionState.heroAnimationState.includes('finished')
+    || (result.motionState.processMotionSupported && result.processMotion.animationName === 'none')
     || result.consoleErrors.length
     || result.requestFailures.length
     || result.errorResponses.length;
