@@ -28,7 +28,7 @@ import '../styles/global.css';
           <h2 id="profil-title">Ihre Finanzthemen sind persönlich. Die Beratung auch.</h2>
         </div>
         <div class="intro-body">
-          <p class="section-lead"><strong>„Ich bin für Sie da, wenn aus vielen Möglichkeiten eine klare Entscheidung werden soll.“</strong><br />Marius Hryn verbindet bei MH-Invest persönliche Beratung in Hagen mit digitalen Vergleichsmöglichkeiten.</p>
+          <p class="section-lead"><strong>„Ich bin für Sie da, wenn aus vielen Möglichkeiten eine klare Entscheidung werden soll.“</strong><br />Marius Hryn verbindet bei MH-Invest persönliche Beratung mit digitalen Vergleichsmöglichkeiten.</p>
           <ul class="profile-facts" aria-label="Merkmale von MH-Invest">
             {site.trust.map((item) => <li><span>{item.label}</span><strong>{item.value}</strong></li>)}
           </ul>
@@ -79,11 +79,6 @@ import '../styles/global.css';
           <p class="section-kicker">Persönliches Gespräch</p>
           <h2 id="contact-title">Worum geht es bei Ihnen?</h2>
           <p>Schreiben Sie kurz, was Sie beschäftigt. So kann sich MH-Invest gezielt auf Ihr Anliegen vorbereiten und persönlich bei Ihnen melden.</p>
-          <div class="contact-meta" aria-label="Direkte Kontaktmöglichkeiten">
-            <a href={site.phoneHref}>{site.phone}<span>Telefon</span></a>
-            <a href={site.emailHref}>{site.email}<span>E-Mail</span></a>
-            <p>{site.address}<span>Standort</span></p>
-          </div>
         </div>
         <form class="contact-form" id="contact-form">
           <div class="form-row">
@@ -103,12 +98,17 @@ import '../styles/global.css';
           <button class="form-submit" type="submit">Gespräch anfragen <span aria-hidden="true">↗</span></button>
           <p class="form-note">Konzeptdemo: Das Formular versendet keine Daten.</p>
           <p class="form-status" role="status" aria-live="polite"></p>
+          <div class="contact-alternatives" aria-label="Alternative Kontaktmöglichkeiten">
+            <span>Lieber direkt?</span>
+            <a href={site.phoneHref}>{site.phone}</a>
+            <a href={site.emailHref}>{site.email}</a>
+          </div>
         </form>
       </section>
     </main>
 
     <footer>
-      <p>MH-Invest GmbH · Akquise-Konzept · Nicht zur Veröffentlichung</p>
+      <p>MH-Invest GmbH · {site.address} · Akquise-Konzept</p>
       <nav aria-label="Rechtliche Informationen">
         {site.legalLinks.map((link) => <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>)}
       </nav>
