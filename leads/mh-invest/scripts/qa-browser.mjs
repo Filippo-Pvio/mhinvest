@@ -139,9 +139,10 @@ for (const viewport of viewports) {
   }));
   await page.locator('.contact-section').scrollIntoViewIfNeeded();
   await page.waitForTimeout(180);
-  const contactMotion = await page.locator('.contact-target').evaluate((element) => ({
-    visible: element.classList.contains('is-visible'),
-    targetTransform: getComputedStyle(element.querySelector('span')).transform
+  const contactForm = await page.locator('#contact-form').evaluate((form) => ({
+    visible: Boolean(form.getBoundingClientRect().width && form.getBoundingClientRect().height),
+    fields: [...form.querySelectorAll('input, select, textarea')].length,
+    submitVisible: Boolean(form.querySelector('button[type="submit"]')?.getBoundingClientRect().height)
   }));
   await page.evaluate(() => scrollTo(0, 0));
   await page.waitForTimeout(100);
@@ -170,7 +171,7 @@ for (const viewport of viewports) {
     focusState,
     motionState,
     processMotion,
-    contactMotion,
+    contactForm,
     reducedMotion,
     consoleErrors,
     requestFailures,
@@ -232,8 +233,9 @@ const failures = results.filter((result) => {
     || !result.motionState.heroAnimationState.includes('finished')
     || !result.processMotion.active
     || result.processMotion.progress <= 0
-    || !result.contactMotion.visible
-    || result.contactMotion.targetTransform === 'none'
+    || !result.contactForm.visible
+    || result.contactForm.fields < 6
+    || !result.contactForm.submitVisible
     || result.consoleErrors.length
     || result.requestFailures.length
     || result.errorResponses.length;
