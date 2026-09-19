@@ -15,7 +15,7 @@ MH-Invest wird nicht über Produktfülle oder Sparversprechen inszeniert, sonder
 
 ## Visuelle These
 
-Ein dunkler, präziser Editorial-Look verbindet Ruhe und Kompetenz mit einem analogen Planungsprozess: warmes Papier, ein Diagnose-Raster, ein Graphitstift und ein einzelner limettengrüner Weg mit klarem Zielpunkt. Das Motiv kommuniziert Orientierung und individuelle Planung direkter als die architektonische V1-Bildwelt. Haptik und warmes Licht geben der institutionellen Präzision eine menschliche Note, ohne Personen, Kunden, Mitarbeiter oder Geschäftsräume zu erfinden. Das Konzept vermeidet übliche Finanzklischees wie Münzen, Börsenkurven, Handschläge oder Luxusarchitektur.
+Ein dunkler, präziser Editorial-Look verbindet Ruhe und Kompetenz mit einer anonymen Beratungssituation aus der Vogelperspektive. Zwei ausschließlich als Hände sichtbare Personen ordnen gemeinsam einen abstrakten Finanzplan; Schutz, Vorsorge, Finanzierung und Investment werden als vier zusammenhängende Bereiche lesbar. Das Motiv kommuniziert persönliche Begleitung und fachliche Ordnung direkter als die abstrakte Architektur- und Objektwelt. Es zeigt ausdrücklich keine reale Person, keinen Kunden und keine echten Unterlagen. Das Konzept vermeidet übliche Finanzklischees wie Münzen, Börsenkurven, Handschläge oder Luxusarchitektur.
 
 ## Mobile Komposition
 
@@ -48,7 +48,7 @@ Die Demo zeigt nicht nur einen isolierten Onepager-Hero. Das Leistungsmenü füh
 
 ## Asset-Herkunft
 
-- `public/assets/finanzplanung-konzept-v2.webp`: am 17.09.2026 mit OpenAI Image Generation für diese Akquise-Demo erzeugtes Konzeptmaterial. Es zeigt keine reale Person, Immobilie, Referenz oder Leistung von MH-Invest.
+- `public/assets/finanzplanung-konzept-v2.webp`: am 19.09.2026 mit OpenAI Image Generation für diese Akquise-Demo neu erzeugtes Konzeptmaterial. Es zeigt eine vollständig anonyme, fiktive Beratungssituation ohne reale Person, Kundendaten, Dokumente, Immobilie, Referenz oder Leistung von MH-Invest.
 - Die Herkunft bleibt hier vollständig dokumentiert. In der Demo steht die notwendige Kennzeichnung in einem separaten Präsentationshinweis oberhalb der eigentlichen Website-Komposition, damit sie nicht als Teil des Kundendesigns missverstanden wird.
 
 ## Annahmen
