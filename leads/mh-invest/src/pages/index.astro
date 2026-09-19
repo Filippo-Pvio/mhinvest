@@ -25,10 +25,10 @@ import '../styles/global.css';
       <section class="intro-section reveal-block" id="profil" aria-labelledby="profil-title">
         <div class="intro-heading">
           <p class="section-kicker">Persönliche Beratung</p>
-          <h2 id="profil-title">Ein fester Ansprechpartner für Ihre Finanzthemen.</h2>
+          <h2 id="profil-title">Ihre Finanzthemen sind persönlich. Die Beratung auch.</h2>
         </div>
         <div class="intro-body">
-          <p class="section-lead"><strong>Marius Hryn</strong> ist Geschäftsführer und direkter Ansprechpartner der MH-Invest GmbH in Hagen. Der Beratungsansatz verbindet persönliche Begleitung mit digitalen Vergleichsmöglichkeiten.</p>
+          <p class="section-lead"><strong>„Ich bin für Sie da, wenn aus vielen Möglichkeiten eine klare Entscheidung werden soll.“</strong><br />Marius Hryn verbindet bei MH-Invest persönliche Beratung in Hagen mit digitalen Vergleichsmöglichkeiten.</p>
           <ul class="profile-facts" aria-label="Merkmale von MH-Invest">
             {site.trust.map((item) => <li><span>{item.label}</span><strong>{item.value}</strong></li>)}
           </ul>
@@ -38,7 +38,7 @@ import '../styles/global.css';
       <section class="services reveal-block" id="leistungen" aria-labelledby="services-title">
         <div class="section-heading">
           <p class="section-kicker">Leistungsfelder</p>
-          <h2 id="services-title">Vier Themen. Ein persönlicher Überblick.</h2>
+          <h2 id="services-title">Was möchten Sie heute besser einordnen?</h2>
         </div>
         <div class="service-list">
           {site.services.map((service) => (
@@ -50,8 +50,8 @@ import '../styles/global.css';
       <section class="process-section reveal-block" id="beratungsweg" aria-labelledby="process-title">
         <div class="process-intro">
           <p class="section-kicker">So läuft die Beratung</p>
-          <h2 id="process-title">Vom Anliegen zur passenden Entscheidung.</h2>
-          <p>Die Finanzdiagnostik strukturiert Ausgangslage, Möglichkeiten und nächste Schritte – persönlich erklärt und nachvollziehbar begleitet.</p>
+          <h2 id="process-title">Von Ihrer Situation zu einer klaren Entscheidung.</h2>
+          <p>„Innovative Finanzdiagnostik“ bedeutet hier: Ihre Ausgangslage strukturiert betrachten, Möglichkeiten vergleichen und die nächsten Schritte verständlich einordnen.</p>
         </div>
         <ol class="process-list">
           {site.process.map((step) => (
@@ -66,10 +66,10 @@ import '../styles/global.css';
       <section class="utility-section reveal-block" id="vergleichen" aria-labelledby="utility-title">
         <div class="utility-copy">
           <p class="section-kicker">Digitale Ergänzung</p>
-          <h2 id="utility-title">Vergleichen, dann persönlich einordnen.</h2>
+          <h2 id="utility-title">Digital vergleichen. Persönlich entscheiden.</h2>
         </div>
         <div class="utility-detail">
-          <p>Für ausgewählte Versicherungs-, Finanz- und Alltagsthemen stellt MH-Invest digitale Vergleichsmöglichkeiten bereit. Die persönliche Beratung bleibt dabei der zentrale Ansprechpartner.</p>
+          <p>Für ausgewählte Versicherungs-, Finanz- und Alltagsthemen können Sie Angebote digital vergleichen. Wenn Sie Unterstützung bei der Einordnung möchten, bleibt die Beratung persönlich.</p>
           <a href={site.comparisonHref} target="_blank" rel="noreferrer">Vergleichsmöglichkeiten öffnen <span aria-hidden="true">↗</span></a>
         </div>
       </section>
@@ -78,7 +78,7 @@ import '../styles/global.css';
         <div class="contact-copy">
           <p class="section-kicker">Persönliches Gespräch</p>
           <h2 id="contact-title">Worum geht es bei Ihnen?</h2>
-          <p>Schreiben Sie Marius Hryn kurz, was Sie beschäftigt. MH-Invest kann sich anschließend persönlich bei Ihnen melden.</p>
+          <p>Schreiben Sie kurz, was Sie beschäftigt. So kann sich MH-Invest gezielt auf Ihr Anliegen vorbereiten und persönlich bei Ihnen melden.</p>
           <div class="contact-meta" aria-label="Direkte Kontaktmöglichkeiten">
             <a href={site.phoneHref}>{site.phone}<span>Telefon</span></a>
             <a href={site.emailHref}>{site.email}<span>E-Mail</span></a>
@@ -95,7 +95,7 @@ import '../styles/global.css';
           <label>Worum geht es?
             <select name="thema" required>
               <option value="">Bitte auswählen</option>
-              <option>Versicherungen</option><option>Vorsorge</option><option>Finanzierung</option><option>Investment</option><option>Allgemeine Beratung</option>
+              <option>Versicherungen</option><option>Vorsorge</option><option>Finanzierung</option><option>Investment</option><option>Ich bin mir noch nicht sicher</option>
             </select>
           </label>
           <label>Ihre Nachricht<textarea name="nachricht" rows="4" required></textarea></label>
