@@ -13,19 +13,34 @@ import site from '../content/site.json';
     </a>
 
     <nav class="desktop-nav" aria-label="Hauptnavigation">
-      {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+      {site.navigation.map((item) => 'children' in item ? (
+        <details class="nav-group">
+          <summary>{item.label}<span aria-hidden="true">⌄</span></summary>
+          <div class="nav-panel">
+            {item.children.map((child) => (
+              <a href={child.href}><strong>{child.label}</strong><small>{child.meta}</small></a>
+            ))}
+          </div>
+        </details>
+      ) : <a href={item.href}>{item.label}</a>)}
     </nav>
 
     <a class="header-contact" href="#kontakt">Kontakt <span aria-hidden="true">↗</span></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Navigation öffnen">
-      <span></span><span></span>
-    </button>
+    <details class="mobile-menu">
+      <summary class="menu-toggle" aria-label="Navigation öffnen"><span></span><span></span></summary>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+        {site.navigation.map((item) => 'children' in item ? (
+          <details class="mobile-nav-group">
+            <summary>{item.label}<span aria-hidden="true">+</span></summary>
+            <div>
+              {item.children.map((child) => <a href={child.href}>{child.label}</a>)}
+            </div>
+          </details>
+        ) : <a href={item.href}>{item.label}</a>)}
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </details>
   </header>
-
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation" hidden>
-    {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
-    <a href="#kontakt">Kontakt</a>
-  </nav>
 
   <img
     class="hero-media"
@@ -56,23 +71,43 @@ import site from '../content/site.json';
 </section>
 
 <script>
-  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
-  const navigation = document.querySelector<HTMLElement>('.mobile-nav');
+  const mobileMenu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+  const toggle = mobileMenu?.querySelector<HTMLElement>('.menu-toggle');
+  const navigation = mobileMenu?.querySelector<HTMLElement>('.mobile-nav');
+  const backgroundRegions = document.querySelectorAll<HTMLElement>('main, footer, .hero-content, .hero-footer');
 
-  toggle?.addEventListener('click', () => {
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    toggle.setAttribute('aria-label', isOpen ? 'Navigation öffnen' : 'Navigation schließen');
-    if (navigation) navigation.hidden = isOpen;
-    document.body.classList.toggle('menu-open', !isOpen);
+  const setMenuState = (isOpen: boolean, returnFocus = false) => {
+    if (!mobileMenu || !toggle) return;
+    mobileMenu.open = isOpen;
+    toggle.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
+    document.body.classList.toggle('menu-open', isOpen);
+    backgroundRegions.forEach((region) => { region.inert = isOpen; });
+    if (isOpen) navigation?.querySelector<HTMLElement>('summary, a')?.focus();
+    if (!isOpen && returnFocus) toggle.focus();
+  };
+
+  mobileMenu?.addEventListener('toggle', () => setMenuState(mobileMenu.open));
+  navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileMenu?.open) setMenuState(false, true);
+    if (event.key === 'Escape') {
+      document.querySelectorAll<HTMLDetailsElement>('.nav-group[open]').forEach((group) => {
+        group.open = false;
+        group.querySelector<HTMLElement>('summary')?.focus();
+      });
+    }
   });
 
-  navigation?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      toggle?.setAttribute('aria-expanded', 'false');
-      toggle?.setAttribute('aria-label', 'Navigation öffnen');
-      navigation.hidden = true;
-      document.body.classList.remove('menu-open');
+  document.querySelectorAll<HTMLDetailsElement>('.nav-group').forEach((group) => {
+    group.addEventListener('toggle', () => {
+      if (!group.open) return;
+      document.querySelectorAll<HTMLDetailsElement>('.nav-group[open]').forEach((other) => {
+        if (other !== group) other.open = false;
+      });
     });
   });
+
+  const desktopQuery = matchMedia('(min-width: 64.01rem)');
+  desktopQuery.addEventListener('change', (event) => { if (event.matches) setMenuState(false); });
 </script>

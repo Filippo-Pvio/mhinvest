@@ -16,13 +16,6 @@ npm run build
 npm run preview
 ```
 
-Für Umgebungen ohne Registry-Zugriff steht eine statische QA-Ausgabe zur Verfügung:
-
-```bash
-npm run qa:build
-npm run qa:serve
-```
-
 Browserprüfung nach installiertem Chromium:
 
 ```bash
@@ -37,7 +30,10 @@ npm run qa:browser
 - `src/styles/global.css`: responsive Gestaltung und Zustände.
 - `research/research.md`: belegte Fakten, Quellen und Unsicherheiten.
 - `notes/strategy.md`: Kommunikations- und Designstrategie.
+- `notes/information-architecture.md`: belegbar abgeleitete Seiten- und Navigationsstruktur.
 - `screenshots/`: Präsentationsansichten und transparente QA-Dokumentation; Browser-QA ist als eigener Prüfpunkt ausgewiesen.
+
+Die Browser-QA rendert immer den echten Astro-Produktionsbuild. Statische Rekonstruktionen sind kein Prüfpfad.
 
 ## Produktionsgrenze
 

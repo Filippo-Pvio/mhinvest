@@ -19,7 +19,7 @@ Ein dunkler, präziser Editorial-Look verbindet Ruhe und Kompetenz mit einem ana
 
 ## Mobile Komposition
 
-Mobile ist keine gestapelte Desktop-Fassung. Das Motiv erhält eine eigene, kompakte Bildzone unter der Navigation; Botschaft, Nutzen und CTA stehen anschließend auf einer ruhigen hellen Fläche. Dadurch hängen Lesbarkeit und Zeilenumbrüche nicht vom Bildausschnitt ab. Die verkürzte Headline und `overflow-wrap` schützen lange Wörter auch im kleinen Smartphone-Viewport. Der primäre CTA folgt unmittelbar auf den Nutzen, während der sekundäre CTA bewusst zurücktritt.
+Mobile ist keine gestapelte Desktop-Fassung. Das Motiv erhält eine eigene, kompakte Bildzone unter der Navigation; Botschaft, Nutzen und CTA stehen anschließend auf einer ruhigen hellen Fläche. Dadurch hängen Lesbarkeit und Zeilenumbrüche nicht vom Bildausschnitt ab. Die verkürzte Headline und eine eigenständige responsive Typografie schützen lange Wörter auch im kleinen Smartphone-Viewport. Der primäre CTA folgt unmittelbar auf den Nutzen, während der sekundäre CTA bewusst zurücktritt.
 
 ## Farben und Typografie
 
@@ -28,11 +28,18 @@ Mobile ist keine gestapelte Desktop-Fassung. Das Motiv erhält eine eigene, komp
 - Limette: `#c9ef42` als präziser Aktions- und Fokusakzent.
 - Schrift: lizenzfreie Systemschrift-Kaskade ohne externe Requests.
 
-## Interaktion
+## Motion- und Interaktionskonzept
 
-- Kurze gestaffelte Hero-Einblendung zur Führung der Blickrichtung.
-- Dezente Bildskalierung beim Eintritt.
-- Klare Hover- und Focus-Zustände; alle Bewegungen werden bei `prefers-reduced-motion` deaktiviert.
+- Der Hero erscheint in einer kurzen Reihenfolge aus Bild, Marke, Aussage, Nutzen und Handlung. Diese Bewegung macht die Informationshierarchie lesbar und ist keine dauerhafte Dekoration.
+- Im Beratungsweg wächst eine limettengrüne Diagnose-Linie entlang der drei Schritte. Sie übersetzt den belegten Begriff „Innovative Finanzdiagnostik“ in ein nachvollziehbares Orientierungsprinzip.
+- Prozessschritte, Leistungsfelder und digitale Vergleichsmöglichkeit werden beim Scrollen leicht aus der Tiefe geholt. Inhalte bleiben in der statischen Baseline sichtbar; Scroll-Animationen werden nur bei unterstützenden Browsern ergänzt.
+- Hover- und Focus-Zustände schärfen die Bedienbarkeit von Navigation und Handlungslinks.
+- Auf Smartphones wird der Hero als eine kurze gemeinsame Bewegung behandelt; gestaffelte Desktop-Verzögerungen entfallen, damit Kernbotschaft und CTA sofort erfassbar bleiben.
+- Bei `prefers-reduced-motion` werden Scrollbewegung, Animationen und Übergänge praktisch vollständig deaktiviert. Ohne JavaScript bleiben Inhalt und native Details-Navigation bedienbar.
+
+## Website-Perspektive
+
+Die Demo zeigt nicht nur einen isolierten Onepager-Hero. Das Leistungsmenü führt zu vier real belegten Themenfeldern, der Beratungsweg macht die Finanzdiagnostik verständlich, das Profil stärkt den direkten Ansprechpartner und die Vergleichsmöglichkeit bildet den vorhandenen digitalen Zugang ab. Die begründete Zielarchitektur ist separat in `information-architecture.md` dokumentiert.
 
 ## Asset-Herkunft
 

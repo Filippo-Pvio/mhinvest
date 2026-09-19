@@ -7,8 +7,6 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "qa:build": "node scripts/build-preview.mjs",
-    "qa:serve": "node scripts/serve-preview.mjs",
     "qa:browser": "node scripts/qa-browser.mjs"
   },
   "devDependencies": {

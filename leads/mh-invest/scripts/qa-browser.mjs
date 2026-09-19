@@ -3,6 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
+const baseUrl = 'http://127.0.0.1:4321';
 const viewports = [
   { name: 'desktop-1440x900', width: 1440, height: 900 },
   { name: 'laptop-1280x800', width: 1280, height: 800 },
@@ -15,78 +16,195 @@ await mkdir('screenshots', { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const results = [];
 
-for (const viewport of viewports) {
-  const page = await browser.newPage({ viewport });
-  const consoleErrors = [];
-  const requestFailures = [];
-  page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });
-  page.on('requestfailed', (request) => requestFailures.push(`${request.url()}: ${request.failure()?.errorText}`));
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  const response = await page.goto('http://127.0.0.1:4321', { waitUntil: 'networkidle' });
+const inspectPage = async (page) => page.evaluate(() => {
+  const visible = (element) => {
+    const style = getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0;
+  };
+  const textElements = [...document.querySelectorAll('h1, h2, h3, p, a, summary, li, strong, small')].filter(visible);
+  const interactiveElements = [...document.querySelectorAll('a, button, summary')].filter(visible);
+  const internalLinks = [...document.querySelectorAll('a[href^="#"]')].map((link) => link.getAttribute('href'));
+  const hero = document.querySelector('.hero');
+  const h1 = document.querySelector('h1');
+  const primary = document.querySelector('.button-primary');
+  const secondary = document.querySelector('.button-secondary');
 
-  const primaryCta = page.locator('.button-primary');
-  await primaryCta.focus();
-  const focusState = await primaryCta.evaluate((element) => {
+  return {
+    title: document.title,
+    readyState: document.readyState,
+    pageWidth: document.documentElement.scrollWidth,
+    viewportWidth: document.documentElement.clientWidth,
+    heroHeight: Math.round(hero?.getBoundingClientRect().height || 0),
+    h1Lines: h1 ? Math.round(h1.getBoundingClientRect().height / parseFloat(getComputedStyle(h1).lineHeight)) : 0,
+    h1Animation: h1 ? getComputedStyle(h1).animationName : 'missing',
+    allImagesLoaded: [...document.images].every((image) => image.complete && image.naturalWidth > 0),
+    primaryCtaVisible: Boolean(primary && visible(primary)),
+    primaryCtaAboveFold: (primary?.getBoundingClientRect().bottom || Infinity) <= window.innerHeight,
+    primaryCtaHref: primary?.getAttribute('href'),
+    secondaryCtaVisible: Boolean(secondary && visible(secondary)),
+    secondaryCtaHref: secondary?.getAttribute('href'),
+    internalLinksResolve: internalLinks.every((href) => href === '#' || href === '#top' || Boolean(document.querySelector(href))),
+    internalLinks: [...new Set(internalLinks)],
+    textOverflowOffenders: textElements.filter((element) => {
+      const rect = element.getBoundingClientRect();
+      return rect.left < -0.5 || rect.right > window.innerWidth + 0.5 || element.scrollWidth > element.clientWidth + 1;
+    }).map((element) => `${element.tagName.toLowerCase()}.${element.className || 'no-class'}: ${element.textContent?.trim().slice(0, 70)}`),
+    clippedElements: [...document.querySelectorAll('header, main, section, nav, article, footer')].filter(visible).filter((element) => {
+      const rect = element.getBoundingClientRect();
+      return rect.left < -0.5 || rect.right > window.innerWidth + 0.5;
+    }).map((element) => `${element.tagName.toLowerCase()}.${element.className || element.id || 'no-class'}`),
+    touchTargetOffenders: interactiveElements.filter((element) => {
+      const rect = element.getBoundingClientRect();
+      return rect.width < 44 || rect.height < 44;
+    }).map((element) => `${element.tagName.toLowerCase()}.${element.className || 'no-class'} ${Math.round(element.getBoundingClientRect().width)}x${Math.round(element.getBoundingClientRect().height)}`)
+  };
+});
+
+const checkFocus = async (locator) => {
+  await locator.focus();
+  return locator.evaluate((element) => {
     const style = getComputedStyle(element);
     return {
       focusVisible: element.matches(':focus-visible'),
       outlineStyle: style.outlineStyle,
-      outlineWidth: style.outlineWidth,
-      outlineColor: style.outlineColor
+      outlineWidth: style.outlineWidth
+    };
+  });
+};
+
+for (const viewport of viewports) {
+  const context = await browser.newContext({ viewport, reducedMotion: 'no-preference' });
+  const page = await context.newPage();
+  const consoleErrors = [];
+  const requestFailures = [];
+  const errorResponses = [];
+  page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });
+  page.on('pageerror', (error) => consoleErrors.push(error.message));
+  page.on('requestfailed', (request) => requestFailures.push(`${request.url()}: ${request.failure()?.errorText}`));
+  page.on('response', (response) => { if (response.status() >= 400) errorResponses.push(`${response.status()} ${response.url()}`); });
+
+  const response = await page.goto(baseUrl, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1200);
+  const metrics = await inspectPage(page);
+  const focusState = await checkFocus(page.locator('.button-primary'));
+
+  let menuWorks = true;
+  let keyboardNavigationWorks = true;
+  let navigationOverflowOffenders = [];
+  if (viewport.width <= 1024) {
+    const toggle = page.locator('.menu-toggle');
+    await toggle.focus();
+    await page.keyboard.press('Enter');
+    menuWorks = await page.locator('.mobile-menu').evaluate((element) => element.open) && await page.locator('.mobile-nav').isVisible();
+    navigationOverflowOffenders = await page.locator('.mobile-nav').evaluate((navigation) => [...navigation.querySelectorAll('a, summary')]
+      .filter((element) => element.scrollWidth > element.clientWidth + 1 || element.getBoundingClientRect().right > window.innerWidth + .5)
+      .map((element) => element.textContent?.trim()));
+    keyboardNavigationWorks = await page.locator('.mobile-nav :focus').count() === 1;
+    await page.keyboard.press('Escape');
+    keyboardNavigationWorks = keyboardNavigationWorks
+      && !await page.locator('.mobile-menu').evaluate((element) => element.open)
+      && await toggle.evaluate((element) => element === document.activeElement);
+  } else {
+    const summary = page.locator('.nav-group summary');
+    await summary.focus();
+    await page.keyboard.press('Enter');
+    const opened = await page.locator('.nav-group').evaluate((element) => element.open);
+    navigationOverflowOffenders = await page.locator('.nav-panel').evaluate((navigation) => [...navigation.querySelectorAll('a')]
+      .filter((element) => element.scrollWidth > element.clientWidth + 1 || element.getBoundingClientRect().right > window.innerWidth + .5)
+      .map((element) => element.textContent?.trim()));
+    await page.keyboard.press('Tab');
+    const childFocused = await page.locator('.nav-panel a').first().evaluate((element) => element === document.activeElement);
+    await page.keyboard.press('Escape');
+    keyboardNavigationWorks = opened && childFocused
+      && !await page.locator('.nav-group').evaluate((element) => element.open)
+      && await summary.evaluate((element) => element === document.activeElement);
+  }
+
+  await page.screenshot({ path: `screenshots/browser-${viewport.name}-v3.png`, fullPage: true });
+
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.reload({ waitUntil: 'networkidle' });
+  const reducedMotion = await page.evaluate(() => {
+    const h1 = document.querySelector('h1');
+    const style = getComputedStyle(h1);
+    return {
+      matches: matchMedia('(prefers-reduced-motion: reduce)').matches,
+      duration: style.animationDuration,
+      visible: Number(style.opacity) > .99 && h1.getBoundingClientRect().height > 0
     };
   });
 
-  const metrics = await page.evaluate(() => ({
-    title: document.title,
-    status: document.readyState,
-    pageWidth: document.documentElement.scrollWidth,
-    viewportWidth: document.documentElement.clientWidth,
-    heroHeight: Math.round(document.querySelector('.hero')?.getBoundingClientRect().height || 0),
-    h1Lines: Math.round((document.querySelector('h1')?.getBoundingClientRect().height || 0) / parseFloat(getComputedStyle(document.querySelector('h1')).lineHeight)),
-    imageLoaded: document.querySelector('.hero-media')?.complete && document.querySelector('.hero-media')?.naturalWidth > 0,
-    allImagesLoaded: [...document.images].every((image) => image.complete && image.naturalWidth > 0),
-    primaryCtaVisible: Boolean(document.querySelector('.button-primary')?.getBoundingClientRect().width),
-    primaryCtaAboveFold: (document.querySelector('.button-primary')?.getBoundingClientRect().bottom || Infinity) <= window.innerHeight,
-    primaryCtaHref: document.querySelector('.button-primary')?.getAttribute('href'),
-    secondaryCtaVisible: Boolean(document.querySelector('.button-secondary')?.getBoundingClientRect().width),
-    secondaryCtaHref: document.querySelector('.button-secondary')?.getAttribute('href'),
-    reducedMotionMatches: matchMedia('(prefers-reduced-motion: reduce)').matches,
-    reducedMotionDuration: getComputedStyle(document.querySelector('h1')).animationDuration,
-    h1Text: document.querySelector('h1')?.textContent?.trim(),
-    textOverflowOffenders: [...document.querySelectorAll('h1, h2, h3, p, a, button, li, strong, small')]
-      .filter((element) => {
-        const rect = element.getBoundingClientRect();
-        const style = getComputedStyle(element);
-        return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && (rect.left < -0.5 || rect.right > window.innerWidth + 0.5);
-      })
-      .map((element) => `${element.tagName.toLowerCase()}.${element.className || 'no-class'}: ${element.textContent?.trim().slice(0, 70)}`)
-  }));
+  results.push({
+    viewport,
+    httpStatus: response?.status(),
+    ...metrics,
+    horizontalOverflow: metrics.pageWidth > metrics.viewportWidth,
+    menuWorks,
+    keyboardNavigationWorks,
+    navigationOverflowOffenders,
+    focusState,
+    reducedMotion,
+    consoleErrors,
+    requestFailures,
+    errorResponses
+  });
+  await context.close();
+}
 
-  let menuWorks = null;
-  let navigationWorks = false;
+const noJsResults = [];
+for (const viewport of [viewports[0], viewports[4]]) {
+  const context = await browser.newContext({ viewport, javaScriptEnabled: false });
+  const page = await context.newPage();
+  const response = await page.goto(baseUrl, { waitUntil: 'networkidle' });
+  let nativeMenuWorks = true;
   if (viewport.width <= 1024) {
     await page.locator('.menu-toggle').click();
-    menuWorks = await page.locator('.mobile-nav').isVisible();
-    await page.locator('.mobile-nav a[href="#profil"]').click();
-    navigationWorks = await page.evaluate(() => location.hash === '#profil' && document.querySelector('.mobile-nav')?.hidden === true);
-    await page.goto('http://127.0.0.1:4321', { waitUntil: 'networkidle' });
-  } else {
-    await page.locator('.desktop-nav a[href="#profil"]').click();
-    navigationWorks = await page.evaluate(() => location.hash === '#profil');
-    await page.goto('http://127.0.0.1:4321', { waitUntil: 'networkidle' });
+    nativeMenuWorks = await page.locator('.mobile-nav').isVisible();
   }
-
-  await page.screenshot({ path: `screenshots/browser-${viewport.name}-v2.png`, fullPage: true });
-  results.push({ viewport, httpStatus: response?.status(), ...metrics, horizontalOverflow: metrics.pageWidth > metrics.viewportWidth, menuWorks, navigationWorks, focusState, consoleErrors, requestFailures });
-  await page.close();
+  noJsResults.push({
+    viewport: viewport.name,
+    httpStatus: response?.status(),
+    contentVisible: await page.locator('h1').isVisible() && await page.locator('.button-primary').isVisible(),
+    nativeMenuWorks
+  });
+  await context.close();
 }
 
 await browser.close();
-await writeFile('screenshots/qa-results.json', `${JSON.stringify(results, null, 2)}\n`);
-console.log(JSON.stringify(results, null, 2));
+const report = { generatedAt: new Date().toISOString(), results, noJsResults };
+await writeFile('screenshots/qa-results.json', `${JSON.stringify(report, null, 2)}\n`);
+console.log(JSON.stringify(report, null, 2));
 
 const failures = results.filter((result) => {
-  const reducedDurationSeconds = Number.parseFloat(result.reducedMotionDuration || '1');
-  return result.httpStatus !== 200 || result.horizontalOverflow || !result.imageLoaded || !result.allImagesLoaded || !result.primaryCtaVisible || !result.primaryCtaAboveFold || result.primaryCtaHref !== '#kontakt' || !result.secondaryCtaVisible || result.secondaryCtaHref !== '#leistungen' || !result.reducedMotionMatches || reducedDurationSeconds > .001 || result.textOverflowOffenders.length || !result.navigationWorks || !result.focusState.focusVisible || result.focusState.outlineStyle === 'none' || Number.parseFloat(result.focusState.outlineWidth) < 2 || result.consoleErrors.length || result.requestFailures.length || result.menuWorks === false;
+  const reducedDurationSeconds = Number.parseFloat(result.reducedMotion.duration || '1');
+  const enforceTouchTargets = result.viewport.width <= 390;
+  return result.httpStatus !== 200
+    || result.horizontalOverflow
+    || !result.allImagesLoaded
+    || !result.primaryCtaVisible
+    || !result.primaryCtaAboveFold
+    || result.primaryCtaHref !== '#kontakt'
+    || !result.secondaryCtaVisible
+    || result.secondaryCtaHref !== '#leistungen'
+    || !result.internalLinksResolve
+    || result.textOverflowOffenders.length
+    || result.clippedElements.length
+    || (enforceTouchTargets && result.touchTargetOffenders.length)
+    || !result.menuWorks
+    || !result.keyboardNavigationWorks
+    || result.navigationOverflowOffenders.length
+    || !result.focusState.focusVisible
+    || result.focusState.outlineStyle === 'none'
+    || Number.parseFloat(result.focusState.outlineWidth) < 2
+    || !result.reducedMotion.matches
+    || reducedDurationSeconds > .001
+    || !result.reducedMotion.visible
+    || result.consoleErrors.length
+    || result.requestFailures.length
+    || result.errorResponses.length;
 });
-if (failures.length) process.exitCode = 1;
+
+if (failures.length || noJsResults.some((result) => result.httpStatus !== 200 || !result.contentVisible || !result.nativeMenuWorks)) {
+  process.exitCode = 1;
+}

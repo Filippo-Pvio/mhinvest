@@ -1,6 +1,6 @@
 # Recherche: MH-Invest GmbH
 
-Analysezeitpunkt: 17. September 2026
+Analysezeitpunkt: 17. September 2026; Wettbewerbs- und Strukturprüfung ergänzt am 19. September 2026
 
 ## Belegte Unternehmensinformationen
 
@@ -10,6 +10,29 @@ Analysezeitpunkt: 17. September 2026
 - Unternehmensgegenstand laut Registerzusammenfassung: Vermittlung von Versicherungen, Bausparverträgen, Krediten und Kapitalanlagen aller Art.
 - Versicherungsmakler nach § 34d Abs. 1 GewO, Vermittlerregister D-LQHX-9YQ5T-47.
 - Die Website strukturiert das Angebot in Versicherungen, Finanzen und Investment und bietet ergänzend digitale Vergleichsrechner.
+
+## Zielgruppe und Reichweite
+
+**Belegt:** Der bestehende Auftritt adressiert Privatkunden mit Versicherungs-, Finanzierungs- und Investmentthemen. Der Sitz und die vollständigen Kontaktangaben verankern das Unternehmen in Hagen; digitale Vergleichsrechner ergänzen den persönlichen Kontakt.
+
+**Strategische Interpretation:** Primäre Zielgruppe der Demo sind private Haushalte und Einzelpersonen aus Hagen und Umgebung, die mehrere Finanzfragen mit einem direkten Ansprechpartner ordnen möchten. Eine bundesweite oder klar geschäftskundenorientierte Positionierung ist öffentlich nicht hinreichend belegt und wird deshalb nicht behauptet.
+
+## Bestehender Auftritt und Markenwelt
+
+**Stärken:** Der Claim „Innovative Finanzdiagnostik“, die persönliche Erreichbarkeit, die drei Hauptleistungsfelder und die digitalen Vergleichsmöglichkeiten schaffen eine brauchbare inhaltliche Grundlage. Impressum und Erstinformation machen regulatorische Rollen nachvollziehbar.
+
+**Schwächen / Interpretation:** Die bestehende Informationsarchitektur trennt Leistungen und Vergleichsrechner, macht den Ablauf einer Finanzdiagnostik aber nicht unmittelbar verständlich. Persönlicher Ansprechpartner und digitaler Zugang werden kommunikativ noch nicht zu einem klaren Nutzenversprechen verbunden. Für eine Modernisierung empfiehlt sich deshalb eine Evolution der vorhandenen Positionierung statt einer fachlich unbelegten Neupositionierung.
+
+## Wettbewerbsumfeld und Differenzierung
+
+Die Prüfung regionaler Anbieter dient ausschließlich der strategischen Einordnung; daraus werden keine Aussagen über deren Qualität abgeleitet.
+
+- AssKoll in Hagen betont persönliche Betreuung, private und betriebliche Risiken sowie digitale Servicewege: https://www.asskoll.de/index.html
+- FinanzKonzept/topmakler verbindet „Online – aber persönlich“ mit Onlineberatung und digitalem Versicherungsordner: https://topmakler.de/
+- Der Fairsicherungsladen Hagen positioniert sich über die Analyse der Finanz- und Versicherungssituation sowie spezialisierte Zielgruppen: https://www.fair-hagen.de/
+- R&G hebt feste Ansprechpartner, eine digitale App und Ratgeber für Privat- und Geschäftskunden hervor: https://meinerg.de/versicherungsmakler-hagen
+
+**Strategische Empfehlung:** „Persönlich“ und „digital“ allein differenzieren im lokalen Umfeld nicht ausreichend. Die glaubwürdigste Eigenständigkeit liegt in der bereits vorhandenen Formulierung „Innovative Finanzdiagnostik“: Ausgangslage verstehen, Möglichkeiten vergleichen und Entscheidungen persönlich begleiten. Genau diese Abfolge prägt Navigation, Prozessdarstellung und Motion-Konzept der Demo.
 
 ## Quellen
 

@@ -15,32 +15,53 @@ import '../styles/global.css';
     <title>MH-Invest | Akquise-Hero Konzept</title>
   </head>
   <body id="top">
+    <a class="skip-link" href="#content">Zum Inhalt</a>
     <aside class="demo-notice" aria-label="Hinweis zur Präsentationsdemo">
       Akquise-Demo · KI-generiertes Konzeptmotiv · nicht zur Veröffentlichung
     </aside>
     <Hero />
 
-    <main>
-      <section class="intro-section" id="profil" aria-labelledby="profil-title">
-        <p class="section-kicker">Finanzdiagnostik</p>
+    <main id="content">
+      <section class="intro-section reveal-block" id="profil" aria-labelledby="profil-title">
+        <p class="section-kicker">Über MH-Invest</p>
         <h2 id="profil-title">Erst verstehen. Dann entscheiden.</h2>
-        <p class="section-lead">Versicherungen, Vorsorge und Geldanlage greifen ineinander. MH-Invest verbindet persönliche Beratung mit digitalen Vergleichsmöglichkeiten und einem klaren Blick auf Ihre Situation.</p>
+        <p class="section-lead"><strong>Marius Hryn</strong> ist Geschäftsführer und direkter Ansprechpartner der MH-Invest GmbH in Hagen. Der Beratungsansatz verbindet persönliche Begleitung mit digitalen Vergleichsmöglichkeiten.</p>
       </section>
 
-      <section class="services" id="leistungen" aria-labelledby="services-title">
+      <section class="process-section reveal-block" id="beratungsweg" aria-labelledby="process-title">
+        <div class="process-intro">
+          <p class="section-kicker">Beratungsweg</p>
+          <h2 id="process-title">Klarheit entsteht Schritt für Schritt.</h2>
+          <p>Die Finanzdiagnostik ordnet Ausgangslage, Möglichkeiten und nächste Schritte – persönlich erklärt und nachvollziehbar begleitet.</p>
+        </div>
+        <ol class="process-list">
+          {site.process.map((step) => (
+            <li class="process-step">
+              <span>{step.number}</span>
+              <div><h3>{step.title}</h3><p>{step.description}</p></div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="services reveal-block" id="leistungen" aria-labelledby="services-title">
         <div class="section-heading">
           <p class="section-kicker">Leistungsfelder</p>
-          <h2 id="services-title">Ein Ansprechpartner.<br />Vier Perspektiven.</h2>
+          <h2 id="services-title">Ein Ansprechpartner.<br />Drei Bereiche, vier Perspektiven.</h2>
         </div>
         <div class="service-list">
-          <article><span>01</span><h3>Versicherungen</h3><p>Absicherung für Alltag, Eigentum und Mobilität.</p></article>
-          <article><span>02</span><h3>Vorsorge</h3><p>Finanzielle Planung für verschiedene Lebensphasen.</p></article>
-          <article><span>03</span><h3>Finanzierung</h3><p>Vergleichsmöglichkeiten für Kredite und Bankprodukte.</p></article>
-          <article><span>04</span><h3>Investment</h3><p>Orientierung bei Anlageklassen und Vermögensaufbau.</p></article>
+          {site.services.map((service) => (
+            <article id={service.id}><span>{service.number}</span><h3>{service.title}</h3><p>{service.description}</p></article>
+          ))}
+        </div>
+        <div class="comparison-band" id="vergleichen">
+          <div><p class="section-kicker">Digitale Werkzeuge</p><h3>Vergleichen, dann persönlich einordnen.</h3></div>
+          <p>Für ausgewählte Versicherungs-, Finanz- und Alltagsthemen stellt MH-Invest digitale Vergleichsmöglichkeiten bereit.</p>
+          <a href={site.comparisonHref} target="_blank" rel="noreferrer">Vergleichsmöglichkeiten öffnen <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
-      <section class="contact-section" id="kontakt" aria-labelledby="contact-title">
+      <section class="contact-section reveal-block" id="kontakt" aria-labelledby="contact-title">
         <div>
           <p class="section-kicker">Direkter Kontakt</p>
           <h2 id="contact-title">Ihre Lösung beginnt mit einem klaren Gespräch.</h2>
@@ -55,6 +76,9 @@ import '../styles/global.css';
 
     <footer>
       <p>MH-Invest GmbH · Akquise-Konzept · Nicht zur Veröffentlichung</p>
+      <nav aria-label="Rechtliche Informationen">
+        {site.legalLinks.map((link) => <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>)}
+      </nav>
       <a href="#top">Nach oben ↑</a>
     </footer>
   </body>
