@@ -375,3 +375,27 @@ footer a { min-height: 2.75rem; display: inline-flex; align-items: center; text-
   .utility-detail { justify-self: stretch; }
   .utility-detail a { width: 100%; justify-content: center; }
 }
+
+
+/* Contact hierarchy refinement */
+.contact-copy { align-self: start; }
+.contact-copy > p:not(.section-kicker) { margin-bottom: 0; }
+.contact-alternatives {
+  margin-top: .35rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(21,23,21,.16);
+  display: flex;
+  gap: .7rem 1.15rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: .68rem;
+}
+.contact-alternatives span { color: #777c73; }
+.contact-alternatives a { color: var(--ink); font-weight: 700; text-decoration: none; }
+.contact-alternatives a:hover { text-decoration: underline; text-underline-offset: .2rem; }
+
+@media (max-width: 45rem) {
+  .contact-section { gap: 2rem; }
+  .contact-copy > p:not(.section-kicker) { margin-top: 1rem; }
+  .contact-alternatives { align-items: flex-start; flex-direction: column; gap: .5rem; }
+}
