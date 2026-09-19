@@ -133,7 +133,15 @@ for (const viewport of viewports) {
   await page.waitForTimeout(150);
   const processMotion = await page.locator('.process-step').nth(1).evaluate((element) => ({
     animationName: getComputedStyle(element).animationName,
-    opacity: Number(getComputedStyle(element).opacity)
+    opacity: Number(getComputedStyle(element).opacity),
+    active: element.classList.contains('is-current') || element.classList.contains('is-complete'),
+    progress: Number.parseFloat(getComputedStyle(element.closest('.process-list')).getPropertyValue('--diagnostic-progress')) || 0
+  }));
+  await page.locator('.contact-section').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(180);
+  const contactMotion = await page.locator('.contact-target').evaluate((element) => ({
+    visible: element.classList.contains('is-visible'),
+    targetTransform: getComputedStyle(element.querySelector('span')).transform
   }));
   await page.evaluate(() => scrollTo(0, 0));
   await page.waitForTimeout(100);
@@ -162,6 +170,7 @@ for (const viewport of viewports) {
     focusState,
     motionState,
     processMotion,
+    contactMotion,
     reducedMotion,
     consoleErrors,
     requestFailures,
@@ -221,7 +230,10 @@ const failures = results.filter((result) => {
     || !result.reducedMotion.visible
     || result.motionState.heroAnimation === 'none'
     || !result.motionState.heroAnimationState.includes('finished')
-    || (result.motionState.processMotionSupported && result.processMotion.animationName === 'none')
+    || !result.processMotion.active
+    || result.processMotion.progress <= 0
+    || !result.contactMotion.visible
+    || result.contactMotion.targetTransform === 'none'
     || result.consoleErrors.length
     || result.requestFailures.length
     || result.errorResponses.length;

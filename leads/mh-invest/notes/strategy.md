@@ -30,6 +30,11 @@ Mobile ist keine gestapelte Desktop-Fassung. Das Motiv erhält eine eigene, komp
 
 ## Motion- und Interaktionskonzept
 
+- V4 verbindet die Bewegungen zu einer Diagnose-Erzählung: Ein limettengrüner Pfad zeichnet sich im Hero ein, setzt sich als aktiver Fortschritt im Beratungsweg fort und endet als Zielpunkt im Kontaktbereich.
+- Der Hero erhält beim Verlassen eine sehr geringe vertikale Bildverschiebung. Sie erzeugt räumliche Tiefe, ohne die ruhige Finanzästhetik zu destabilisieren.
+- Der jeweils relevante Beratungsschritt wird durch Nummernfarbe, Kontrast und eine kleine horizontale Verschiebung markiert; zurückliegende Schritte bleiben als bearbeitet erkennbar.
+- Auf Smartphones entfallen Hero-Pfad und Parallax. Der Prozessfortschritt bleibt direkt und ohne zusätzliche Scrollstrecke erhalten.
+
 - Der Hero erscheint in einer kurzen Reihenfolge aus Bild, Marke, Aussage, Nutzen und Handlung. Diese Bewegung macht die Informationshierarchie lesbar und ist keine dauerhafte Dekoration.
 - Im Beratungsweg wächst eine limettengrüne Diagnose-Linie entlang der drei Schritte. Sie übersetzt den belegten Begriff „Innovative Finanzdiagnostik“ in ein nachvollziehbares Orientierungsprinzip.
 - Prozessschritte, Leistungsfelder und digitale Vergleichsmöglichkeit werden beim Scrollen leicht aus der Tiefe geholt. Inhalte bleiben in der statischen Baseline sichtbar; Scroll-Animationen werden nur bei unterstützenden Browsern ergänzt.

@@ -55,6 +55,30 @@ for (const viewport of viewports) {
   await context.close();
 }
 
+const motionContext = await browser.newContext({
+  viewport: { width: 1440, height: 900 },
+  reducedMotion: 'no-preference'
+});
+const motionPage = await motionContext.newPage();
+const motionErrors = [];
+motionPage.on('console', (message) => { if (message.type() === 'error') motionErrors.push(message.text()); });
+motionPage.on('pageerror', (error) => motionErrors.push(error.message));
+await motionPage.goto(baseUrl, { waitUntil: 'networkidle' });
+await motionPage.locator('.process-step').nth(1).scrollIntoViewIfNeeded();
+await motionPage.waitForTimeout(180);
+const processMotion = await motionPage.locator('.process-list').evaluate((element) => ({
+  enhanced: document.documentElement.classList.contains('motion-ready'),
+  progress: Number.parseFloat(getComputedStyle(element).getPropertyValue('--diagnostic-progress')) || 0,
+  activeSteps: element.querySelectorAll('.is-current, .is-complete').length
+}));
+await motionPage.locator('.contact-section').scrollIntoViewIfNeeded();
+await motionPage.waitForTimeout(180);
+const contactMotion = await motionPage.locator('.contact-target').evaluate((element) => element.classList.contains('is-visible'));
+if (!processMotion.enhanced || processMotion.progress <= 0 || processMotion.activeSteps < 1 || !contactMotion || motionErrors.length) {
+  failures.push({ viewport: 'motion-desktop', processMotion, contactMotion, errors: motionErrors });
+}
+await motionContext.close();
+
 await browser.close();
 if (failures.length) {
   console.error(JSON.stringify(failures, null, 2));

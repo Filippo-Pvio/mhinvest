@@ -62,6 +62,7 @@ import '../styles/global.css';
       </section>
 
       <section class="contact-section reveal-block" id="kontakt" aria-labelledby="contact-title">
+        <div class="contact-target" aria-hidden="true"><span></span></div>
         <div>
           <p class="section-kicker">Direkter Kontakt</p>
           <h2 id="contact-title">Ihre Lösung beginnt mit einem klaren Gespräch.</h2>
@@ -81,5 +82,60 @@ import '../styles/global.css';
       </nav>
       <a href="#top">Nach oben ↑</a>
     </footer>
+
+    <script>
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      const hero = document.querySelector<HTMLElement>('.hero');
+      const processSection = document.querySelector<HTMLElement>('.process-section');
+      const processList = document.querySelector<HTMLElement>('.process-list');
+      const processSteps = [...document.querySelectorAll<HTMLElement>('.process-step')];
+      const contactSection = document.querySelector<HTMLElement>('.contact-section');
+      const contactTarget = document.querySelector<HTMLElement>('.contact-target');
+      let motionFrame = 0;
+
+      const clamp = (value: number) => Math.min(1, Math.max(0, value));
+
+      const updateMotion = () => {
+        motionFrame = 0;
+        if (reducedMotion.matches) return;
+
+        if (hero) {
+          const heroRect = hero.getBoundingClientRect();
+          const heroProgress = clamp(-heroRect.top / Math.max(heroRect.height, 1));
+          hero.style.setProperty('--hero-shift', (heroProgress * 2.4).toFixed(3) + '%');
+        }
+
+        if (processSection && processList && processSteps.length) {
+          const sectionRect = processSection.getBoundingClientRect();
+          const travel = Math.max(sectionRect.height - innerHeight * .32, 1);
+          const progress = clamp((innerHeight * .62 - sectionRect.top) / travel);
+          processList.style.setProperty('--diagnostic-progress', progress.toFixed(4));
+
+          let currentStep = 0;
+          processSteps.forEach((step, index) => {
+            if (step.getBoundingClientRect().top < innerHeight * .62) currentStep = index;
+          });
+          processSteps.forEach((step, index) => {
+            step.classList.toggle('is-complete', index < currentStep);
+            step.classList.toggle('is-current', index === currentStep);
+          });
+        }
+
+        if (contactSection && contactTarget) {
+          contactTarget.classList.toggle('is-visible', contactSection.getBoundingClientRect().top < innerHeight * .78);
+        }
+      };
+
+      const requestMotionUpdate = () => {
+        if (!motionFrame) motionFrame = requestAnimationFrame(updateMotion);
+      };
+
+      if (!reducedMotion.matches) {
+        document.documentElement.classList.add('motion-ready');
+        addEventListener('scroll', requestMotionUpdate, { passive: true });
+        addEventListener('resize', requestMotionUpdate);
+        updateMotion();
+      }
+    </script>
   </body>
 </html>
