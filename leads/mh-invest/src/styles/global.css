@@ -439,3 +439,91 @@ footer a { min-height: 2.75rem; display: inline-flex; align-items: center; text-
   .why-list article { grid-template-columns: 2rem 1fr; gap: .55rem 1rem; }
   .why-list p { grid-column: 2; }
 }
+
+
+/* Service interaction and personal trust refinement */
+.advisor-quote { margin: 0; }
+.advisor-quote p {
+  max-width: 38rem;
+  margin: 0;
+  color: #40530a;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1.4;
+  font-weight: 620;
+}
+.advisor-quote footer {
+  margin-top: 1.25rem;
+  padding: 0;
+  display: grid;
+  justify-content: start;
+  gap: .15rem;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  font-size: .72rem;
+}
+.advisor-quote footer strong { font-size: .82rem; }
+.advisor-quote footer span { color: #73786f; font-weight: 500; }
+.profile-copy { max-width: 38rem; margin: -.5rem 0 0; color: #555951; line-height: 1.6; }
+
+.service-list { overflow: hidden; }
+.service-entry {
+  position: relative;
+  min-height: 6.2rem;
+  display: grid;
+  grid-template-columns: 5rem 1.05fr 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.65rem 0;
+  border-bottom: 1px solid var(--line-light);
+  color: var(--ink);
+  text-decoration: none;
+  transition: padding .22s ease, background-color .22s ease;
+}
+.service-entry::before {
+  content: '';
+  position: absolute;
+  inset: 0 calc(-1 * var(--gutter));
+  z-index: 0;
+  background: var(--paper);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .28s cubic-bezier(.2,.75,.25,1);
+}
+.service-entry > * { position: relative; z-index: 1; }
+.service-entry:hover::before, .service-entry:focus-visible::before { transform: scaleX(1); transform-origin: left; }
+.service-entry:hover, .service-entry:focus-visible { padding-left: .8rem; padding-right: .8rem; }
+.service-number { color: #687b25; font-size: .72rem; }
+.service-entry h3 { margin: 0; font-size: clamp(1.25rem, 2vw, 2rem); font-weight: 600; }
+.service-entry p { margin: 0; line-height: 1.55; color: #555951; }
+.service-action {
+  white-space: nowrap;
+  color: #40530a;
+  font-size: .68rem;
+  font-weight: 750;
+  opacity: .68;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.service-entry:hover .service-action, .service-entry:focus-visible .service-action { opacity: 1; transform: translateX(.2rem); }
+.consent a { color: #40530a; font-weight: 700; text-underline-offset: .18rem; }
+
+@media (max-width: 45rem) {
+  .intro-section { padding-top: 4.25rem; padding-bottom: 4.25rem; }
+  .advisor-quote p { font-size: clamp(1.25rem, 6vw, 1.6rem); }
+  .profile-facts li:last-child { border-bottom: 0; }
+  .services { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .service-list { margin-top: 2.75rem; }
+  .service-entry {
+    min-height: 0;
+    grid-template-columns: 2rem 1fr auto;
+    gap: .45rem .8rem;
+    padding: 1.25rem 0;
+  }
+  .service-entry p { grid-column: 2 / -1; font-size: .88rem; }
+  .service-action { grid-column: 2 / -1; margin-top: .3rem; }
+  .service-entry:hover, .service-entry:focus-visible { padding-left: .45rem; padding-right: .45rem; }
+  .contact-section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .contact-form { padding: 1.2rem; gap: .85rem; }
+  .contact-form input, .contact-form select { min-height: 2.85rem; }
+  .contact-form textarea { min-height: 5rem; }
+}
