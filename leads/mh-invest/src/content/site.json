@@ -2,7 +2,7 @@
   "company": "MH-Invest GmbH",
   "brand": "MH INVEST",
   "claim": "Innovative Finanzdiagnostik",
-  "eyebrow": "Persönliche Finanzberatung in Hagen",
+  "eyebrow": "Persönliche Finanzberatung",
   "headline": "Ihre Finanzen verdienen Klarheit.",
   "intro": "Versicherungen, Vorsorge, Finanzierung und Investment – verständlich eingeordnet, sinnvoll verglichen und persönlich begleitet.",
   "primaryCta": "Gespräch anfragen",
@@ -94,7 +94,7 @@
   "trust": [
     {
       "label": "Persönlich",
-      "value": "Beratung in Hagen"
+      "value": "Beratung auf Augenhöhe"
     },
     {
       "label": "Vergleich",
