@@ -47,6 +47,18 @@ import '../styles/global.css';
         </div>
       </section>
 
+      <section class="why-section reveal-block" aria-labelledby="why-title">
+        <div class="why-heading">
+          <p class="section-kicker">Warum MH-Invest?</p>
+          <h2 id="why-title">Beratung, die nicht bei der Auswahl aufhört.</h2>
+        </div>
+        <div class="why-list">
+          <article><span>01</span><h3>Persönlich beraten</h3><p>Ihre Situation und Ihre Ziele geben die Richtung vor – nicht ein Produktkatalog.</p></article>
+          <article><span>02</span><h3>Am Markt vergleichen</h3><p>Relevante Möglichkeiten werden gegenübergestellt und verständlich eingeordnet.</p></article>
+          <article><span>03</span><h3>Bei der Umsetzung begleiten</h3><p>Nach der Entscheidung bleiben die nächsten Schritte nachvollziehbar und begleitet.</p></article>
+        </div>
+      </section>
+
       <section class="process-section reveal-block" id="beratungsweg" aria-labelledby="process-title">
         <div class="process-intro">
           <p class="section-kicker">So läuft die Beratung</p>
@@ -81,10 +93,7 @@ import '../styles/global.css';
           <p>Schreiben Sie kurz, was Sie beschäftigt. So kann sich MH-Invest gezielt auf Ihr Anliegen vorbereiten und persönlich bei Ihnen melden.</p>
         </div>
         <form class="contact-form" id="contact-form">
-          <div class="form-row">
-            <label>Vorname<input name="vorname" autocomplete="given-name" required /></label>
-            <label>Nachname<input name="nachname" autocomplete="family-name" required /></label>
-          </div>
+          <label>Ihr Name<input name="name" autocomplete="name" required /></label>
           <label>E-Mail<input name="email" type="email" autocomplete="email" required /></label>
           <label>Telefon <span class="optional">optional</span><input name="telefon" type="tel" autocomplete="tel" /></label>
           <label>Worum geht es?
@@ -93,7 +102,7 @@ import '../styles/global.css';
               <option>Versicherungen</option><option>Vorsorge</option><option>Finanzierung</option><option>Investment</option><option>Ich bin mir noch nicht sicher</option>
             </select>
           </label>
-          <label>Ihre Nachricht<textarea name="nachricht" rows="4" required></textarea></label>
+          <label>Ihre Nachricht <span class="optional">optional</span><textarea name="nachricht" rows="3" placeholder="Was dürfen wir vorab wissen?"></textarea></label>
           <label class="consent"><input type="checkbox" required /><span>Ich stimme zu, dass meine Angaben zur Kontaktaufnahme verwendet werden. Für eine reale Website wäre die finale Datenschutzerklärung verbindlich zu verknüpfen.</span></label>
           <button class="form-submit" type="submit">Gespräch anfragen <span aria-hidden="true">↗</span></button>
           <p class="form-note">Konzeptdemo: Das Formular versendet keine Daten.</p>
