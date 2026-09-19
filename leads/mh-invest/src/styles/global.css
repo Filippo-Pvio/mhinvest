@@ -172,7 +172,8 @@ main { max-width: var(--max); margin: 0 auto; }
 .motion-ready .process-step:not(.is-current):not(.is-complete) > span { color: #62675e; background: #d5d8d0; }
 .motion-ready .process-step:not(.is-current):not(.is-complete) h3,
 .motion-ready .process-step:not(.is-current):not(.is-complete) p { opacity: .62; }
-.process-step.is-current h3 { color: #40530a; transform: translateX(.35rem); }
+.process-step.is-current h3 { color: #40530a; }
+.process-step.is-current > span { transform: scale(1.08); }
 .process-step.is-complete > span { color: var(--ink); background: var(--lime); }
 .process-step.is-complete h3, .process-step.is-complete p { opacity: .82; }
 
