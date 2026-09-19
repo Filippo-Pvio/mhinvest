@@ -1,4 +1,4 @@
-name: MH-Invest customer demo
+name: MH-Invest private demo artifact
 
 on:
   workflow_dispatch:
@@ -10,17 +10,13 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: mh-invest-customer-demo
+  group: mh-invest-private-demo
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
+  build-demo:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -41,16 +37,10 @@ jobs:
       - name: Build noindex demo
         run: npm run build
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+      - name: Upload private demo artifact
+        uses: actions/upload-artifact@v4
         with:
-          enablement: true
-
-      - name: Upload noindex customer demo
-        uses: actions/upload-pages-artifact@v3
-        with:
+          name: mh-invest-private-demo
           path: leads/mh-invest/dist
-
-      - name: Deploy customer demo
-        id: deployment
-        uses: actions/deploy-pages@v4
+          if-no-files-found: error
+          retention-days: 14
