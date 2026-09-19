@@ -17,7 +17,7 @@ import site from '../content/site.json';
         <details class="nav-group">
           <summary>{item.label}<span aria-hidden="true">⌄</span></summary>
           <div class="nav-panel">
-            {item.children.map((child) => (
+            {item.children?.map((child) => (
               <a href={child.href}><strong>{child.label}</strong><small>{child.meta}</small></a>
             ))}
           </div>
@@ -33,7 +33,7 @@ import site from '../content/site.json';
           <details class="mobile-nav-group">
             <summary>{item.label}<span aria-hidden="true">+</span></summary>
             <div>
-              {item.children.map((child) => <a href={child.href}>{child.label}</a>)}
+              {item.children?.map((child) => <a href={child.href}>{child.label}</a>)}
             </div>
           </details>
         ) : <a href={item.href}>{item.label}</a>)}

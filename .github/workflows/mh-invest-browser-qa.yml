@@ -58,7 +58,7 @@ jobs:
         with:
           name: mh-invest-browser-qa
           path: |
-            leads/mh-invest/screenshots/browser-*-v2.png
+            leads/mh-invest/screenshots/browser-*-v3.png
             leads/mh-invest/screenshots/qa-results.json
           if-no-files-found: warn
           retention-days: 14
