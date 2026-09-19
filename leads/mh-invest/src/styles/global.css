@@ -637,3 +637,12 @@ html { scroll-padding-top: 5.1rem; }
   .site-header { top: 0; }
   .mobile-nav { inset: 4rem 0 0; }
 }
+
+
+/* Navigation layer fix: header is outside the clipped hero */
+.site-header { isolation: isolate; }
+.site-header .nav-panel { z-index: 60; }
+@media (max-width: 64rem) {
+  .site-header .mobile-menu { position: relative; z-index: 61; }
+  .site-header .mobile-nav { z-index: 59; }
+}
