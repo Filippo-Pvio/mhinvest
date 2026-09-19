@@ -1,0 +1,113 @@
+---
+import site from '../content/site.json';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label={`${site.company} – Startseite`}>
+      <span class="brand-mark" aria-hidden="true">MH</span>
+      <span class="brand-copy">
+        <strong>{site.brand}</strong>
+        <small>{site.claim}</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
+      {site.navigation.map((item) => 'children' in item ? (
+        <details class="nav-group">
+          <summary>{item.label}<span aria-hidden="true">⌄</span></summary>
+          <div class="nav-panel">
+            {item.children?.map((child) => (
+              <a href={child.href}><strong>{child.label}</strong><small>{child.meta}</small></a>
+            ))}
+          </div>
+        </details>
+      ) : <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <a class="header-contact" href="#kontakt">Kontakt <span aria-hidden="true">↗</span></a>
+    <details class="mobile-menu">
+      <summary class="menu-toggle" aria-label="Navigation öffnen"><span></span><span></span></summary>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+        {site.navigation.map((item) => 'children' in item ? (
+          <details class="mobile-nav-group">
+            <summary>{item.label}<span aria-hidden="true">+</span></summary>
+            <div>
+              {item.children?.map((child) => <a href={child.href}>{child.label}</a>)}
+            </div>
+          </details>
+        ) : <a href={item.href}>{item.label}</a>)}
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </details>
+  </header>
+
+  <img
+    class="hero-media"
+    src="/assets/finanzplanung-konzept-v2.webp"
+    alt="Konzeptmotiv eines persönlichen Finanzplans mit Diagnosegrafik und einem klar markierten Weg"
+    width="1672"
+    height="941"
+    fetchpriority="high"
+  />
+  <div class="hero-shade" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="eyebrow">{site.eyebrow}</p>
+    <p class="hero-brand">{site.brand}</p>
+    <h1 id="hero-title">{site.headline}</h1>
+    <p class="hero-intro">{site.intro}</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#kontakt">{site.primaryCta} <span aria-hidden="true">↗</span></a>
+      <a class="button button-secondary" href="#leistungen">{site.secondaryCta}</a>
+    </div>
+  </div>
+
+  <div class="hero-footer">
+    <ul class="trust-list" aria-label="Nachgewiesene Merkmale">
+      {site.trust.map((item) => <li><span>{item.label}</span><strong>{item.value}</strong></li>)}
+    </ul>
+  </div>
+</section>
+
+<script>
+  const mobileMenu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+  const toggle = mobileMenu?.querySelector<HTMLElement>('.menu-toggle');
+  const navigation = mobileMenu?.querySelector<HTMLElement>('.mobile-nav');
+  const backgroundRegions = document.querySelectorAll<HTMLElement>('main, footer, .hero-content, .hero-footer');
+
+  const setMenuState = (isOpen: boolean, returnFocus = false) => {
+    if (!mobileMenu || !toggle) return;
+    mobileMenu.open = isOpen;
+    toggle.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
+    document.body.classList.toggle('menu-open', isOpen);
+    backgroundRegions.forEach((region) => { region.inert = isOpen; });
+    if (isOpen) navigation?.querySelector<HTMLElement>('summary, a')?.focus();
+    if (!isOpen && returnFocus) toggle.focus();
+  };
+
+  mobileMenu?.addEventListener('toggle', () => setMenuState(mobileMenu.open));
+  navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileMenu?.open) setMenuState(false, true);
+    if (event.key === 'Escape') {
+      document.querySelectorAll<HTMLDetailsElement>('.nav-group[open]').forEach((group) => {
+        group.open = false;
+        group.querySelector<HTMLElement>('summary')?.focus();
+      });
+    }
+  });
+
+  document.querySelectorAll<HTMLDetailsElement>('.nav-group').forEach((group) => {
+    group.addEventListener('toggle', () => {
+      if (!group.open) return;
+      document.querySelectorAll<HTMLDetailsElement>('.nav-group[open]').forEach((other) => {
+        if (other !== group) other.open = false;
+      });
+    });
+  });
+
+  const desktopQuery = matchMedia('(min-width: 64.01rem)');
+  desktopQuery.addEventListener('change', (event) => { if (event.matches) setMenuState(false); });
+</script>

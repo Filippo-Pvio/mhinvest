@@ -1,0 +1,349 @@
+{
+  "generatedAt": "2026-09-19T17:38:52.590Z",
+  "results": [
+    {
+      "viewport": {
+        "name": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "httpStatus": 200,
+      "title": "MH-Invest | Akquise-Hero Konzept",
+      "readyState": "complete",
+      "pageWidth": 1440,
+      "viewportWidth": 1440,
+      "heroHeight": 871,
+      "h1Lines": 4,
+      "h1Animation": "rise",
+      "animatedContentVisible": true,
+      "allImagesLoaded": true,
+      "primaryCtaVisible": true,
+      "primaryCtaAboveFold": true,
+      "primaryCtaHref": "#kontakt",
+      "secondaryCtaVisible": true,
+      "secondaryCtaHref": "#leistungen",
+      "internalLinksResolve": true,
+      "internalLinks": [
+        "#content",
+        "#top",
+        "#versicherungen",
+        "#vorsorge",
+        "#finanzierung",
+        "#investment",
+        "#beratungsweg",
+        "#profil",
+        "#kontakt",
+        "#leistungen"
+      ],
+      "textOverflowOffenders": [],
+      "clippedElements": [],
+      "touchTargetOffenders": [],
+      "horizontalOverflow": false,
+      "menuWorks": true,
+      "keyboardNavigationWorks": true,
+      "navigationOverflowOffenders": [],
+      "focusState": {
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "motionState": {
+        "heroAnimation": "hero-scale",
+        "heroAnimationState": [
+          "finished"
+        ],
+        "processMotionSupported": true
+      },
+      "processMotion": {
+        "animationName": "diagnostic-reveal",
+        "opacity": 1
+      },
+      "reducedMotion": {
+        "matches": true,
+        "duration": "1e-05s",
+        "visible": true
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "errorResponses": []
+    },
+    {
+      "viewport": {
+        "name": "laptop-1280x800",
+        "width": 1280,
+        "height": 800
+      },
+      "httpStatus": 200,
+      "title": "MH-Invest | Akquise-Hero Konzept",
+      "readyState": "complete",
+      "pageWidth": 1280,
+      "viewportWidth": 1280,
+      "heroHeight": 771,
+      "h1Lines": 4,
+      "h1Animation": "rise",
+      "animatedContentVisible": true,
+      "allImagesLoaded": true,
+      "primaryCtaVisible": true,
+      "primaryCtaAboveFold": true,
+      "primaryCtaHref": "#kontakt",
+      "secondaryCtaVisible": true,
+      "secondaryCtaHref": "#leistungen",
+      "internalLinksResolve": true,
+      "internalLinks": [
+        "#content",
+        "#top",
+        "#versicherungen",
+        "#vorsorge",
+        "#finanzierung",
+        "#investment",
+        "#beratungsweg",
+        "#profil",
+        "#kontakt",
+        "#leistungen"
+      ],
+      "textOverflowOffenders": [],
+      "clippedElements": [],
+      "touchTargetOffenders": [],
+      "horizontalOverflow": false,
+      "menuWorks": true,
+      "keyboardNavigationWorks": true,
+      "navigationOverflowOffenders": [],
+      "focusState": {
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "motionState": {
+        "heroAnimation": "hero-scale",
+        "heroAnimationState": [
+          "finished"
+        ],
+        "processMotionSupported": true
+      },
+      "processMotion": {
+        "animationName": "diagnostic-reveal",
+        "opacity": 1
+      },
+      "reducedMotion": {
+        "matches": true,
+        "duration": "1e-05s",
+        "visible": true
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "errorResponses": []
+    },
+    {
+      "viewport": {
+        "name": "tablet-1024x768",
+        "width": 1024,
+        "height": 768
+      },
+      "httpStatus": 200,
+      "title": "MH-Invest | Akquise-Hero Konzept",
+      "readyState": "complete",
+      "pageWidth": 1024,
+      "viewportWidth": 1024,
+      "heroHeight": 739,
+      "h1Lines": 4,
+      "h1Animation": "rise",
+      "animatedContentVisible": true,
+      "allImagesLoaded": true,
+      "primaryCtaVisible": true,
+      "primaryCtaAboveFold": true,
+      "primaryCtaHref": "#kontakt",
+      "secondaryCtaVisible": true,
+      "secondaryCtaHref": "#leistungen",
+      "internalLinksResolve": true,
+      "internalLinks": [
+        "#content",
+        "#top",
+        "#versicherungen",
+        "#vorsorge",
+        "#finanzierung",
+        "#investment",
+        "#beratungsweg",
+        "#profil",
+        "#kontakt",
+        "#leistungen"
+      ],
+      "textOverflowOffenders": [],
+      "clippedElements": [],
+      "touchTargetOffenders": [],
+      "horizontalOverflow": false,
+      "menuWorks": true,
+      "keyboardNavigationWorks": true,
+      "navigationOverflowOffenders": [],
+      "focusState": {
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "motionState": {
+        "heroAnimation": "hero-scale",
+        "heroAnimationState": [
+          "finished"
+        ],
+        "processMotionSupported": true
+      },
+      "processMotion": {
+        "animationName": "diagnostic-reveal",
+        "opacity": 1
+      },
+      "reducedMotion": {
+        "matches": true,
+        "duration": "1e-05s",
+        "visible": true
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "errorResponses": []
+    },
+    {
+      "viewport": {
+        "name": "mobile-390x844",
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "title": "MH-Invest | Akquise-Hero Konzept",
+      "readyState": "complete",
+      "pageWidth": 390,
+      "viewportWidth": 390,
+      "heroHeight": 818,
+      "h1Lines": 4,
+      "h1Animation": "none",
+      "animatedContentVisible": true,
+      "allImagesLoaded": true,
+      "primaryCtaVisible": true,
+      "primaryCtaAboveFold": true,
+      "primaryCtaHref": "#kontakt",
+      "secondaryCtaVisible": true,
+      "secondaryCtaHref": "#leistungen",
+      "internalLinksResolve": true,
+      "internalLinks": [
+        "#content",
+        "#top",
+        "#versicherungen",
+        "#vorsorge",
+        "#finanzierung",
+        "#investment",
+        "#beratungsweg",
+        "#profil",
+        "#kontakt",
+        "#leistungen"
+      ],
+      "textOverflowOffenders": [],
+      "clippedElements": [],
+      "touchTargetOffenders": [],
+      "horizontalOverflow": false,
+      "menuWorks": true,
+      "keyboardNavigationWorks": true,
+      "navigationOverflowOffenders": [],
+      "focusState": {
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "motionState": {
+        "heroAnimation": "mobile-image-reveal",
+        "heroAnimationState": [
+          "finished"
+        ],
+        "processMotionSupported": true
+      },
+      "processMotion": {
+        "animationName": "diagnostic-reveal",
+        "opacity": 1
+      },
+      "reducedMotion": {
+        "matches": true,
+        "duration": "1e-05s",
+        "visible": true
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "errorResponses": []
+    },
+    {
+      "viewport": {
+        "name": "small-mobile-320x568",
+        "width": 320,
+        "height": 568
+      },
+      "httpStatus": 200,
+      "title": "MH-Invest | Akquise-Hero Konzept",
+      "readyState": "complete",
+      "pageWidth": 320,
+      "viewportWidth": 320,
+      "heroHeight": 595,
+      "h1Lines": 4,
+      "h1Animation": "none",
+      "animatedContentVisible": true,
+      "allImagesLoaded": true,
+      "primaryCtaVisible": true,
+      "primaryCtaAboveFold": true,
+      "primaryCtaHref": "#kontakt",
+      "secondaryCtaVisible": true,
+      "secondaryCtaHref": "#leistungen",
+      "internalLinksResolve": true,
+      "internalLinks": [
+        "#content",
+        "#top",
+        "#versicherungen",
+        "#vorsorge",
+        "#finanzierung",
+        "#investment",
+        "#beratungsweg",
+        "#profil",
+        "#kontakt",
+        "#leistungen"
+      ],
+      "textOverflowOffenders": [],
+      "clippedElements": [],
+      "touchTargetOffenders": [],
+      "horizontalOverflow": false,
+      "menuWorks": true,
+      "keyboardNavigationWorks": true,
+      "navigationOverflowOffenders": [],
+      "focusState": {
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "motionState": {
+        "heroAnimation": "mobile-image-reveal",
+        "heroAnimationState": [
+          "finished"
+        ],
+        "processMotionSupported": true
+      },
+      "processMotion": {
+        "animationName": "diagnostic-reveal",
+        "opacity": 1
+      },
+      "reducedMotion": {
+        "matches": true,
+        "duration": "1e-05s",
+        "visible": true
+      },
+      "consoleErrors": [],
+      "requestFailures": [],
+      "errorResponses": []
+    }
+  ],
+  "noJsResults": [
+    {
+      "viewport": "desktop-1440x900",
+      "httpStatus": 200,
+      "contentVisible": true,
+      "nativeMenuWorks": true
+    },
+    {
+      "viewport": "small-mobile-320x568",
+      "httpStatus": 200,
+      "contentVisible": true,
+      "nativeMenuWorks": true
+    }
+  ]
+}
