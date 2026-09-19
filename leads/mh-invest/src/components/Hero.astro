@@ -154,7 +154,15 @@ import site from '../content/site.json';
     font-size: .68rem;
   }
   @media (max-width: 45rem) {
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-actions {
+      order: 4;
+    }
     .advisor-proof {
+      order: 5;
       margin-top: .9rem;
       padding: .65rem .8rem .7rem;
       border-left-width: 2px;
