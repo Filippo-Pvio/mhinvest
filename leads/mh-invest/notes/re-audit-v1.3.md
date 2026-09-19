@@ -1,7 +1,7 @@
 # MH-Invest Re-Audit nach Fleisswerker-Standard v1.3
 
 Datum: 19. September 2026  
-Geprüfter Stand: Branch \`lead/mh-invest-hero\`, vor der v1.3-Revision
+Geprüfter Stand: Branch `lead/mh-invest-hero`, vor der v1.3-Revision
 
 ## KEEP
 

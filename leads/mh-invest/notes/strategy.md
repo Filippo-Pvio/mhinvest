@@ -27,7 +27,7 @@ Ein rechtlich geklärtes reales Porträt von Marius Hryn wäre für eine später
 
 ## Informationsarchitektur
 
-Leistungen, Beratungsweg, Marius Hryn, digitale Vergleichsmöglichkeiten und Kontakt bilden die sichtbare Demo-Struktur. Zukünftige Unterseiten sind in \`information-architecture.md\` beschrieben, werden aber nicht als fertige Ziele vorgetäuscht.
+Leistungen, Beratungsweg, Marius Hryn, digitale Vergleichsmöglichkeiten und Kontakt bilden die sichtbare Demo-Struktur. Zukünftige Unterseiten sind in `information-architecture.md` beschrieben, werden aber nicht als fertige Ziele vorgetäuscht.
 
 ## Motion und Interaktion
 

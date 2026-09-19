@@ -1,16 +1,14 @@
-# Interne Browser-QA
+# QA und Commercial Browser Gate
 
+Final geprüfter Implementierungsstand: 249f0c1e35bea422f22e48ef88aa305c8bb80355  
+Browser-QA-Lauf: https://github.com/Filippo-Pvio/mhinvest/actions/runs/35469817090  
 Datum: 19. September 2026
 
-## Verbindlicher Lauf
+## Technische Browser-QA: bestanden
 
-GitHub Actions, Ubuntu 24.04, Node.js 24, Astro und Playwright Chromium:
+Der tatsächliche Astro-Produktionsbuild wurde in Chromium gerendert und geprüft.
 
-https://github.com/Filippo-Pvio/mhinvest/actions/runs/35458673919
-
-Der Workflow installiert den echten Astro-Prototyp, führt `astro check && astro build` aus, startet den Astro-Preview-Server und rendert anschließend den Produktionsbuild in Chromium. Eine statische Rekonstruktion ist nicht Teil dieses Prüfpfads.
-
-## Geprüfte Viewports
+Pflicht-Viewports:
 
 - 1440 × 900
 - 1280 × 800
@@ -18,42 +16,50 @@ Der Workflow installiert den echten Astro-Prototyp, führt `astro check && astro
 - 390 × 844
 - 320 × 568
 
-Für jede Größe liegt unter `screenshots/browser-*-v3.png` ein echter Full-Page-Browser-Screenshot vor. Alle fünf Dateien wurden nach dem Lauf visuell kontrolliert.
+Bestätigt:
 
-## Ergebnis
-
-**Browser-QA bestanden.**
-
-- Abhängigkeiten und Chromium erfolgreich installiert
-- `astro check && astro build` ohne Fehler oder Warnungen
-- Preview-Server per HTTP 200 erreicht
-- tatsächliches Rendering in Chromium für alle fünf Zielgrößen
-- kein horizontales Overflow
-- keine abgeschnittenen, überstehenden oder intern geclippten Texte und Elemente
-- Hero-Headline und primärer CTA nach Normal-Motion vollständig sichtbar
+- Astro Check und Produktionsbuild ohne Fehler
+- HTTP 200, keine Console- oder Page-Errors
+- keine fehlgeschlagenen Requests oder Assets
+- kein horizontales Overflow, Text-Clipping oder unerwünschte Überstände
 - primärer CTA in allen Viewports above the fold
 - primärer und sekundärer CTA korrekt verlinkt
-- alle internen Navigationsziele vorhanden; keine unbeabsichtigten 404-Ziele
-- Desktop-Dropdown sowie Tablet-/Mobile-Menü per Tastatur bedienbar
-- Escape schließt Menüs und führt den Fokus zurück
-- sichtbare Focus-Zustände
-- keine zu kleinen interaktiven Ziele in den fünf geprüften Viewports
-- alle Bilder geladen
-- keine Console Errors, Page Errors, fehlgeschlagenen Requests oder HTTP-Fehlerantworten
-- Hero-Eingangsanimation abgeschlossen und sichtbar
-- Diagnose-Scrollbewegung in allen fünf Viewports aktiv und im geprüften Zustand sichtbar
-- Reduced Motion erkannt; Animationsdauer auf `0.01ms` reduziert, Inhalte sichtbar
-- No-JS-Fallback auf 1440 × 900 und 320 × 568: Inhalt und native Navigation sichtbar und bedienbar
-
-Die vollständigen maschinenlesbaren Messwerte stehen in `screenshots/qa-results.json`.
+- interne Links und Navigationsziele vollständig
+- Desktop-Dropdown und Mobile-Menü per Tastatur bedienbar
+- Escape-Rückführung und sichtbare Fokuszustände
+- geeignete Touch-Flächen
+- Motion bis zum sichtbaren Endzustand
+- Reduced Motion mit sichtbaren Inhalten
+- No-JS-Fallback auf Desktop und 320 × 568
+- standalone Prüfung des tatsächlichen Produktionsbuilds
+- echte Full-Page-Browser-Screenshots für alle fünf Viewports im Workflow-Artefakt
 
 ## Reparaturschleife
 
-1. Lauf #4 stoppte korrekt bei zwei Astro-Typfehlern in der optionalen Dropdown-Struktur.
-2. Lauf #5 bestätigte Build und Rendering; er identifizierte einen 43-px-Skip-Link sowie eine zu früh ausgewertete Tablet-Fokusmessung.
-3. Lauf #6 bestand technisch. Die visuelle Screenshot-Kontrolle zeigte jedoch, dass die Full-Page-Aufnahme die endliche Hero-Animation im Startzustand festhielt.
-4. Lauf #7 prüft Normal Motion ausdrücklich bis zum abgeschlossenen Endzustand, prüft die Scroll-Diagnose und erzeugt die Screenshots anschließend im stabilen Animationsendzustand. Dieser Lauf ist vollständig erfolgreich.
+Der erste v1.3-Lauf zeigte bei 320 × 568 einen primären CTA knapp unter dem ersten Viewport. Die kleine Mobile-Komposition wurde verdichtet und der CTA vor den ergänzenden Ansprechpartner-Nachweis gesetzt; der Introtext nennt Marius Hryn weiterhin vor dem CTA. Der Folgelauf bestand technisch vollständig.
 
-## Containergrenze und reproduzierbarer Fallback
+Das erste Commercial Browser Gate zeigte anschließend, dass Marius Hryn im Desktop-Hero noch zu stark wie ein nachgeordnetes Trust-Badge wirkte. Sein Name wurde deshalb in die Hauptaussage aufgenommen. Nach der kommerziellen Reparatur bestand die technische Browser-QA erneut vollständig.
 
-Der direkte Arbeitscontainer besitzt Node.js, npm und die Projektdateien, erreicht die öffentliche npm-Registry aber über den konfigurierten Netzwerkpfad nur mit HTTP 403. Dadurch können Astro und Chromium dort nicht nachinstalliert werden. Der branch- und PR-bezogene GitHub-Actions-Workflow ist der technisch saubere wiederkehrende Fallback: Er prüft den tatsächlichen Produktionsbuild mit denselben verbindlichen Viewports und stellt Screenshots sowie JSON als Artefakt bereit.
+## Commercial Browser Gate: bestanden
+
+- Im ersten Viewport sind Versicherungen und Finanzen als Angebot verständlich.
+- Marius Hryn ist in Headline, CTA, Ansprechpartner-Nachweis und Navigation sichtbar.
+- Finanzdiagnostik, Hagen und die vier Leistungsfelder schaffen eine MH-Invest-spezifische Kombination.
+- Das Konzeptmotiv illustriert gemeinsames Ordnen; es gibt sich nicht als reale Person oder Referenz aus.
+- Persönlicher Trust steht vor regulatorischem Trust.
+- Der CTA „Marius Hryn kontaktieren“ ist der logische nächste Schritt.
+- Mobile priorisiert Angebot, Name und CTA und reduziert die Desktop-Bewegung.
+- Die Full-Page-Prüfung zeigt einen glaubwürdigen Weg von Positionierung über Beratungsprozess und Leistungen zum direkten Kontakt.
+- Der wirtschaftliche Mehrwert liegt in schnellerem Verständnis, klarerer persönlicher Verantwortlichkeit und einem eindeutigen Kontaktimpuls.
+
+## Offene Annahmen und Produktionsgrenze
+
+- Zielgruppe Hagen/Umgebung ist eine strategische Interpretation.
+- Texte, Navigation, Farbwelt und Bildrichtung sind nicht von MH-Invest freigegeben.
+- Das Konzeptmotiv ist KI-generiertes Demo-Material.
+- Ein reales Porträt von Marius Hryn bleibt für eine spätere Produktion empfohlen und erfordert Rechteklärung.
+- Das private Repository stellt nur interne Build- und QA-Artefakte bereit. Es erfolgt keine produktive Veröffentlichung, keine Domain- oder DNS-Änderung und keine Kontaktaufnahme.
+
+## Interne Freigabe
+
+Technische Browser-QA und Commercial Browser Gate sind bestanden. Der Stand ist intern QA-fertig und als nicht produktive Akquise-Demo Akquise-ready.
