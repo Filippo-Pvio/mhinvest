@@ -28,7 +28,11 @@ import '../styles/global.css';
           <h2 id="profil-title">Ihre Finanzthemen sind persönlich. Die Beratung auch.</h2>
         </div>
         <div class="intro-body">
-          <p class="section-lead"><strong>„Ich bin für Sie da, wenn aus vielen Möglichkeiten eine klare Entscheidung werden soll.“</strong><br />Marius Hryn verbindet bei MH-Invest persönliche Beratung mit digitalen Vergleichsmöglichkeiten.</p>
+          <blockquote class="advisor-quote">
+            <p>„Ich bin für Sie da, wenn aus vielen Möglichkeiten eine klare Entscheidung werden soll.“</p>
+            <footer><strong>Marius Hryn</strong><span>Geschäftsführer · MH-Invest GmbH</span></footer>
+          </blockquote>
+          <p class="profile-copy">Persönliche Beratung und digitale Vergleichsmöglichkeiten greifen dabei ineinander – je nachdem, was zu Ihrem Anliegen passt.</p>
           <ul class="profile-facts" aria-label="Merkmale von MH-Invest">
             {site.trust.map((item) => <li><span>{item.label}</span><strong>{item.value}</strong></li>)}
           </ul>
@@ -42,7 +46,12 @@ import '../styles/global.css';
         </div>
         <div class="service-list">
           {site.services.map((service) => (
-            <article id={service.id}><span>{service.number}</span><h3>{service.title}</h3><p>{service.description}</p></article>
+            <a class="service-entry" id={service.id} href="#kontakt" aria-label={`${service.title}: Gespräch anfragen`}>
+              <span class="service-number">{service.number}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <span class="service-action" aria-hidden="true">Gespräch anfragen ↗</span>
+            </a>
           ))}
         </div>
       </section>
@@ -103,7 +112,7 @@ import '../styles/global.css';
             </select>
           </label>
           <label>Ihre Nachricht <span class="optional">optional</span><textarea name="nachricht" rows="3" placeholder="Was dürfen wir vorab wissen?"></textarea></label>
-          <label class="consent"><input type="checkbox" required /><span>Ich stimme zu, dass meine Angaben zur Kontaktaufnahme verwendet werden. Für eine reale Website wäre die finale Datenschutzerklärung verbindlich zu verknüpfen.</span></label>
+          <label class="consent"><input type="checkbox" required /><span>Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme verwendet werden. <a href={site.legalLinks.find((link) => link.label === 'Datenschutz')?.href} target="_blank" rel="noreferrer">Datenschutz</a></span></label>
           <button class="form-submit" type="submit">Gespräch anfragen <span aria-hidden="true">↗</span></button>
           <p class="form-note">Konzeptdemo: Das Formular versendet keine Daten.</p>
           <p class="form-status" role="status" aria-live="polite"></p>
