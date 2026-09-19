@@ -4,7 +4,7 @@ import site from '../content/site.json';
 
 <section class="hero" aria-labelledby="hero-title">
   <header class="site-header">
-    <a class="brand" href="#top" aria-label={`${site.company} – Startseite`}>
+    <a class="brand" href="#top" aria-label={site.company + ' – Startseite'}>
       <span class="brand-mark" aria-hidden="true">MH</span>
       <span class="brand-copy">
         <strong>{site.brand}</strong>
@@ -65,6 +65,11 @@ import site from '../content/site.json';
     <p class="hero-brand">{site.brand}</p>
     <h1 id="hero-title">{site.headline}</h1>
     <p class="hero-intro">{site.intro}</p>
+    <div class="advisor-proof" aria-label="Persönlicher Ansprechpartner">
+      <span>Ihr direkter Ansprechpartner</span>
+      <strong>Marius Hryn</strong>
+      <small>Geschäftsführer · MH-Invest GmbH · Hagen</small>
+    </div>
     <div class="hero-actions">
       <a class="button button-primary" href="#kontakt">{site.primaryCta} <span aria-hidden="true">↗</span></a>
       <a class="button button-secondary" href="#leistungen">{site.secondaryCta}</a>
@@ -119,3 +124,45 @@ import site from '../content/site.json';
   const desktopQuery = matchMedia('(min-width: 64.01rem)');
   desktopQuery.addEventListener('change', (event) => { if (event.matches) setMenuState(false); });
 </script>
+
+<style>
+  .advisor-proof {
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 1.25rem;
+    padding: .75rem 1rem .8rem;
+    display: grid;
+    gap: .12rem;
+    border-left: 3px solid var(--lime);
+    background: rgba(12, 14, 12, .5);
+    backdrop-filter: blur(.45rem);
+  }
+  .advisor-proof span {
+    color: rgba(255, 255, 255, .62);
+    font-size: .58rem;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+  }
+  .advisor-proof strong {
+    color: var(--white);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .advisor-proof small {
+    color: rgba(255, 255, 255, .72);
+    font-size: .68rem;
+  }
+  @media (max-width: 45rem) {
+    .advisor-proof {
+      margin-top: .9rem;
+      padding: .65rem .8rem .7rem;
+      border-left-width: 2px;
+      background: #e7e9e2;
+      backdrop-filter: none;
+    }
+    .advisor-proof span { color: #68705f; }
+    .advisor-proof strong { color: var(--ink); font-size: 1rem; }
+    .advisor-proof small { color: #555951; }
+  }
+</style>

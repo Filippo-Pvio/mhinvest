@@ -52,19 +52,19 @@ jobs:
       - name: Run real-browser viewport QA
         run: npm run qa:browser
 
-      - name: Start standalone customer demo
+      - name: Start standalone production build
         run: |
-          python3 -m http.server 8765 --bind 127.0.0.1 --directory customer-demo > /tmp/mh-invest-customer-demo.log 2>&1 &
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory dist > /tmp/mh-invest-standalone.log 2>&1 &
           for attempt in {1..20}; do
             if curl --fail --silent http://127.0.0.1:8765 > /dev/null; then
               exit 0
             fi
             sleep 1
           done
-          cat /tmp/mh-invest-customer-demo.log
+          cat /tmp/mh-invest-standalone.log
           exit 1
 
-      - name: Verify standalone customer demo
+      - name: Verify standalone production build
         run: node scripts/qa-customer-demo.mjs
 
       - name: Upload browser screenshots and results
@@ -73,7 +73,7 @@ jobs:
         with:
           name: mh-invest-browser-qa
           path: |
-            leads/mh-invest/screenshots/browser-*-v3.png
+            leads/mh-invest/screenshots/browser-*.png
             leads/mh-invest/screenshots/qa-results.json
           if-no-files-found: warn
           retention-days: 14

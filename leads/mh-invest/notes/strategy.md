@@ -1,58 +1,50 @@
-# Design- und Kommunikationsstrategie
+# Design- und Kommunikationsstrategie v1.3
 
-## Kernidee V2
+## Positionierung
 
-MH-Invest wird nicht über Produktfülle oder Sparversprechen inszeniert, sondern über die Fähigkeit, finanzielle Komplexität in einen verständlichen, persönlichen Plan zu übersetzen. Die bestehende Positionierung „Innovative Finanzdiagnostik“ wird als gestalterisches Prinzip aufgenommen. V2 stärkt dabei ausdrücklich die persönliche Komponente: Marius Hryn wird als direkter Ansprechpartner genannt, ohne ein unbelegtes Porträt oder eine fingierte Beratungssituation zu zeigen.
+MH-Invest wird als persönlicher Ordnungs- und Orientierungspartner für mehrere zusammenhängende Finanzfragen inszeniert. Die belegte Formulierung „Innovative Finanzdiagnostik“ liefert den Prozess; Marius Hryn liefert den personenbezogenen Vertrauensanker.
 
-## Informationshierarchie
+## Zielgruppe und Kernbotschaft
 
-1. Unternehmen und Standortbezug: MH INVEST, persönliche Beratung in Hagen.
-2. Nutzerversprechen: Versicherungen und Finanzen werden verständlich auf die persönliche Situation abgestimmt.
-3. Leistungsrahmen: Absicherung, Vorsorge, Finanzierung und Investment.
-4. Primäre Aktion: Beratung anfragen.
-5. Kundennaher Vertrauensanker: Marius Hryn als direkter Ansprechpartner und Standort Hagen.
-6. Sekundärer Nachweis: Maklerstatus nach § 34d GewO.
+Primäre strategische Zielgruppe sind private Haushalte und Einzelpersonen aus Hagen und Umgebung, die Absicherung, Vorsorge, Finanzierung und Investment nicht isoliert betrachten möchten.
 
-## Visuelle These
+Kernbotschaft: Versicherungen und Finanzen werden mit einem direkten Ansprechpartner verständlich geordnet.
 
-Ein dunkler, präziser Editorial-Look verbindet Ruhe und Kompetenz mit einer anonymen Beratungssituation aus der Vogelperspektive. Zwei ausschließlich als Hände sichtbare Personen ordnen gemeinsam einen abstrakten Finanzplan; Schutz, Vorsorge, Finanzierung und Investment werden als vier zusammenhängende Bereiche lesbar. Das Motiv kommuniziert persönliche Begleitung und fachliche Ordnung direkter als die abstrakte Architektur- und Objektwelt. Es zeigt ausdrücklich keine reale Person, keinen Kunden und keine echten Unterlagen. Das Konzept vermeidet übliche Finanzklischees wie Münzen, Börsenkurven, Handschläge oder Luxusarchitektur.
+## CTA- und Trust-Hierarchie
 
-## Mobile Komposition
+1. Primärer CTA: „Marius Hryn kontaktieren“
+2. Sekundärer CTA: Leistungsfelder entdecken
+3. Persönlicher Trust: Marius Hryn, Geschäftsführer und direkter Ansprechpartner
+4. Lokaler Trust: Hagen und konkrete Kontaktwege
+5. Fachlicher Trust: vier belegte Leistungsfelder und nachvollziehbarer Beratungsweg
+6. Regulatorischer Trust: Maklerstatus nach § 34d GewO
 
-Mobile ist keine gestapelte Desktop-Fassung. Das Motiv erhält eine eigene, kompakte Bildzone unter der Navigation; Botschaft, Nutzen und CTA stehen anschließend auf einer ruhigen hellen Fläche. Dadurch hängen Lesbarkeit und Zeilenumbrüche nicht vom Bildausschnitt ab. Die verkürzte Headline und eine eigenständige responsive Typografie schützen lange Wörter auch im kleinen Smartphone-Viewport. Der primäre CTA folgt unmittelbar auf den Nutzen, während der sekundäre CTA bewusst zurücktritt.
+## Visuelle Richtung
 
-## Farben und Typografie
+Der dunkle Editorial-Look, Warmweiß und der limettengrüne Diagnosepfad bleiben erhalten. Das KI-Konzeptmotiv wird als Illustration einer gemeinsamen Ordnungssituation behandelt, nicht als Darstellung realer Personen oder Geschäftsräume. Name, Rolle und Kontakt von Marius Hryn werden vor dem CTA als eigener Hero-Nachweis sichtbar.
 
-- Graphit: `#151715` für Seriosität und Kontrast.
-- Warmweiß: `#fffef8` und Papiergrau `#f3f1eb` für eine menschlichere, weniger banktypische Anmutung.
-- Limette: `#c9ef42` als präziser Aktions- und Fokusakzent.
-- Schrift: lizenzfreie Systemschrift-Kaskade ohne externe Requests.
+Ein rechtlich geklärtes reales Porträt von Marius Hryn wäre für eine spätere Produktion die stärkere Bildlösung. Bis dahin arbeitet die Demo bewusst mit typografischem Human Trust statt mit einer erfundenen Person.
 
-## Motion- und Interaktionskonzept
+## Informationsarchitektur
 
-- V4 verbindet die Bewegungen zu einer Diagnose-Erzählung: Ein limettengrüner Pfad zeichnet sich im Hero ein, setzt sich als aktiver Fortschritt im Beratungsweg fort und endet als Zielpunkt im Kontaktbereich.
-- Der Hero erhält beim Verlassen eine sehr geringe vertikale Bildverschiebung. Sie erzeugt räumliche Tiefe, ohne die ruhige Finanzästhetik zu destabilisieren.
-- Der jeweils relevante Beratungsschritt wird durch Nummernfarbe, Kontrast und eine kleine horizontale Verschiebung markiert; zurückliegende Schritte bleiben als bearbeitet erkennbar.
-- Auf Smartphones entfallen Hero-Pfad und Parallax. Der Prozessfortschritt bleibt direkt und ohne zusätzliche Scrollstrecke erhalten.
+Leistungen, Beratungsweg, Marius Hryn, digitale Vergleichsmöglichkeiten und Kontakt bilden die sichtbare Demo-Struktur. Zukünftige Unterseiten sind in \`information-architecture.md\` beschrieben, werden aber nicht als fertige Ziele vorgetäuscht.
 
-- Der Hero erscheint in einer kurzen Reihenfolge aus Bild, Marke, Aussage, Nutzen und Handlung. Diese Bewegung macht die Informationshierarchie lesbar und ist keine dauerhafte Dekoration.
-- Im Beratungsweg wächst eine limettengrüne Diagnose-Linie entlang der drei Schritte. Sie übersetzt den belegten Begriff „Innovative Finanzdiagnostik“ in ein nachvollziehbares Orientierungsprinzip.
-- Prozessschritte, Leistungsfelder und digitale Vergleichsmöglichkeit werden beim Scrollen leicht aus der Tiefe geholt. Inhalte bleiben in der statischen Baseline sichtbar; Scroll-Animationen werden nur bei unterstützenden Browsern ergänzt.
-- Hover- und Focus-Zustände schärfen die Bedienbarkeit von Navigation und Handlungslinks.
-- Auf Smartphones wird der Hero als eine kurze gemeinsame Bewegung behandelt; gestaffelte Desktop-Verzögerungen entfallen, damit Kernbotschaft und CTA sofort erfassbar bleiben.
-- Bei `prefers-reduced-motion` werden Scrollbewegung, Animationen und Übergänge praktisch vollständig deaktiviert. Ohne JavaScript bleiben Inhalt und native Details-Navigation bedienbar.
+## Motion und Interaktion
 
-## Website-Perspektive
+- Der Diagnosepfad lenkt vom Leistungsversprechen in Richtung geordneter Entscheidung.
+- Der Beratungsfortschritt macht die drei belegbar abgeleiteten Schritte verständlich.
+- Der Kontakt-Zielpunkt schließt die Bewegung beim realen nächsten Schritt ab.
+- Desktop nutzt geringe Bildtiefe; Mobile entfernt Pfad und Parallax, damit Name, Nutzen und CTA sofort lesbar bleiben.
+- Reduced Motion und No-JS lassen alle Inhalte sichtbar und bedienbar.
 
-Die Demo zeigt nicht nur einen isolierten Onepager-Hero. Das Leistungsmenü führt zu vier real belegten Themenfeldern, der Beratungsweg macht die Finanzdiagnostik verständlich, das Profil stärkt den direkten Ansprechpartner und die Vergleichsmöglichkeit bildet den vorhandenen digitalen Zugang ab. Die begründete Zielarchitektur ist separat in `information-architecture.md` dokumentiert.
+## Company Specificity
 
-## Asset-Herkunft
+Ohne Logo bleibt die Kombination aus Marius Hryn, Hagen, Finanzdiagnostik, vier Leistungsfeldern und digitalen Vergleichsmöglichkeiten MH-Invest-spezifisch. Die Gestaltung dient dieser Kombination; sie ist kein austauschbares Finanz-Template.
 
-- `public/assets/finanzplanung-konzept-v2.webp`: am 19.09.2026 mit OpenAI Image Generation für diese Akquise-Demo neu erzeugtes Konzeptmaterial. Es zeigt eine vollständig anonyme, fiktive Beratungssituation ohne reale Person, Kundendaten, Dokumente, Immobilie, Referenz oder Leistung von MH-Invest.
-- Die Herkunft bleibt hier vollständig dokumentiert. In der Demo steht die notwendige Kennzeichnung in einem separaten Präsentationshinweis oberhalb der eigentlichen Website-Komposition, damit sie nicht als Teil des Kundendesigns missverstanden wird.
+## Annahmen und Produktionsgrenze
 
-## Annahmen
-
-- Die vorgeschlagene Farbwelt ist eine strategische Modernisierung. Exakte Corporate-Design-Vorgaben lagen nicht vor und müssen vor Produktion bestätigt werden.
-- Der CTA „Persönliches Gespräch anfragen“ verlinkt in der Demo auf den Kontaktbereich. Ein Terminbuchungssystem ist nicht belegt.
-- Texte und Navigationsstruktur sind aus den öffentlich sichtbaren Seiten abgeleitet, aber nicht vom Unternehmen freigegeben.
+- Die Zielgruppe Hagen/Umgebung ist eine strategische Interpretation der öffentlich belegten lokalen Verankerung.
+- Texte und Struktur sind nicht vom Unternehmen freigegeben.
+- Exakte Corporate-Design-Vorgaben und Bildrechte liegen nicht vor.
+- Das Konzeptmotiv ist KI-generiertes Demo-Material und zeigt keine reale Person, Unterlage, Referenz oder Geschäftsräume.
+- Vor Produktion sind Kundenfreigabe, Inhaltsprüfung, Rechtsprüfung und Rechteklärung erforderlich.

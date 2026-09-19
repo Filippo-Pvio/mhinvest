@@ -2,10 +2,10 @@
   "company": "MH-Invest GmbH",
   "brand": "MH INVEST",
   "claim": "Innovative Finanzdiagnostik",
-  "eyebrow": "Persönliche Beratung in Hagen",
-  "headline": "Versicherungen und Finanzen. Klar auf Sie abgestimmt.",
-  "intro": "Ein direkter Ansprechpartner für Absicherung, Vorsorge, Finanzierung und Investment – persönlich in Hagen und digital erreichbar.",
-  "primaryCta": "Persönliches Gespräch anfragen",
+  "eyebrow": "Finanzdiagnostik und persönliche Beratung in Hagen",
+  "headline": "Versicherungen und Finanzen. Persönlich mit Ihnen geordnet.",
+  "intro": "Marius Hryn begleitet Sie als direkter Ansprechpartner bei Absicherung, Vorsorge, Finanzierung und Investment – persönlich in Hagen und digital erreichbar.",
+  "primaryCta": "Marius Hryn kontaktieren",
   "secondaryCta": "Leistungen entdecken",
   "phone": "02331 367 96 68",
   "phoneHref": "tel:+4923313679668",
@@ -24,7 +24,7 @@
       ]
     },
     { "label": "Beratungsweg", "href": "#beratungsweg" },
-    { "label": "Über MH-Invest", "href": "#profil" }
+    { "label": "Marius Hryn", "href": "#profil" }
   ],
   "services": [
     { "number": "01", "id": "versicherungen", "title": "Versicherungen", "description": "Absicherung für Alltag, Eigentum und Mobilität." },
@@ -38,8 +38,8 @@
     { "number": "03", "title": "Entscheidung begleiten", "description": "MH-Invest begleitet die Umsetzung und übernimmt nach eigener Angabe die notwendigen Formalitäten." }
   ],
   "trust": [
-    { "label": "Ihr Ansprechpartner", "value": "Marius Hryn" },
-    { "label": "Vor Ort", "value": "Hagen" },
+    { "label": "Persönliche Begleitung", "value": "Marius Hryn" },
+    { "label": "Direkt vor Ort", "value": "Hagen" },
     { "label": "Regulierter Status", "value": "Makler nach § 34d GewO" }
   ],
   "legalLinks": [
