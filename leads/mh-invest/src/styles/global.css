@@ -2107,3 +2107,35 @@ footer a:focus-visible {
     height: 12.5rem;
   }
 }
+
+
+/* Mobile polish: keep hero copy clear of sticky header and add breathing room below portrait. */
+@media (max-width: 45rem) {
+  .hero {
+    padding-top: 4.4rem;
+  }
+
+  .hero-content {
+    padding-top: 1.75rem;
+  }
+
+  .hero-media {
+    margin-top: .15rem;
+  }
+
+  .hero-footer {
+    margin-top: .9rem;
+    padding-top: 1.05rem;
+    border-top: 1px solid rgba(32,39,37,.12);
+  }
+}
+
+@media (max-width: 23rem) {
+  .hero {
+    padding-top: 4rem;
+  }
+
+  .hero-content {
+    padding-top: 1.45rem;
+  }
+}
