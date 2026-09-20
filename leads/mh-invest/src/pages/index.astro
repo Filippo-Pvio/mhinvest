@@ -68,6 +68,32 @@ import '../styles/global.css';
         </div>
       </section>
 
+      <section class="stats-section reveal-block" aria-labelledby="stats-title">
+        <div class="stats-heading">
+          <p class="section-kicker">MH-Invest in Zahlen</p>
+          <h2 id="stats-title">Erfahrung, Reichweite und laufende Betreuung.</h2>
+          <p>Unternehmensangaben aus dem bestehenden MH-Invest-Webauftritt.</p>
+        </div>
+        <div class="stats-grid">
+          <article>
+            <strong class="stat-number" data-target="25" data-suffix="+">25+</strong>
+            <span>Jahre am Markt</span>
+          </article>
+          <article>
+            <strong class="stat-number" data-target="2000" data-suffix="+">2000+</strong>
+            <span>Zufriedene Kunden</span>
+          </article>
+          <article>
+            <strong class="stat-number" data-target="100" data-suffix="+">100+</strong>
+            <span>Kooperationspartner</span>
+          </article>
+          <article>
+            <strong class="stat-number" data-target="5000" data-suffix="+">5000+</strong>
+            <span>Laufende Verträge</span>
+          </article>
+        </div>
+      </section>
+
       <section class="process-section reveal-block" id="beratungsweg" aria-labelledby="process-title">
         <div class="process-intro">
           <p class="section-kicker">So läuft die Beratung</p>
@@ -182,6 +208,47 @@ import '../styles/global.css';
         addEventListener('scroll', requestMotionUpdate, { passive: true });
         addEventListener('resize', requestMotionUpdate);
         updateMotion();
+      }
+
+      const statNumbers = [...document.querySelectorAll<HTMLElement>('.stat-number')];
+
+      const setFinalStats = () => {
+        statNumbers.forEach((element) => {
+          element.textContent = `${element.dataset.target ?? ''}${element.dataset.suffix ?? ''}`;
+        });
+      };
+
+      if (reducedMotion.matches) {
+        setFinalStats();
+      } else if ('IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const element = entry.target as HTMLElement;
+            const target = Number(element.dataset.target || 0);
+            const suffix = element.dataset.suffix || '';
+            const duration = 1250;
+            const start = performance.now();
+
+            const tick = (now: number) => {
+              const progress = Math.min(1, (now - start) / duration);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const value = Math.round(target * eased);
+              element.textContent = `${value.toLocaleString('de-DE')}${suffix}`;
+              if (progress < 1) requestAnimationFrame(tick);
+            };
+
+            requestAnimationFrame(tick);
+            observer.unobserve(element);
+          });
+        }, { threshold: .35 });
+
+        statNumbers.forEach((element) => {
+          element.textContent = `0${element.dataset.suffix ?? ''}`;
+          counterObserver.observe(element);
+        });
+      } else {
+        setFinalStats();
       }
 
       const contactForm = document.querySelector<HTMLFormElement>('#contact-form');
