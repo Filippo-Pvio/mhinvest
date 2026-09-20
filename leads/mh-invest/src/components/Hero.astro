@@ -7,10 +7,46 @@ const headlineParts = site.headline === 'Ihre Finanzen verdienen Klarheit.'
 
 <header class="site-header">
   <a class="brand brand-lockup" href="#top" aria-label={site.company + ' – Startseite'}>
-    <svg class="brand-symbol" viewBox="0 0 84 64" aria-hidden="true">
-      <path class="brand-symbol-side" d="M4 56V20l17 13 13-17v40H22V39l-8-6v23Z"/>
-      <path class="brand-symbol-axis" d="M36 56V13L48 3v53Z"/>
-      <path class="brand-symbol-side" d="M50 56V28l12 9 18-17v36H68V42l-8 7V56Z"/>
+    <svg class="brand-symbol" viewBox="0 0 96 72" aria-hidden="true">
+      <defs>
+        <linearGradient id="mh-metal" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffffff"/>
+          <stop offset=".34" stop-color="#e5e2da"/>
+          <stop offset=".62" stop-color="#fafaf8"/>
+          <stop offset="1" stop-color="#b8b8b2"/>
+        </linearGradient>
+        <linearGradient id="mh-metal-edge" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#5e6461"/>
+          <stop offset=".6" stop-color="#2b3230"/>
+          <stop offset="1" stop-color="#767b77"/>
+        </linearGradient>
+        <linearGradient id="mh-green" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#b7cdb7"/>
+          <stop offset=".28" stop-color="#8eaa90"/>
+          <stop offset=".58" stop-color="#6b8f6f"/>
+          <stop offset="1" stop-color="#315044"/>
+        </linearGradient>
+        <linearGradient id="mh-green-edge" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#38594b"/>
+          <stop offset="1" stop-color="#19362f"/>
+        </linearGradient>
+        <filter id="mh-depth" x="-25%" y="-25%" width="150%" height="160%">
+          <feDropShadow dx="0" dy="3" stdDeviation="2.4" flood-color="#000000" flood-opacity=".35"/>
+        </filter>
+      </defs>
+      <g filter="url(#mh-depth)">
+        <path fill="url(#mh-metal-edge)" d="M7 61V20l4 3v34h12v4Z"/>
+        <path fill="url(#mh-metal)" d="M7 20 24 33 37 16v40H24V39L13 31v26H7Z"/>
+        <path fill="#ffffff" fill-opacity=".38" d="m8 20 16 12 13-16-1.8 7.4-11 13.3L8 24.3Z"/>
+
+        <path fill="url(#mh-green-edge)" d="M40 60V13L53 2v58Z"/>
+        <path fill="url(#mh-green)" d="M40 56V13L52 3v53Z"/>
+        <path fill="#ffffff" fill-opacity=".24" d="M40 13 52 3v12L40 26Z"/>
+
+        <path fill="url(#mh-metal-edge)" d="M56 61V29l3 2v23h12v7Z"/>
+        <path fill="url(#mh-metal)" d="M55 29 68 38 88 19v37H75V40L65 49l-10-7Z"/>
+        <path fill="#ffffff" fill-opacity=".34" d="m56 29 12 8 20-18-2 7-18 16-12-8Z"/>
+      </g>
     </svg>
     <span class="brand-lockup-copy">
       <strong>MH INVEST</strong>
