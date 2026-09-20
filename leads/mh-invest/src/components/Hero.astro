@@ -46,7 +46,7 @@ const headlineParts = site.headline === 'Ihre Finanzen verdienen Klarheit.'
 
   <img
     class="hero-media"
-    src={`${import.meta.env.BASE_URL}/assets/finanzplanung-konzept-v2.webp`}
+    src="./assets/finanzplanung-konzept-v2.webp"
     alt="Anonyme Beratungssituation aus der Vogelperspektive mit einem gemeinsamen Finanzplan für Absicherung, Vorsorge, Finanzierung und Investment"
     width="1536"
     height="864"
@@ -57,7 +57,6 @@ const headlineParts = site.headline === 'Ihre Finanzen verdienen Klarheit.'
 
   <div class="hero-content">
     <p class="eyebrow">{site.eyebrow}</p>
-    <p class="hero-brand">{site.brand}</p>
     <h1 id="hero-title" class="hero-title">
       {headlineParts.map((part, index) => (
         <span class={`hero-title-line hero-title-line-${index + 1}`}>{part}</span>
