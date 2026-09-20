@@ -1684,3 +1684,63 @@ footer a:focus-visible {
   }
   .brand-final-logo-image { max-height: 2.9rem; }
 }
+
+
+/* Header logo visibility fix: 3D symbol + live white wordmark on navy header */
+.brand-final-logo {
+  width: auto;
+  max-width: min(23rem, 36vw);
+  display: inline-flex;
+  align-items: center;
+  gap: .72rem;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+.brand-final-symbol {
+  width: 3.35rem;
+  height: 3.35rem;
+  flex: 0 0 3.35rem;
+  overflow: hidden;
+  display: block;
+}
+.brand-final-symbol img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  transform: translateX(-.06rem);
+}
+.brand-final-copy {
+  display: grid;
+  gap: .18rem;
+  min-width: 0;
+  line-height: 1;
+}
+.brand-final-copy strong {
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 760;
+  letter-spacing: .115em;
+  white-space: nowrap;
+}
+.brand-final-copy small {
+  color: rgba(247,248,250,.72);
+  font-size: .48rem;
+  font-weight: 560;
+  letter-spacing: .075em;
+  white-space: nowrap;
+}
+@media (max-width: 64rem) {
+  .brand-final-logo { max-width: min(17rem, 52vw); gap: .58rem; }
+  .brand-final-symbol { width: 2.85rem; height: 2.85rem; flex-basis: 2.85rem; }
+  .brand-final-copy strong { font-size: .9rem; letter-spacing: .1em; }
+  .brand-final-copy small { font-size: .4rem; }
+}
+@media (max-width: 45rem) {
+  .brand-final-logo { max-width: 64vw; gap: .48rem; }
+  .brand-final-symbol { width: 2.55rem; height: 2.55rem; flex-basis: 2.55rem; }
+  .brand-final-copy strong { font-size: .78rem; letter-spacing: .085em; }
+  .brand-final-copy small { font-size: .34rem; letter-spacing: .045em; }
+}
