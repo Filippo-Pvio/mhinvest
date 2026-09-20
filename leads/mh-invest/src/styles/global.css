@@ -730,3 +730,81 @@ html { scroll-padding-top: 5.1rem; }
   .hero-content { padding-top: 6.5rem; padding-bottom: 1.2rem; }
   h1 { font-size: clamp(2.15rem, 10vw, 2.8rem); }
 }
+
+
+/* Animated proof counters */
+.stats-section {
+  padding: clamp(5rem, 8vw, 8rem) var(--gutter);
+  display: grid;
+  grid-template-columns: .72fr 1.28fr;
+  gap: clamp(3rem, 7vw, 7rem);
+  color: var(--white);
+  background: #1c1f1c;
+  border-bottom: 1px solid var(--line-dark);
+}
+.stats-heading { align-self: start; position: sticky; top: 7rem; }
+.stats-heading .section-kicker { color: var(--lime); }
+.stats-heading h2 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(2.35rem, 4.2vw, 4.7rem);
+  line-height: .98;
+  font-weight: 580;
+  text-wrap: balance;
+}
+.stats-heading > p:last-child {
+  max-width: 28rem;
+  margin: 1.4rem 0 0;
+  color: rgba(255,255,255,.48);
+  font-size: .72rem;
+  line-height: 1.55;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--line-dark);
+  border-left: 1px solid var(--line-dark);
+}
+.stats-grid article {
+  min-height: 15rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+}
+.stat-number {
+  display: block;
+  color: var(--lime);
+  font-size: clamp(3.2rem, 6vw, 6.5rem);
+  line-height: .88;
+  font-weight: 620;
+  letter-spacing: -.04em;
+  font-variant-numeric: tabular-nums;
+}
+.stats-grid article > span {
+  max-width: 12rem;
+  color: rgba(255,255,255,.72);
+  font-size: clamp(.92rem, 1.3vw, 1.12rem);
+  line-height: 1.25;
+}
+.motion-ready .stats-grid article {
+  animation: diagnostic-reveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 24%;
+}
+
+@media (max-width: 45rem) {
+  .stats-section { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .stats-heading { position: static; }
+  .stats-heading h2 { max-width: 12ch; font-size: clamp(2rem, 9vw, 2.8rem); }
+  .stats-grid article { min-height: 9.5rem; padding: 1.25rem; }
+  .stat-number { font-size: clamp(2.8rem, 15vw, 4.4rem); }
+  .stats-grid article > span { font-size: .85rem; }
+}
+
+@media (max-width: 23rem) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stats-grid article { min-height: 8rem; }
+}
