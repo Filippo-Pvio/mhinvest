@@ -1991,3 +1991,119 @@ footer a:focus-visible {
   .hero-shade { top: 4rem; height: 11.75rem; }
   .hero-content { padding-top: 1.25rem; }
 }
+
+
+/* Mobile hero order: message + CTAs first, portrait second. Desktop/tablet unchanged. */
+@media (max-width: 45rem) {
+  .hero {
+    min-height: 0;
+    height: auto;
+    max-height: none;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    align-content: start;
+    overflow: hidden;
+    color: var(--mh-charcoal);
+    background: var(--mh-white);
+  }
+
+  .hero-content {
+    grid-row: 1;
+    width: auto;
+    margin: 0;
+    padding: 1.65rem var(--gutter) 1.45rem;
+    align-self: auto;
+    color: var(--mh-charcoal);
+    background: var(--mh-white);
+  }
+
+  .hero .eyebrow {
+    margin-bottom: .7rem;
+    color: var(--mh-blue);
+  }
+
+  .hero h1,
+  .hero .hero-title-line {
+    max-width: 13ch;
+    color: var(--mh-charcoal);
+    font-size: clamp(2.15rem, 9.7vw, 2.75rem);
+    line-height: .96;
+  }
+
+  .hero .hero-intro {
+    max-width: 34rem;
+    margin-top: .9rem;
+    color: #4B5661;
+    font-size: .9rem;
+    line-height: 1.48;
+  }
+
+  .hero-actions {
+    margin-top: 1.15rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .55rem;
+  }
+
+  .hero-media {
+    grid-row: 2;
+    position: relative;
+    inset: auto;
+    top: auto;
+    width: 100%;
+    height: clamp(13.5rem, 36vw + 7rem, 17rem);
+    display: block;
+    object-fit: cover;
+    object-position: 45% 34%;
+    transform: none;
+  }
+
+  .motion-ready .hero .hero-media {
+    object-position: 45% 34%;
+    transform: none;
+  }
+
+  .hero-shade {
+    display: none;
+  }
+
+  .hero-footer {
+    grid-row: 3;
+    min-height: 4.4rem;
+    padding: .9rem var(--gutter) 1rem;
+    color: var(--mh-charcoal);
+    background: var(--mh-white);
+    border-top: 1px solid rgba(32,39,37,.14);
+  }
+
+  .hero .trust-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero .trust-list li {
+    border-left-color: rgba(32,39,37,.16);
+  }
+
+  .hero .trust-list li:last-child {
+    display: none;
+  }
+
+  .hero .trust-list span {
+    color: #66717C;
+  }
+
+  .hero .trust-list strong {
+    color: var(--mh-charcoal);
+  }
+}
+
+@media (max-width: 23rem) {
+  .hero-content {
+    padding-top: 1.35rem;
+  }
+
+  .hero-media {
+    height: 12.5rem;
+  }
+}
