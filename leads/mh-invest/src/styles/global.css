@@ -893,3 +893,41 @@ html { scroll-padding-top: 5.1rem; }
   .stats-grid { grid-template-columns: 1fr; }
   .stat-number { font-size: clamp(2.8rem, 18vw, 4rem); }
 }
+
+
+/* Robust mobile menu overlay */
+@media (max-width: 64rem) {
+  .site-header { overflow: visible; }
+  .mobile-menu[open] { z-index: 100; }
+  .mobile-menu[open] .mobile-nav {
+    display: grid;
+    position: fixed;
+    z-index: 99;
+    top: 4.4rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100dvh - 4.4rem);
+    padding: 1.5rem var(--gutter) 2rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    pointer-events: auto;
+    touch-action: pan-y;
+  }
+  .mobile-nav > a,
+  .mobile-nav-group > summary,
+  .mobile-nav-group div a {
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 45rem) and (max-height: 40.625rem) {
+  .mobile-menu[open] .mobile-nav {
+    top: 4rem;
+    height: calc(100dvh - 4rem);
+  }
+}
