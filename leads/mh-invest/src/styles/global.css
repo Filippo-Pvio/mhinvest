@@ -1618,3 +1618,32 @@ footer a:focus-visible {
     height: 1.45rem;
   }
 }
+
+
+/* Final MH-Invest logo asset: header only */
+.brand-final-logo {
+  width: clamp(13.5rem, 18vw, 17.5rem);
+  min-height: 0;
+  padding: .32rem .5rem;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(247,248,250,.98);
+  box-shadow: 0 .35rem 1rem rgba(0,0,0,.08);
+}
+.brand-final-logo-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 3.25rem;
+  object-fit: contain;
+  object-position: left center;
+}
+@media (max-width: 64rem) {
+  .brand-final-logo { width: clamp(11rem, 44vw, 14rem); padding: .28rem .42rem; }
+  .brand-final-logo-image { max-height: 2.75rem; }
+}
+@media (max-width: 45rem) {
+  .brand-final-logo { width: min(11.8rem, 56vw); border-radius: 7px; }
+  .brand-final-logo-image { max-height: 2.35rem; }
+}
