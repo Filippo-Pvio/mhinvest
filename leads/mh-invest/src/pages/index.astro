@@ -39,17 +39,20 @@ import '../styles/global.css';
       <section class="services reveal-block" id="leistungen" aria-labelledby="services-title">
         <div class="section-heading">
           <p class="section-kicker">Leistungsfelder</p>
-          <h2 id="services-title">Was möchten Sie heute besser einordnen?</h2>
+          <h2 id="services-title">Wobei können wir Sie unterstützen?</h2>
         </div>
         <div class="service-list">
           {site.services.map((service) => (
-            <a class="service-entry" id={service.id} href="#kontakt" aria-label={`${service.title}: Gespräch anfragen`}>
+            <article class="service-entry" id={service.id}>
               <span class="service-number">{service.number}</span>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <span class="service-action" aria-hidden="true">Gespräch anfragen ↗</span>
-            </a>
+            </article>
           ))}
+        </div>
+        <div class="services-cta">
+          <p>Sie möchten ein Thema persönlich besprechen?</p>
+          <a class="button button-dark" href="#kontakt">Persönliches Gespräch anfragen <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
