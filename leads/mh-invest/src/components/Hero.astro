@@ -1,5 +1,8 @@
 ---
 import site from '../content/site.json';
+const headlineParts = site.headline === 'Ihre Finanzen verdienen Klarheit.'
+  ? ['Ihre Finanzen verdienen', 'Klarheit.']
+  : [site.headline];
 ---
 
 <header class="site-header">
@@ -55,7 +58,11 @@ import site from '../content/site.json';
   <div class="hero-content">
     <p class="eyebrow">{site.eyebrow}</p>
     <p class="hero-brand">{site.brand}</p>
-    <h1 id="hero-title">{site.headline}</h1>
+    <h1 id="hero-title" class="hero-title">
+      {headlineParts.map((part, index) => (
+        <span class={`hero-title-line hero-title-line-${index + 1}`}>{part}</span>
+      ))}
+    </h1>
     <p class="hero-intro">{site.intro}</p>
     <div class="hero-actions">
       <a class="button button-primary" href="#kontakt">{site.primaryCta} <span aria-hidden="true">↗</span></a>
