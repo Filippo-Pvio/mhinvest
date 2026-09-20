@@ -980,3 +980,55 @@ html { scroll-padding-top: 5.1rem; }
   .service-icon { width: 2rem; height: 2rem; }
   .service-icon svg { width: 1.55rem; height: 1.55rem; }
 }
+
+
+/* Header contrast and primary contact CTA */
+.site-header {
+  background: linear-gradient(180deg, rgba(17,19,17,.90) 0%, rgba(17,19,17,.72) 100%);
+  border-bottom-color: rgba(255,255,255,.14);
+  backdrop-filter: blur(.55rem);
+  -webkit-backdrop-filter: blur(.55rem);
+}
+.desktop-nav > a,
+.desktop-nav .nav-group > summary {
+  color: rgba(255,255,255,.94);
+  text-shadow: 0 1px 12px rgba(0,0,0,.28);
+}
+.desktop-nav > a:hover,
+.desktop-nav > a:focus-visible,
+.desktop-nav .nav-group > summary:hover,
+.desktop-nav .nav-group > summary:focus-visible {
+  color: var(--lime);
+}
+.brand.wordmark > small {
+  color: rgba(255,255,255,.72);
+}
+.header-contact {
+  min-height: 2.85rem;
+  padding: .72rem 1rem;
+  gap: .65rem;
+  color: var(--ink);
+  background: var(--lime);
+  border: 1px solid var(--lime);
+  font-weight: 800;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.header-contact span { color: var(--ink); }
+.header-contact:hover,
+.header-contact:focus-visible {
+  color: var(--ink);
+  background: var(--white);
+  border-color: var(--white);
+  transform: translateY(-1px);
+}
+.header-scrolled .site-header {
+  background: rgba(17,19,17,.97);
+}
+
+@media (max-width: 64rem) {
+  .site-header {
+    background: rgba(17,19,17,.97);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
