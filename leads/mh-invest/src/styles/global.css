@@ -2196,3 +2196,82 @@ footer a:focus-visible {
     gap: 1.6rem;
   }
 }
+
+
+/* Desktop refinement: reduce hero image dominance and center contact visual. */
+@media (min-width: 64.01rem) {
+  .hero {
+    min-height: 0;
+    height: auto;
+    max-height: none;
+    padding: 7.2rem var(--gutter) 4.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(25rem, .9fr);
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+    background: var(--mh-navy);
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    grid-column: 1;
+    grid-row: 1;
+    width: auto;
+    max-width: 43rem;
+    margin: 0;
+    align-self: center;
+  }
+
+  .hero .hero-media {
+    position: relative;
+    inset: auto;
+    top: auto;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: clamp(31rem, 40vw, 37.5rem);
+    max-height: 37.5rem;
+    border-radius: 18px;
+    object-fit: cover;
+    object-position: 50% 42%;
+    transform: none;
+    box-shadow: 0 1.5rem 3.5rem rgba(0,0,0,.16);
+  }
+
+  .motion-ready .hero .hero-media {
+    transform: none;
+    object-position: 50% 42%;
+  }
+
+  .hero .hero-shade {
+    display: none;
+  }
+}
+
+@media (min-width: 52.01rem) {
+  .contact-visual {
+    aspect-ratio: 5 / 4;
+  }
+
+  .contact-visual img {
+    object-position: 50% 46%;
+  }
+}
+
+@media (min-width: 64.01rem) {
+  .contact-section {
+    grid-template-columns: minmax(0, .88fr) minmax(28rem, 1.12fr);
+    gap: clamp(2.75rem, 5vw, 5.25rem);
+  }
+
+  .contact-visual {
+    margin-top: 2rem;
+    aspect-ratio: 5 / 4;
+  }
+
+  .contact-visual img {
+    object-position: 50% 45%;
+  }
+}
