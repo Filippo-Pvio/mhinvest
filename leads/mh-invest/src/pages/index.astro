@@ -1,0 +1,307 @@
+---
+import Hero from '../components/Hero.astro';
+import site from '../content/site.json';
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#0F2438" />
+    <meta name="description" content="Akquise-Konzept für MH-Invest GmbH: persönliche Beratung zu Versicherungen, Finanzen und Investment in Hagen." />
+    <title>MH-Invest | Akquise-Hero Konzept</title>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#content">Zum Inhalt</a>
+    <Hero />
+
+    <main id="content">
+      <section class="intro-section reveal-block" id="profil" aria-labelledby="profil-title">
+        <div class="intro-heading">
+          <p class="section-kicker">Persönliche Beratung</p>
+          <h2 id="profil-title">Ihre Finanzthemen sind persönlich. Die Beratung auch.</h2>
+        </div>
+        <div class="intro-body">
+          <blockquote class="advisor-quote">
+            <p>„Ich bin für Sie da, wenn aus vielen Möglichkeiten eine klare Entscheidung werden soll.“</p>
+            <footer><strong>Marius Hryn</strong><span>Geschäftsführer · MH-Invest GmbH</span></footer>
+          </blockquote>
+          <p class="profile-copy">Persönliche Beratung und digitale Vergleichsmöglichkeiten greifen dabei ineinander – je nachdem, was zu Ihrem Anliegen passt.</p>
+          <ul class="profile-facts" aria-label="Merkmale von MH-Invest">
+            {site.trust.map((item) => <li><span>{item.label}</span><strong>{item.value}</strong></li>)}
+          </ul>
+        </div>
+      </section>
+
+      <section class="services reveal-block" id="leistungen" aria-labelledby="services-title">
+        <div class="section-heading">
+          <p class="section-kicker">Leistungsfelder</p>
+          <h2 id="services-title">Wobei können wir Sie unterstützen?</h2>
+        </div>
+        <div class="service-list">
+          {site.services.map((service) => (
+            <article class="service-entry" id={service.id}>
+              <span class="service-icon" aria-hidden="true">
+                {service.id === 'versicherungen' && (
+                  <svg viewBox="0 0 24 24" role="img"><path d="M12 3 19 6v5c0 4.7-2.9 8-7 10-4.1-2-7-5.3-7-10V6l7-3Z"/><path d="m9.2 12.1 1.8 1.8 3.8-4"/></svg>
+                )}
+                {service.id === 'vorsorge' && (
+                  <svg viewBox="0 0 24 24" role="img"><path d="M12 4a7 7 0 0 0-7 7v2h14v-2a7 7 0 0 0-7-7Z"/><path d="M12 4V2M8 18h8M12 13v5"/></svg>
+                )}
+                {service.id === 'finanzierung' && (
+                  <svg viewBox="0 0 24 24" role="img"><path d="m4 11 8-6 8 6"/><path d="M6.5 10.5V20h11v-9.5"/><path d="M9.5 20v-5h5v5"/></svg>
+                )}
+                {service.id === 'investment' && (
+                  <svg viewBox="0 0 24 24" role="img"><path d="M4 18 9 13l3 3 7-8"/><path d="M15 8h4v4"/></svg>
+                )}
+              </span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </article>
+          ))}
+        </div>
+        <div class="services-cta">
+          <p>Sie möchten ein Thema persönlich besprechen?</p>
+          <a class="button button-dark" href="#kontakt">Persönliches Gespräch anfragen <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="why-section reveal-block" aria-labelledby="why-title">
+        <div class="why-heading">
+          <p class="section-kicker">Warum MH-Invest?</p>
+          <h2 id="why-title">Beratung, die nicht bei der Auswahl aufhört.</h2>
+        </div>
+        <div class="why-list">
+          <article><span>01</span><h3>Persönlich beraten</h3><p>Ihre Situation und Ihre Ziele geben die Richtung vor – nicht ein Produktkatalog.</p></article>
+          <article><span>02</span><h3>Am Markt vergleichen</h3><p>Relevante Möglichkeiten werden gegenübergestellt und verständlich eingeordnet.</p></article>
+          <article><span>03</span><h3>Bei der Umsetzung begleiten</h3><p>Nach der Entscheidung bleiben die nächsten Schritte nachvollziehbar und begleitet.</p></article>
+        </div>
+      </section>
+
+      <section class="stats-section reveal-block" aria-labelledby="stats-title">
+        <div class="stats-heading">
+          <p class="section-kicker">MH-Invest in Zahlen</p>
+          <h2 id="stats-title">Erfahrung, Reichweite und laufende Betreuung.</h2>
+          <p>Unternehmensangaben aus dem bestehenden MH-Invest-Webauftritt.</p>
+        </div>
+        <div class="stats-grid">
+          <article>
+            <strong class="stat-number" data-target="25" data-suffix="+">25+</strong>
+            <span>Jahre am Markt</span>
+          </article>
+          <article>
+            <strong class="stat-number" data-target="2000" data-suffix="+">2000+</strong>
+            <span>Zufriedene Kunden</span>
+          </article>
+          <article>
+            <strong class="stat-number" data-target="100" data-suffix="+">100+</strong>
+            <span>Kooperationspartner</span>
+          </article>
+          <article>
+            <strong class="stat-number" data-target="5000" data-suffix="+">5000+</strong>
+            <span>Laufende Verträge</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="process-section reveal-block" id="beratungsweg" aria-labelledby="process-title">
+        <div class="process-intro">
+          <p class="section-kicker">So läuft die Beratung</p>
+          <h2 id="process-title">Von Ihrer Situation zu einer klaren Entscheidung.</h2>
+          <p>„Innovative Finanzdiagnostik“ bedeutet hier: Ihre Ausgangslage strukturiert betrachten, Möglichkeiten vergleichen und die nächsten Schritte verständlich einordnen.</p>
+          <figure class="process-visual">
+            <img
+              src="./assets/marius-hryn-beratung.webp"
+              alt="Marius Hryn als persönlicher Ansprechpartner von MH-Invest"
+              width="820"
+              height="547"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+        <ol class="process-list">
+          {site.process.map((step) => (
+            <li class="process-step">
+              <span>{step.number}</span>
+              <div><h3>{step.title}</h3><p>{step.description}</p></div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="utility-section reveal-block" id="vergleichen" aria-labelledby="utility-title">
+        <div class="utility-copy">
+          <p class="section-kicker">Digitale Ergänzung</p>
+          <h2 id="utility-title">Digital vergleichen. Persönlich entscheiden.</h2>
+        </div>
+        <div class="utility-detail">
+          <p>Für ausgewählte Versicherungs-, Finanz- und Alltagsthemen können Sie Angebote digital vergleichen. Wenn Sie Unterstützung bei der Einordnung möchten, bleibt die Beratung persönlich.</p>
+          <a href={site.comparisonHref} target="_blank" rel="noreferrer">Vergleichsmöglichkeiten öffnen <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="contact-section reveal-block" id="kontakt" aria-labelledby="contact-title">
+        <div class="contact-copy">
+          <p class="section-kicker">Persönliches Gespräch</p>
+          <h2 id="contact-title">Worum geht es bei Ihnen?</h2>
+          <p>Schreiben Sie kurz, was Sie beschäftigt. So kann sich MH-Invest gezielt auf Ihr Anliegen vorbereiten und persönlich bei Ihnen melden.</p>
+          <figure class="contact-visual">
+            <img
+              src="./assets/marius-hryn-kontakt.webp"
+              alt="Marius Hryn bei der Arbeit mit Tablet und Unterlagen"
+              width="1536"
+              height="1024"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <label>Ihr Name<input name="name" autocomplete="name" required /></label>
+          <label>E-Mail<input name="email" type="email" autocomplete="email" required /></label>
+          <label>Telefon <span class="optional">optional</span><input name="telefon" type="tel" autocomplete="tel" /></label>
+          <label>Worum geht es?
+            <select name="thema" required>
+              <option value="">Bitte auswählen</option>
+              <option>Versicherungen</option><option>Vorsorge</option><option>Finanzierung</option><option>Investment</option><option>Ich bin mir noch nicht sicher</option>
+            </select>
+          </label>
+          <label>Ihre Nachricht <span class="optional">optional</span><textarea name="nachricht" rows="3" placeholder="Was dürfen wir vorab wissen?"></textarea></label>
+          <label class="consent"><input type="checkbox" required /><span>Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme verwendet werden. <a href={site.legalLinks.find((link) => link.label === 'Datenschutz')?.href} target="_blank" rel="noreferrer">Datenschutz</a></span></label>
+          <button class="form-submit" type="submit">Gespräch anfragen <span aria-hidden="true">↗</span></button>
+          <p class="form-note">Konzeptdemo: Das Formular versendet keine Daten.</p>
+          <p class="form-status" role="status" aria-live="polite"></p>
+          <div class="contact-alternatives" aria-label="Alternative Kontaktmöglichkeiten">
+            <span>Lieber direkt?</span>
+            <a href={site.phoneHref}>{site.phone}</a>
+            <a href={site.emailHref}>{site.email}</a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>MH-Invest GmbH · {site.address}</p>
+      <nav aria-label="Rechtliche Informationen">
+        {site.legalLinks.map((link) => <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>)}
+      </nav>
+      <div class="footer-end">
+        <span class="footer-demo-note">Akquise-Demo · Konzeptmotiv · nicht zur Veröffentlichung</span>
+        <a href="#top">Nach oben ↑</a>
+      </div>
+    </footer>
+
+    <script>
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      const hero = document.querySelector<HTMLElement>('.hero');
+      const processSection = document.querySelector<HTMLElement>('.process-section');
+      const processList = document.querySelector<HTMLElement>('.process-list');
+      const processSteps = [...document.querySelectorAll<HTMLElement>('.process-step')];
+      let motionFrame = 0;
+
+      const clamp = (value: number) => Math.min(1, Math.max(0, value));
+
+      const updateMotion = () => {
+        motionFrame = 0;
+        if (reducedMotion.matches) return;
+
+        if (hero) {
+          const heroRect = hero.getBoundingClientRect();
+          const heroProgress = clamp(-heroRect.top / Math.max(heroRect.height, 1));
+          hero.style.setProperty('--hero-shift', (heroProgress * 2.4).toFixed(3) + '%');
+        }
+
+        if (processSection && processList && processSteps.length) {
+          const sectionRect = processSection.getBoundingClientRect();
+          const travel = Math.max(sectionRect.height - innerHeight * .32, 1);
+          const progress = clamp((innerHeight * .62 - sectionRect.top) / travel);
+          processList.style.setProperty('--diagnostic-progress', progress.toFixed(4));
+
+          let currentStep = 0;
+          processSteps.forEach((step, index) => {
+            if (step.getBoundingClientRect().top < innerHeight * .62) currentStep = index;
+          });
+          processSteps.forEach((step, index) => {
+            step.classList.toggle('is-complete', index < currentStep);
+            step.classList.toggle('is-current', index === currentStep);
+          });
+        }
+      };
+
+      const requestMotionUpdate = () => {
+        if (!motionFrame) motionFrame = requestAnimationFrame(updateMotion);
+      };
+
+      if (!reducedMotion.matches) {
+        document.documentElement.classList.add('motion-ready');
+        addEventListener('scroll', requestMotionUpdate, { passive: true });
+        addEventListener('resize', requestMotionUpdate);
+        updateMotion();
+      }
+
+      const statNumbers = [...document.querySelectorAll<HTMLElement>('.stat-number')];
+
+      const setFinalStats = () => {
+        statNumbers.forEach((element) => {
+          element.textContent = `${element.dataset.target ?? ''}${element.dataset.suffix ?? ''}`;
+        });
+      };
+
+      if (reducedMotion.matches) {
+        setFinalStats();
+      } else if ('IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const element = entry.target as HTMLElement;
+            const target = Number(element.dataset.target || 0);
+            const suffix = element.dataset.suffix || '';
+            const duration = 2400;
+            const start = performance.now();
+
+            const tick = (now: number) => {
+              const progress = Math.min(1, (now - start) / duration);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const value = Math.round(target * eased);
+              element.textContent = `${value.toLocaleString('de-DE')}${suffix}`;
+              if (progress < 1) requestAnimationFrame(tick);
+            };
+
+            requestAnimationFrame(tick);
+            observer.unobserve(element);
+          });
+        }, { threshold: .35 });
+
+        statNumbers.forEach((element) => {
+          element.textContent = `0${element.dataset.suffix ?? ''}`;
+          counterObserver.observe(element);
+        });
+      } else {
+        setFinalStats();
+      }
+
+      const contactForm = document.querySelector<HTMLFormElement>('#contact-form');
+      contactForm?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const status = contactForm.querySelector<HTMLElement>('.form-status');
+        if (status) status.textContent = 'Danke. In der Konzeptdemo werden keine Daten versendet.';
+      });
+    </script>
+  
+    <a
+      class="mobile-whatsapp"
+      href="https://wa.me/491743329052?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Beratung%20bei%20MH-Invest%20und%20h%C3%A4tte%20eine%20kurze%20Frage."
+      target="_blank"
+      rel="noreferrer"
+      aria-label="MH-Invest per WhatsApp kontaktieren"
+    >
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 3.2A12.4 12.4 0 0 0 5.3 21.9L3.7 28.5l6.8-1.8A12.4 12.4 0 1 0 16 3.2Zm0 22.6c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4 .9 1-3.8-.3-.4A10.1 10.1 0 1 1 16 25.8Zm5.6-7.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.8.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6.3-.6c.1-.2 0-.5 0-.6-.1-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.4 1.4 3.6.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.4-.3-.7-.5Z"/>
+      </svg>
+</a>
+</body>
+</html>

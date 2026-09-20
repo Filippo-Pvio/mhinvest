@@ -1,0 +1,122 @@
+{
+  "company": "MH-Invest GmbH",
+  "brand": "MH INVEST",
+  "claim": "Innovative Finanzdiagnostik",
+  "eyebrow": "Persönliche Finanzberatung",
+  "headline": "Ihre Finanzen verdienen Klarheit.",
+  "intro": "Versicherungen, Vorsorge, Finanzierung und Investment – verständlich eingeordnet, sinnvoll verglichen und persönlich begleitet.",
+  "primaryCta": "Gespräch anfragen",
+  "secondaryCta": "Leistungen ansehen",
+  "phone": "02331 367 96 68",
+  "phoneHref": "tel:+4923313679668",
+  "email": "m.hryn@mhinvest.de",
+  "emailHref": "mailto:m.hryn@mhinvest.de",
+  "address": "Frommannweg 2, 58099 Hagen",
+  "comparisonHref": "https://mhinvest.promakler24.de/index/",
+  "navigation": [
+    {
+      "label": "Leistungen",
+      "children": [
+        {
+          "label": "Versicherungen",
+          "href": "#versicherungen",
+          "meta": "Alltag, Eigentum, Mobilität"
+        },
+        {
+          "label": "Vorsorge",
+          "href": "#vorsorge",
+          "meta": "Krankheit, Alter, Lebensphasen"
+        },
+        {
+          "label": "Finanzierung",
+          "href": "#finanzierung",
+          "meta": "Kredite und Bankprodukte"
+        },
+        {
+          "label": "Investment",
+          "href": "#investment",
+          "meta": "Anlageklassen und Vermögensaufbau"
+        }
+      ]
+    },
+    {
+      "label": "Beratungsweg",
+      "href": "#beratungsweg"
+    },
+    {
+      "label": "Über MH-Invest",
+      "href": "#profil"
+    }
+  ],
+  "services": [
+    {
+      "number": "01",
+      "id": "versicherungen",
+      "title": "Versicherungen",
+      "description": "Absicherung für Alltag, Eigentum und Mobilität."
+    },
+    {
+      "number": "02",
+      "id": "vorsorge",
+      "title": "Vorsorge",
+      "description": "Finanzielle Planung für verschiedene Lebensphasen."
+    },
+    {
+      "number": "03",
+      "id": "finanzierung",
+      "title": "Finanzierung",
+      "description": "Vergleichsmöglichkeiten für Kredite und Bankprodukte."
+    },
+    {
+      "number": "04",
+      "id": "investment",
+      "title": "Investment",
+      "description": "Orientierung bei Anlageklassen und Vermögensaufbau."
+    }
+  ],
+  "process": [
+    {
+      "number": "01",
+      "title": "Sie erzählen, was Ihnen wichtig ist",
+      "description": "Ausgangspunkt sind Ihre persönliche Situation, Ihre Ziele und die Fragen, die Sie gerade beschäftigen."
+    },
+    {
+      "number": "02",
+      "title": "Sie sehen Ihre Möglichkeiten im Vergleich",
+      "description": "Relevante Lösungen und Konditionen werden strukturiert gegenübergestellt und verständlich eingeordnet."
+    },
+    {
+      "number": "03",
+      "title": "Sie entscheiden mit Klarheit",
+      "description": "Wenn die Richtung feststeht, begleitet MH-Invest die nächsten Schritte und die Umsetzung."
+    }
+  ],
+  "trust": [
+    {
+      "label": "Persönlich",
+      "value": "Beratung auf Augenhöhe"
+    },
+    {
+      "label": "Vergleich",
+      "value": "Lösungen am Markt einordnen"
+    },
+    {
+      "label": "Regulierter Status",
+      "value": "Makler nach § 34d GewO"
+    }
+  ],
+  "legalLinks": [
+    {
+      "label": "Impressum",
+      "href": "https://mhinvest.de/impressum/"
+    },
+    {
+      "label": "Datenschutz",
+      "href": "https://mhinvest.de/datenschutz/"
+    },
+    {
+      "label": "Erstinformation",
+      "href": "https://mhinvest.promakler24.de/resources/firstinfo/"
+    }
+  ]
+}

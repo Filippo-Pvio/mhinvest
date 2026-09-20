@@ -1,0 +1,159 @@
+---
+import site from '../content/site.json';
+const headlineParts = site.headline === 'Ihre Finanzen verdienen Klarheit.'
+  ? ['Ihre Finanzen verdienen', 'Klarheit.']
+  : [site.headline];
+---
+
+<header class="site-header">
+  <a class="brand brand-lockup brand-final-logo" href="#top" aria-label={site.company + ' – Startseite'}>
+    <span class="brand-final-symbol" aria-hidden="true">
+      <svg class="brand-final-symbol-svg" viewBox="0 0 160 152" role="img" focusable="false">
+        <defs>
+          <linearGradient id="mhSilver" x1="0" x2="1">
+            <stop offset="0" stop-color="#8E98A4"/>
+            <stop offset=".45" stop-color="#F7F8FA"/>
+            <stop offset="1" stop-color="#BFC7D0"/>
+          </linearGradient>
+          <linearGradient id="mhSilverDark" x1="0" x2="1">
+            <stop offset="0" stop-color="#AAB3BD"/>
+            <stop offset="1" stop-color="#66717C"/>
+          </linearGradient>
+          <linearGradient id="mhBlue" x1="0" x2="1">
+            <stop offset="0" stop-color="#123D6C"/>
+            <stop offset=".52" stop-color="#1E63A8"/>
+            <stop offset="1" stop-color="#3A89D3"/>
+          </linearGradient>
+          <linearGradient id="mhNavy" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#18334E"/>
+            <stop offset="1" stop-color="#071522"/>
+          </linearGradient>
+        </defs>
+        <polygon points="16,31 49,9 80,39 80,68 49,39 49,111 16,91" fill="url(#mhSilver)"/>
+        <polygon points="49,9 80,39 80,68 49,39" fill="#DCE2E8"/>
+        <polygon points="49,39 80,68 80,139 49,119" fill="url(#mhNavy)"/>
+        <polygon points="80,39 112,9 145,31 112,59 112,83 145,55 145,91 112,119 112,139 80,139" fill="url(#mhSilverDark)"/>
+        <polygon points="80,39 112,9 112,139 80,139" fill="url(#mhBlue)"/>
+        <polygon points="112,59 145,31 145,55 112,83" fill="url(#mhNavy)"/>
+        <polyline points="16,31 49,9 80,39 112,9 145,31" fill="none" stroke="#F7F8FA" stroke-opacity=".55" stroke-width="2"/>
+      </svg>
+    </span>
+    <span class="brand-final-copy">
+      <strong>MH INVEST</strong>
+      <small>Innovative Finanzdiagnostik</small>
+    </span>
+  </a>
+
+  <nav class="desktop-nav" aria-label="Hauptnavigation">
+    {site.navigation.map((item) => 'children' in item ? (
+      <details class="nav-group">
+        <summary>{item.label}<span aria-hidden="true">⌄</span></summary>
+        <div class="nav-panel">
+          {item.children?.map((child) => (
+            <a href={child.href}><strong>{child.label}</strong><small>{child.meta}</small></a>
+          ))}
+        </div>
+      </details>
+    ) : <a href={item.href}>{item.label}</a>)}
+  </nav>
+
+  <a class="header-contact" href="#kontakt">Kontakt</a>
+  <details class="mobile-menu">
+    <summary class="menu-toggle" aria-label="Navigation öffnen"><span></span><span></span></summary>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+      {site.navigation.map((item) => 'children' in item ? (
+        <details class="mobile-nav-group">
+          <summary>{item.label}<span aria-hidden="true">+</span></summary>
+          <div>
+            {item.children?.map((child) => <a href={child.href}>{child.label}</a>)}
+          </div>
+        </details>
+      ) : <a href={item.href}>{item.label}</a>)}
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </details>
+</header>
+
+
+<section class="hero" aria-labelledby="hero-title">
+
+  <img
+    class="hero-media"
+    src="./assets/marius-hryn-hero.webp"
+    alt="Marius Hryn als persönlicher Ansprechpartner von MH-Invest"
+    width="1536"
+    height="1024"
+    fetchpriority="high"
+    decoding="async"
+  />
+  <div class="hero-shade" aria-hidden="true"></div>
+
+
+  <div class="hero-content">
+    <p class="eyebrow">{site.eyebrow}</p>
+    <h1 id="hero-title" class="hero-title">
+      {headlineParts.map((part, index) => (
+        <span class={`hero-title-line hero-title-line-${index + 1}`}>{part}</span>
+      ))}
+    </h1>
+    <p class="hero-intro">{site.intro}</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#kontakt">{site.primaryCta} <span aria-hidden="true">↗</span></a>
+      <a class="button button-secondary" href="#leistungen">{site.secondaryCta}</a>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  const mobileMenu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+  const toggle = mobileMenu?.querySelector<HTMLElement>('.menu-toggle');
+  const navigation = mobileMenu?.querySelector<HTMLElement>('.mobile-nav');
+  const syncMobileMenuState = (returnFocus = false) => {
+    if (!mobileMenu || !toggle) return;
+    const isOpen = mobileMenu.open;
+    toggle.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
+    document.body.classList.toggle('menu-open', isOpen);
+    if (isOpen) navigation?.querySelector<HTMLElement>('summary, a')?.focus();
+    if (!isOpen && returnFocus) toggle.focus();
+  };
+
+  mobileMenu?.addEventListener('toggle', () => syncMobileMenuState());
+  navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    if (mobileMenu) mobileMenu.open = false;
+  }));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileMenu?.open) {
+      mobileMenu.open = false;
+      syncMobileMenuState(true);
+    }
+    if (event.key === 'Escape') {
+      document.querySelectorAll<HTMLDetailsElement>('.nav-group[open]').forEach((group) => {
+        group.open = false;
+        group.querySelector<HTMLElement>('summary')?.focus();
+      });
+    }
+  });
+
+  document.querySelectorAll<HTMLDetailsElement>('.nav-group').forEach((group) => {
+    group.addEventListener('toggle', () => {
+      if (!group.open) return;
+      document.querySelectorAll<HTMLDetailsElement>('.nav-group[open]').forEach((other) => {
+        if (other !== group) other.open = false;
+      });
+    });
+  });
+
+  const desktopQuery = matchMedia('(min-width: 64.01rem)');
+  desktopQuery.addEventListener('change', (event) => {
+    if (event.matches && mobileMenu) mobileMenu.open = false;
+  });
+
+  const updateHeaderState = () => {
+    document.body.classList.toggle('header-scrolled', window.scrollY > 12);
+  };
+  addEventListener('scroll', updateHeaderState, { passive: true });
+  updateHeaderState();
+</script>
+
