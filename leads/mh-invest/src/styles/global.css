@@ -1776,3 +1776,109 @@ footer a:focus-visible {
   overflow: visible;
   filter: drop-shadow(0 .16rem .22rem rgba(0,0,0,.22));
 }
+
+
+/* Marius Hryn imagery integration */
+.hero .hero-media {
+  object-position: center 43%;
+}
+
+.process-visual {
+  margin: 2rem 0 0;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--mh-gray);
+  box-shadow: 0 1.2rem 2.8rem rgba(15,36,56,.10);
+}
+
+.process-visual img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 52% 40%;
+}
+
+@media (min-width: 64.01rem) {
+  .hero .hero-media {
+    object-position: center 42%;
+  }
+
+  .hero .hero-shade {
+    background:
+      linear-gradient(90deg,
+        rgba(15,36,56,.97) 0%,
+        rgba(15,36,56,.89) 31%,
+        rgba(15,36,56,.60) 48%,
+        rgba(15,36,56,.18) 68%,
+        rgba(15,36,56,.04) 100%);
+  }
+
+  .hero-content {
+    width: min(41rem, calc(100% - 2 * var(--gutter)));
+  }
+}
+
+@media (max-width: 64rem) and (min-width: 45.01rem) {
+  .hero .hero-media {
+    object-position: 50% 42%;
+  }
+
+  .process-section {
+    grid-template-columns: minmax(17rem, .9fr) minmax(22rem, 1.1fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .process-visual {
+    margin-top: 1.5rem;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 45rem) {
+  .hero {
+    grid-template-rows: 4.4rem clamp(11rem, 29svh, 14rem) auto auto;
+  }
+
+  .hero-media,
+  .hero-shade {
+    top: 4.4rem;
+    height: clamp(11rem, 29svh, 14rem);
+  }
+
+  .hero .hero-media {
+    object-position: 42% 35%;
+  }
+
+  .hero .hero-shade {
+    background:
+      linear-gradient(180deg,
+        rgba(15,36,56,.06) 0%,
+        rgba(15,36,56,.12) 60%,
+        rgba(15,36,56,.28) 100%);
+  }
+
+  .process-visual {
+    margin-top: 1.35rem;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    box-shadow: 0 .85rem 2rem rgba(15,36,56,.08);
+  }
+
+  .process-visual img {
+    object-position: 54% 35%;
+  }
+}
+
+@media (max-width: 23rem) {
+  .hero {
+    grid-template-rows: 4rem 10.25rem auto auto;
+  }
+
+  .hero-media,
+  .hero-shade {
+    top: 4rem;
+    height: 10.25rem;
+  }
+}
