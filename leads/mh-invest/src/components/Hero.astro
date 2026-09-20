@@ -74,23 +74,25 @@ import site from '../content/site.json';
   const mobileMenu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
   const toggle = mobileMenu?.querySelector<HTMLElement>('.menu-toggle');
   const navigation = mobileMenu?.querySelector<HTMLElement>('.mobile-nav');
-  const backgroundRegions = document.querySelectorAll<HTMLElement>('main, footer, .hero-content, .hero-footer');
-
-  const setMenuState = (isOpen: boolean, returnFocus = false) => {
+  const syncMobileMenuState = (returnFocus = false) => {
     if (!mobileMenu || !toggle) return;
-    mobileMenu.open = isOpen;
+    const isOpen = mobileMenu.open;
     toggle.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
     document.body.classList.toggle('menu-open', isOpen);
-    backgroundRegions.forEach((region) => { region.inert = isOpen; });
     if (isOpen) navigation?.querySelector<HTMLElement>('summary, a')?.focus();
     if (!isOpen && returnFocus) toggle.focus();
   };
 
-  mobileMenu?.addEventListener('toggle', () => setMenuState(mobileMenu.open));
-  navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+  mobileMenu?.addEventListener('toggle', () => syncMobileMenuState());
+  navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    if (mobileMenu) mobileMenu.open = false;
+  }));
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && mobileMenu?.open) setMenuState(false, true);
+    if (event.key === 'Escape' && mobileMenu?.open) {
+      mobileMenu.open = false;
+      syncMobileMenuState(true);
+    }
     if (event.key === 'Escape') {
       document.querySelectorAll<HTMLDetailsElement>('.nav-group[open]').forEach((group) => {
         group.open = false;
@@ -109,7 +111,9 @@ import site from '../content/site.json';
   });
 
   const desktopQuery = matchMedia('(min-width: 64.01rem)');
-  desktopQuery.addEventListener('change', (event) => { if (event.matches) setMenuState(false); });
+  desktopQuery.addEventListener('change', (event) => {
+    if (event.matches && mobileMenu) mobileMenu.open = false;
+  });
 
   const updateHeaderState = () => {
     document.body.classList.toggle('header-scrolled', window.scrollY > 12);
