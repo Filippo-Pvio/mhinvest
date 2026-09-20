@@ -2139,3 +2139,60 @@ footer a:focus-visible {
     padding-top: 1.45rem;
   }
 }
+
+
+/* Contact image integration: visual support for desktop/tablet, form-first on mobile. */
+.contact-section {
+  grid-template-columns: minmax(0, .82fr) minmax(26rem, 1.18fr);
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+  align-items: start;
+}
+
+.contact-copy {
+  min-width: 0;
+}
+
+.contact-visual {
+  margin: clamp(2rem, 3vw, 2.75rem) 0 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 1.25rem 3rem rgba(15,36,56,.08);
+  background: var(--mh-gray);
+  aspect-ratio: 4 / 5;
+}
+
+.contact-visual img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 48% 50%;
+}
+
+@media (max-width: 64rem) {
+  .contact-section {
+    grid-template-columns: minmax(0, .78fr) minmax(24rem, 1.22fr);
+    gap: 2.25rem;
+  }
+
+  .contact-visual {
+    aspect-ratio: 4 / 5.2;
+  }
+}
+
+@media (max-width: 52rem) {
+  .contact-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-visual {
+    display: none;
+  }
+}
+
+@media (max-width: 45rem) {
+  .contact-section {
+    gap: 1.6rem;
+  }
+}
