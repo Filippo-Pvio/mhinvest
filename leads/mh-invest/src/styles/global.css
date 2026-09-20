@@ -808,3 +808,51 @@ html { scroll-padding-top: 5.1rem; }
   .stats-grid { grid-template-columns: 1fr; }
   .stats-grid article { min-height: 8rem; }
 }
+
+
+/* Mobile hero repair: content-driven height, no dead viewport area */
+@media (max-width: 45rem) {
+  .hero {
+    min-height: 0;
+    height: auto;
+    padding-top: 4.4rem;
+    grid-template-rows: auto auto;
+    align-content: start;
+  }
+  .hero-content {
+    grid-row: 1;
+    align-self: auto;
+    padding: clamp(5.75rem, 18vw, 7.25rem) var(--gutter) 1.65rem;
+  }
+  .hero-footer {
+    grid-row: 2;
+    min-height: 0;
+    padding-top: 1rem;
+    padding-bottom: 1.1rem;
+  }
+  .hero-media,
+  .hero-shade {
+    inset: 0;
+    height: 100%;
+  }
+  .hero-media { object-position: 64% 50%; }
+  .hero-shade {
+    background:
+      linear-gradient(180deg, rgba(10,12,11,.34) 0%, rgba(10,12,11,.48) 28%, rgba(10,12,11,.82) 66%, rgba(10,12,11,.96) 100%),
+      linear-gradient(90deg, rgba(10,12,11,.48) 0%, rgba(10,12,11,.08) 88%);
+  }
+}
+
+@media (max-width: 45rem) and (max-height: 40.625rem) {
+  .hero {
+    min-height: 0;
+    height: auto;
+    padding-top: 4rem;
+    grid-template-rows: auto auto;
+  }
+  .hero-content {
+    padding-top: 4.75rem;
+    padding-bottom: 1.1rem;
+  }
+  .hero-footer { padding-top: .8rem; padding-bottom: .9rem; }
+}
