@@ -1882,3 +1882,112 @@ footer a:focus-visible {
     height: 10.25rem;
   }
 }
+
+
+/* FINAL mobile hero layout after Marius imagery integration.
+   Explicitly resets older full-bleed mobile hero variants to prevent overlap. */
+@media (max-width: 45rem) {
+  .hero {
+    min-height: 0;
+    height: auto;
+    max-height: none;
+    padding-top: 0;
+    display: grid;
+    grid-template-rows: 4.4rem clamp(12.5rem, 31svh, 15.5rem) auto auto;
+    align-content: start;
+    overflow: hidden;
+    color: var(--mh-charcoal);
+    background: var(--mh-white);
+  }
+  .site-header {
+    grid-row: 1;
+    min-height: 4.4rem;
+    color: #fff;
+    background: rgba(15,36,56,.99);
+  }
+  .hero-media,
+  .hero-shade {
+    position: absolute;
+    inset: auto 0 auto 0;
+    top: 4.4rem;
+    width: 100%;
+    height: clamp(12.5rem, 31svh, 15.5rem);
+  }
+  .hero .hero-media {
+    object-fit: cover;
+    object-position: 45% 34%;
+    transform: none;
+  }
+  .motion-ready .hero .hero-media {
+    object-position: 45% 34%;
+  }
+  .hero .hero-shade {
+    background:
+      linear-gradient(180deg,
+        rgba(15,36,56,.03) 0%,
+        rgba(15,36,56,.08) 65%,
+        rgba(15,36,56,.18) 100%);
+  }
+  .hero-content {
+    grid-row: 3;
+    align-self: auto;
+    width: auto;
+    margin: 0;
+    padding: 1.55rem var(--gutter) 1.35rem;
+    color: var(--mh-charcoal);
+    background: var(--mh-white);
+  }
+  .hero .eyebrow {
+    margin-bottom: .7rem;
+    color: var(--mh-blue);
+  }
+  .hero h1,
+  .hero .hero-title-line {
+    max-width: 13ch;
+    color: var(--mh-charcoal);
+    font-size: clamp(2.15rem, 9.7vw, 2.75rem);
+    line-height: .96;
+  }
+  .hero .hero-intro {
+    max-width: 34rem;
+    margin-top: .9rem;
+    color: #4B5661;
+    font-size: .9rem;
+    line-height: 1.48;
+  }
+  .hero-actions {
+    margin-top: 1.15rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .55rem;
+  }
+  .hero-footer {
+    grid-row: 4;
+    min-height: 4.4rem;
+    padding: .85rem var(--gutter) 1rem;
+    color: var(--mh-charcoal);
+    background: var(--mh-white);
+    border-top: 1px solid rgba(32,39,37,.14);
+  }
+  .hero .trust-list {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero .trust-list li {
+    border-left-color: rgba(32,39,37,.16);
+  }
+  .hero .trust-list li:last-child {
+    display: none;
+  }
+  .hero .trust-list span {
+    color: #66717C;
+  }
+  .hero .trust-list strong {
+    color: var(--mh-charcoal);
+  }
+}
+@media (max-width: 23rem) {
+  .hero { grid-template-rows: 4rem 11.75rem auto auto; }
+  .hero-media,
+  .hero-shade { top: 4rem; height: 11.75rem; }
+  .hero-content { padding-top: 1.25rem; }
+}
