@@ -1551,3 +1551,9 @@ footer a:focus-visible {
   color: var(--mh-navy);
   background: #EAF1F8;
 }
+
+
+/* Active advisory-process step: preserve number contrast on blue state. */
+.process-step.is-current > span {
+  color: #fff;
+}
