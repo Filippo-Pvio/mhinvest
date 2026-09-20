@@ -1205,3 +1205,51 @@ footer { background: var(--petrol); }
 .comparison-band a {
   border-radius: 10px;
 }
+
+
+/* Step 1: modernized surface distribution */
+.why-section {
+  background: var(--paper);
+  color: var(--anthracite);
+  border-bottom-color: var(--line-light);
+}
+.why-heading .section-kicker {
+  color: var(--sage);
+}
+.why-list {
+  border-top-color: var(--line-light);
+}
+.why-list article {
+  border-bottom-color: var(--line-light);
+}
+.why-list p {
+  color: rgba(32,39,37,.68);
+}
+
+.contact-section {
+  background: var(--white);
+  color: var(--anthracite);
+}
+.contact-section .section-kicker {
+  color: var(--sage);
+}
+.contact-copy > p:not(.section-kicker) {
+  color: rgba(32,39,37,.68);
+}
+.contact-meta {
+  border-top-color: var(--line-light);
+}
+.contact-meta a,
+.contact-meta p {
+  border-bottom-color: var(--line-light);
+}
+.contact-meta span {
+  color: rgba(32,39,37,.5);
+}
+.contact-meta a:hover {
+  color: var(--sage);
+}
+.contact-form {
+  background: #ffffff;
+  box-shadow: 0 1.25rem 3rem rgba(11,37,35,.08);
+}
