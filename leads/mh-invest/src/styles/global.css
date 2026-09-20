@@ -1647,3 +1647,40 @@ footer a:focus-visible {
   .brand-final-logo { width: min(11.8rem, 56vw); border-radius: 7px; }
   .brand-final-logo-image { max-height: 2.35rem; }
 }
+
+
+/* Corrected transparent MH-Invest logo lockup */
+.brand-final-logo {
+  width: clamp(14rem, 19vw, 18rem);
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+}
+.brand-final-logo-image {
+  width: 100%;
+  height: auto;
+  max-height: 3.7rem;
+  object-fit: contain;
+  object-position: left center;
+}
+@media (max-width: 64rem) {
+  .brand-final-logo {
+    width: clamp(12.5rem, 42vw, 15.5rem);
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .brand-final-logo-image { max-height: 3.15rem; }
+}
+@media (max-width: 45rem) {
+  .brand-final-logo {
+    width: min(13.4rem, 61vw);
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .brand-final-logo-image { max-height: 2.9rem; }
+}
