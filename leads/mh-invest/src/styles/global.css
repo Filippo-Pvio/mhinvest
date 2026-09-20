@@ -1032,3 +1032,152 @@ html { scroll-padding-top: 5.1rem; }
     -webkit-backdrop-filter: none;
   }
 }
+
+
+/* MH-Invest brand system: concept 3 */
+:root {
+  --ink: #1F2A28;
+  --ink-soft: #263532;
+  --paper: #D9D6CD;
+  --white: #FAFAF8;
+  --lime: #6B8F6F;
+  --petrol: #0F2724;
+  --sage: #6B8F6F;
+  --stone: #D9D6CD;
+  --anthracite: #1F2A28;
+  --line-dark: rgba(250,250,248,.18);
+  --line-light: rgba(31,42,40,.18);
+}
+
+body { background: var(--stone); }
+.site-header {
+  background: linear-gradient(180deg, rgba(15,39,36,.96) 0%, rgba(15,39,36,.88) 100%);
+  border-bottom-color: rgba(250,250,248,.14);
+}
+.header-scrolled .site-header { background: rgba(15,39,36,.985); }
+
+.brand-lockup {
+  min-height: 3.15rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .72rem;
+}
+.brand-symbol {
+  width: 3rem;
+  height: 2.45rem;
+  overflow: visible;
+  flex: 0 0 auto;
+}
+.brand-symbol-side { fill: #FAFAF8; }
+.brand-symbol-axis { fill: #6B8F6F; }
+.brand-lockup-copy {
+  display: grid;
+  gap: .18rem;
+  line-height: 1;
+}
+.brand-lockup-copy strong {
+  color: #FAFAF8;
+  font-size: .92rem;
+  font-weight: 650;
+  letter-spacing: .18em;
+}
+.brand-lockup-copy small {
+  color: rgba(250,250,248,.62);
+  font-size: .46rem;
+  font-weight: 560;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+}
+
+.desktop-nav > a,
+.desktop-nav .nav-group > summary { color: rgba(250,250,248,.92); }
+.desktop-nav > a:hover,
+.desktop-nav > a:focus-visible,
+.desktop-nav .nav-group > summary:hover,
+.desktop-nav .nav-group > summary:focus-visible,
+.nav-group summary span { color: var(--sage); }
+
+.header-contact {
+  color: #FAFAF8;
+  background: var(--sage);
+  border-color: var(--sage);
+}
+.header-contact span { color: #FAFAF8; }
+.header-contact:hover,
+.header-contact:focus-visible {
+  color: var(--petrol);
+  background: #FAFAF8;
+  border-color: #FAFAF8;
+}
+.header-contact:hover span,
+.header-contact:focus-visible span { color: var(--petrol); }
+
+.hero { background: var(--petrol); }
+.hero-shade {
+  background: linear-gradient(90deg, rgba(15,39,36,.96) 0%, rgba(15,39,36,.78) 42%, rgba(15,39,36,.20) 72%, rgba(15,39,36,.03) 100%);
+}
+.eyebrow,
+.section-kicker { color: var(--sage); }
+
+.button-primary,
+.form-submit {
+  color: #FAFAF8;
+  background: var(--sage);
+  border-color: var(--sage);
+}
+.button-primary:hover,
+.form-submit:hover {
+  color: var(--petrol);
+  background: #FAFAF8;
+  border-color: #FAFAF8;
+}
+.button-dark { background: var(--petrol); border-color: var(--petrol); }
+.button-dark:hover { background: var(--sage); border-color: var(--sage); color: #FAFAF8; }
+
+.intro-section,
+.utility-section { background: #FAFAF8; }
+.services { background: #FAFAF8; }
+.process-section { background: #E4E1D9; }
+.why-section,
+.stats-section,
+.contact-section,
+footer { background: var(--petrol); }
+
+.intro-section .section-kicker,
+.section-heading .section-kicker,
+.process-intro .section-kicker,
+.utility-section .section-kicker { color: #55755B; }
+.advisor-quote p,
+.process-step.is-current h3 { color: #496A50; }
+.service-icon { color: #55755B; }
+.service-entry:hover .service-icon svg { color: var(--petrol); }
+.stat-number,
+.why-list article > span,
+.stats-heading .section-kicker { color: var(--sage); }
+
+.process-list::after,
+.process-step.is-complete > span,
+.process-step.is-current > span { background: var(--sage); }
+.consent input { accent-color: var(--sage); }
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--sage);
+  outline-color: rgba(107,143,111,.32);
+}
+.consent a { color: #496A50; }
+
+@media (max-width: 64rem) {
+  .site-header { background: rgba(15,39,36,.985); }
+}
+@media (max-width: 45rem) {
+  .brand-lockup { gap: .55rem; }
+  .brand-symbol { width: 2.45rem; height: 2rem; }
+  .brand-lockup-copy strong { font-size: .77rem; letter-spacing: .15em; }
+  .brand-lockup-copy small { font-size: .39rem; letter-spacing: .1em; }
+  .hero-shade {
+    background:
+      linear-gradient(180deg, rgba(15,39,36,.28) 0%, rgba(15,39,36,.48) 28%, rgba(15,39,36,.84) 66%, rgba(15,39,36,.97) 100%),
+      linear-gradient(90deg, rgba(15,39,36,.46) 0%, rgba(15,39,36,.08) 88%);
+  }
+}
