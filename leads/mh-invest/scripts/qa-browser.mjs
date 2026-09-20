@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
-const baseUrl = 'http://127.0.0.1:4321/mhinvest/';
+const baseUrl = 'http://127.0.0.1:4321/';
 const viewports = [
   { name: 'desktop-1440x900', width: 1440, height: 900 },
   { name: 'laptop-1280x800', width: 1280, height: 800 },
