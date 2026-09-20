@@ -931,3 +931,26 @@ html { scroll-padding-top: 5.1rem; }
     height: calc(100dvh - 4rem);
   }
 }
+
+
+/* Deliberate opening sequence */
+.hero-title-line { display: block; }
+@keyframes hero-intro-rise {
+  from { opacity: 0; transform: translateY(1.35rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-intro-image {
+  from { opacity: .68; transform: scale(1.055); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-media { animation: hero-intro-image 2.2s cubic-bezier(.18,.72,.22,1) both; }
+  .hero .eyebrow { animation: hero-intro-rise .65s .25s cubic-bezier(.2,.75,.25,1) both; }
+  .hero .hero-brand { animation: hero-intro-rise .65s .42s cubic-bezier(.2,.75,.25,1) both; }
+  .hero .hero-title-line-1 { animation: hero-intro-rise .72s .62s cubic-bezier(.2,.75,.25,1) both; }
+  .hero .hero-title-line-2 { animation: hero-intro-rise .78s .88s cubic-bezier(.2,.75,.25,1) both; }
+  .hero .hero-intro { animation: hero-intro-rise .68s 1.12s cubic-bezier(.2,.75,.25,1) both; }
+  .hero .hero-actions { animation: hero-intro-rise .68s 1.34s cubic-bezier(.2,.75,.25,1) both; }
+  .hero .hero-footer { animation: hero-intro-rise .65s 1.52s cubic-bezier(.2,.75,.25,1) both; }
+}
