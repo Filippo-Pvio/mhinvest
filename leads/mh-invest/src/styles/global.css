@@ -856,3 +856,40 @@ html { scroll-padding-top: 5.1rem; }
   }
   .hero-footer { padding-top: .8rem; padding-bottom: .9rem; }
 }
+
+
+/* Mobile metrics overflow repair */
+@media (max-width: 45rem) {
+  .stats-section {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .stats-heading,
+  .stats-grid,
+  .stats-grid article { min-width: 0; }
+  .stats-heading > p:last-child {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .stats-grid {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stats-grid article { overflow: hidden; }
+  .stat-number {
+    max-width: 100%;
+    font-size: clamp(2.55rem, 12.5vw, 4rem);
+    letter-spacing: -.055em;
+    white-space: nowrap;
+  }
+  .stats-grid article > span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 23rem) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-number { font-size: clamp(2.8rem, 18vw, 4rem); }
+}
