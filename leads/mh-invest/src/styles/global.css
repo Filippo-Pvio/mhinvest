@@ -1181,3 +1181,18 @@ footer { background: var(--petrol); }
       linear-gradient(90deg, rgba(15,39,36,.46) 0%, rgba(15,39,36,.08) 88%);
   }
 }
+
+/* Use the approved rendered 3D MH mark in the existing header only */
+.brand-symbol-image {
+  width: 3.15rem;
+  height: 2.55rem;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 .16rem .22rem rgba(0,0,0,.22));
+}
+@media (max-width: 45rem) {
+  .brand-symbol-image {
+    width: 2.55rem;
+    height: 2.1rem;
+  }
+}
