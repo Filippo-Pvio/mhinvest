@@ -1196,3 +1196,12 @@ footer { background: var(--petrol); }
     height: 2.1rem;
   }
 }
+
+
+/* Button radius refinement */
+.button,
+.header-contact,
+.form-submit,
+.comparison-band a {
+  border-radius: 10px;
+}
