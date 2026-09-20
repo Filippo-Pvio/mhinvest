@@ -954,3 +954,29 @@ html { scroll-padding-top: 5.1rem; }
   .hero .hero-actions { animation: hero-intro-rise .68s 1.34s cubic-bezier(.2,.75,.25,1) both; }
   .hero .hero-footer { animation: hero-intro-rise .65s 1.52s cubic-bezier(.2,.75,.25,1) both; }
 }
+
+
+/* Contextual service icons */
+.service-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  color: #58700a;
+}
+.service-icon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .24s cubic-bezier(.2,.75,.25,1), color .2s ease;
+}
+.service-entry:hover .service-icon svg { transform: translateY(-2px) scale(1.04); color: #40530a; }
+
+@media (max-width: 45rem) {
+  .service-icon { width: 2rem; height: 2rem; }
+  .service-icon svg { width: 1.55rem; height: 1.55rem; }
+}
