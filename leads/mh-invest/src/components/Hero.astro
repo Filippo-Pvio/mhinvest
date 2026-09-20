@@ -6,9 +6,16 @@ const headlineParts = site.headline === 'Ihre Finanzen verdienen Klarheit.'
 ---
 
 <header class="site-header">
-  <a class="brand wordmark" href="#top" aria-label={site.company + ' – Startseite'}>
-    <span class="wordmark-line" aria-hidden="true"><strong>MH</strong><span>INVEST</span></span>
-    <small>{site.claim}</small>
+  <a class="brand brand-lockup" href="#top" aria-label={site.company + ' – Startseite'}>
+    <svg class="brand-symbol" viewBox="0 0 84 64" aria-hidden="true">
+      <path class="brand-symbol-side" d="M4 56V20l17 13 13-17v40H22V39l-8-6v23Z"/>
+      <path class="brand-symbol-axis" d="M36 56V13L48 3v53Z"/>
+      <path class="brand-symbol-side" d="M50 56V28l12 9 18-17v36H68V42l-8 7V56Z"/>
+    </svg>
+    <span class="brand-lockup-copy">
+      <strong>MH INVEST</strong>
+      <small>{site.claim}</small>
+    </span>
   </a>
 
   <nav class="desktop-nav" aria-label="Hauptnavigation">
