@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://filippo-pvio.github.io',
-  base: '/mhinvest',
+  site: 'https://mhinvest-demo.fleisswerker.de',
+  base: '/',
   output: 'static',
   build: {
     inlineStylesheets: 'auto'
